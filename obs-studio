@@ -13,19 +13,19 @@ PACKAGE=obs-studio
 
 cd /blfs/builds
 wget $URL
-# NVENC headers, obs refuses to build without them, if anyone finds an issue with the version being too old file an issue to update
-wget https://github.com/FFmpeg/nv-codec-headers/releases/download/n12.2.72.0/nv-codec-headers-12.2.72.0.tar.gz
+# NVENC headers, obs refuses to build without them, if anyone finds an issue with the version being too old file an issue to update, at build time, obs does not like versions > 12.2.x.x
+wget https://github.com/FFmpeg/nv-codec-headers/releases/download/n12.1.14.0/nv-codec-headers-12.1.14.0.tar.gz
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-tar -xf ../nv-codec-headers-12.2.72.0.tar.gz
+tar -xf ../nv-codec-headers-12.1.14.0.tar.gz
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_BROWSER=OFF \
-    -DFFnvcodec_INCLUDE_DIR="../nv-codec-headers-12.2.72.0/include/" \
+    -DFFnvcodec_INCLUDE_DIR="../nv-codec-headers-12.1.14.0/include/" \
     -DENABLE_VLC=OFF \
     -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
     -DENABLE_AJA=OFF \
