@@ -13,9 +13,6 @@ PACKAGE=lib32-$(echo $DIR | sed 's|-[^-]*$||g')
 
 # Get Package
 cd /blfs/builds
-if [[ ! -d tucana-pkgs-extra ]]; then
-  git clone https://github.com/Tucana-Linux/tucana-pkgs-extra.git
-fi
 wget $URL
 tar -xvf $TAR
 cd $DIR
@@ -24,7 +21,6 @@ cd $DIR
 export CC="gcc -m32"
 export CXX="g++ -m32"
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-patch -Np1  < ../tucana-pkgs-extra/gettext/*$PKG_VER*.patch
 
 ./configure --prefix=/usr    \
             --disable-static \
