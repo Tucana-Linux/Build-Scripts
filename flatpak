@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=1.14.10
+PKG_VER=1.16.0
 URL=https://github.com/flatpak/flatpak/releases/download/$PKG_VER/flatpak-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -19,17 +19,15 @@ cd $DIR
 
 # Build
 
+mkdir -p build
+cd build
+meson setup --prefix=/usr --buildtype=release ..
 
-NOCONFIGURE=1 ./autogen.sh
-./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-system-dbus-proxy
-
-
-make -j16
-
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 
