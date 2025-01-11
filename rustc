@@ -19,10 +19,11 @@ cd $DIR
 
 # Build
 cat << EOF > config.toml
+
 # credit to LFS
 # tell x.py to not keep printing an annoying warning
 change-id = 131075
-
+profile = "dist"
 # see config.toml.example for more possible options
 # See the 8.4 book for an example using shipped LLVM
 # e.g. if not installing clang, or using a version before 10.0
@@ -58,18 +59,11 @@ docdir = "share/doc/rustc"
 [rust]
 channel = "stable"
 rpath = false
-codegen-tests = false
+lto = "thin"
+codegen-units = 1
 
 [target.x86_64-unknown-linux-gnu]
-# NB the output of llvm-config (i.e. help options) may be
-# dumped to the screen when config.toml is parsed.
 llvm-config = "/usr/bin/llvm-config"
-
-[target.i686-unknown-linux-gnu]
-# NB the output of llvm-config (i.e. help options) may be
-# dumped to the screen when config.toml is parsed.
-llvm-config = "/usr/bin/llvm-config"
-
 
 EOF
 
