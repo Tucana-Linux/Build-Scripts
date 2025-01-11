@@ -48,6 +48,7 @@ cd $LLVM_DIR
 
 # Build LLVM Base
 grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt
 mkdir build
 cd build
 
