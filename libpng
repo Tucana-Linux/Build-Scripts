@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 #ARCH_PKG=libpng
 #ARCH_VAR=pkgver
-PKG_VER=1.6.44
+PKG_VER=1.6.45
 URL=https://downloads.sourceforge.net/libpng/libpng-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -14,13 +14,13 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
+wget https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-$PKG_VER-apng.patch.gz
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-gzip -cd ../libpng-1.6.43-apng.patch.gz | patch -p1
+gzip -cd ../libpng-$PKG_VER-apng.patch.gz | patch -p1
 
 
 ./configure --prefix=/usr --disable-static
