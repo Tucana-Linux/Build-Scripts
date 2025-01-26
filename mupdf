@@ -3,10 +3,10 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=1.24.0
-URL=https://github.com/ArtifexSoftware/mupdf/archive/refs/tags/$PKG_VER.tar.gz
+PKG_VER=1.25.3
+URL=https://www.mupdf.com/downloads/archive/mupdf-$PKG_VER-source.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=mupdf-$PKG_VER
+DIR=mupdf-$PKG_VER-source
 PACKAGE=mupdf
 
 # Get Package
@@ -17,7 +17,6 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
 
 
 
@@ -35,7 +34,6 @@ USE_SYSTEM_GLUT := no # need freeglut2-art fork
 USE_SYSTEM_CURL := yes
 USE_SYSTEM_GUMBO := no
 EOF
-
 export XCFLAGS=-fPIC                               &&
 make build=release shared=yes -j22                      &&
 unset XCFLAGS
