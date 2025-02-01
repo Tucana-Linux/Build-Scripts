@@ -30,8 +30,7 @@ meson --prefix=/usr                 \
       -Dsession_tracking=logind \
       -Dlibs-only=true           \
       --libdir=/usr/lib32 \
-      -D introspection=false \
-      -D os_type=redhat \
+      -Dintrospection=false \
       ..         
 
 ninja
