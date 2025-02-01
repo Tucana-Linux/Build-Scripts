@@ -44,7 +44,7 @@ system-settings:
 EOF
 cp /pkgs/$PACKAGE/etc/neptune/config.yaml /pkgs/$PACKAGE/usr/share/doc/neptune/sample-config.yaml
 
-sudo echo "pyyaml python-rich python-requests" > /pkgs/$PACKAGE/depends
+sudo echo "python-packaging pyyaml python-rich python-requests" > /pkgs/$PACKAGE/depends
 sudo echo "python-build python-installer" > /pkgs/$PACKAGE/make-depends
 sudo echo "/etc/neptune/config.yaml" > /pkgs/$PACKAGE/backup
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
