@@ -14,13 +14,11 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/protobuf-c-1.5.0-consolidated_fixes-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-patch -Np1 -i ../protobuf-c-$PKG_VER-consolidated_fixes-1.patch
 ./configure --prefix=/usr --disable-static
 
 
