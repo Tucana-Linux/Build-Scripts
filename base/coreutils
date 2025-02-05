@@ -16,9 +16,11 @@ wget $URL
 tar -xvf $TAR
 cd $DIR
 
+
 # Build
+autoreconf -fv
+automake -af
 patch -Np1 -i ../coreutils-$PKG_VER-i18n-1.patch
-autoreconf -fiv
 export FORCE_UNSAFE_CONFIGURE=1
 ./configure --prefix=/usr                     \
 	--enable-install-program=hostname \
