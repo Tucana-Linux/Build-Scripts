@@ -5,10 +5,10 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=1.7.0
-URL=https://xkbcommon.org/download/libxkbcommon-$PKG_VER.tar.xz
+URL=https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+DIR=libxkbcommon-xkbcommon-$PKG_VER
+PACKAGE=libxkbcommon
 
 # Get Package
 
