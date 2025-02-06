@@ -16,11 +16,14 @@ PACKAGE=js115
 # Get Package
 
 cd /blfs/builds
+wget https://raw.githubusercontent.com/Tucana-Linux/tucana-pkgs-extra/refs/heads/main/js115/js115-build-fix.patch
 wget $URL
 tar -xvf $TAR
 cd $DIR
 
+
 # Build
+patch -Np1 < ../js115-build-fix.patch
 
 mkdir obj &&
 cd    obj &&
@@ -30,7 +33,6 @@ PYTHON=python3.11
 ../js/src/configure --prefix=/usr            \
                     --with-intl-api          \
                     --with-system-zlib       \
-                    --with-system-icu        \
                     --disable-jemalloc       \
                     --disable-debug-symbols  \
                     --enable-readline    
