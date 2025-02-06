@@ -28,7 +28,6 @@ cd $DIR
             --enable-pcre2-32                   \
             --enable-pcre2grep-libz             \
             --enable-pcre2grep-libbz2           \
-            --enable-pcre2test-libreadline      \
             --disable-static \
 	    --libdir=/usr/lib32 \
 
@@ -46,8 +45,8 @@ cd /pkgs
 
 
 
-sudo echo "lib32-libgcc pcre2" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "lib32-readline lib32-libgcc pcre2" > /pkgs/$PACKAGE/depends
+sudo echo "lib32-readline" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
