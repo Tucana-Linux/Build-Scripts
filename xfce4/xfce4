@@ -1,5 +1,6 @@
 #!/bin/bash
-
+PACKAGE=xfce4
+PKG_VER=4.20.0
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
@@ -23,3 +24,10 @@ bash parole
 bash xfce4-terminal
 bash xfce4-notifyd
 bash xfce4-pulseaudio-plugin  
+
+mkdir -p /pkgs/$PACKAGE
+echo "xfce4-session xfce4-panel tumbler xfwm4 xfce4-settings xfce4-power-manager thunar" > /pkgs/$PACKAGE/depends
+cd /pkgs
+tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+cp $PACKAGE.tar.xz /finished/
+
