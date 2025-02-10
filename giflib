@@ -1,0 +1,46 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=5.2.2
+URL=https://sourceforge.net/projects/giflib/files/giflib-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+wget https://www.linuxfromscratch.org/patches/blfs/svn/giflib-$PKG_VER-upstream_fixes-1.patch
+tar -xvf $TAR
+cd $DIR
+# Build
+
+
+patch -Np1 -i ../giflib-5.2.2-upstream_fixes-1.patch
+cp pic/gifgrid.gif doc/giflib-logo.gif
+
+
+make -j22
+
+
+# Install
+sudo make PREFIX=/usr DESTDIR=/pkgs/$PACKAGE install
+install -v -dm755 /pkgs/$PACKAGE/usr/share/doc/$PACKAGE
+cp -v -R doc/* /pkgs/$PACKAGE/usr/share/doc/giflib-$PKG_VER
+cd /pkgs
+
+
+
+sudo echo "xmlto" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+cp -rpv /pkgs/$PACKAGE/* /
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

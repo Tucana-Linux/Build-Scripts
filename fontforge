@@ -1,0 +1,45 @@
+#!/bin/bash
+set -e
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+PKG_VER=20230101
+URL=https://github.com/fontforge/fontforge/releases/download/$PKG_VER/fontforge-$PKG_VER.tar.xz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+wget https://raw.githubusercontent.com/Tucana-Linux/tucana-pkgs-extra/refs/heads/main/fontforge/fontforge-$PKG_VER-upstream-fixes.patch
+tar -xvf $TAR
+cd $DIR
+
+# Build
+patch -Np1 < ../fontforge-$PKG_VER-upstream-fixes.patch
+mkdir build
+cd build
+
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_MAINTAINER_TOOLS=TRUE -DENABLE_FONTFORGE_EXTRAS=TRUE -DUNIX=TRUE -G Ninja ..
+
+ninja
+
+
+# Install
+sudo  DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
+cd /pkgs
+
+
+
+sudo echo "pango giflib libtiff libxml2 libspiro python potrace woff2 gtk3 libuninameslist" > /pkgs/$PACKAGE/depends
+sudo echo "python-sphinx cmake git python-setuptools" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

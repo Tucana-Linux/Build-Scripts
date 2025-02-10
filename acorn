@@ -1,0 +1,36 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+#ARCH_PKG=acorn
+#ARCH_VAR=pkgver
+PKG_VER=8.14.0
+URL=https://registry.npmjs.org/acorn/-/acorn-$PKG_VER.tgz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+PACKAGE=acorn
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+
+# Build
+# inspired by https://gitlab.archlinux.org/archlinux/packaging/packages/acorn/-/blob/main/PKGBUILD?ref_type=heads
+# Install
+npm install -g --prefix /pkgs/$PACKAGE/usr /blfs/builds/$TAR
+chmod -R u=rwX,go=rX /pkgs/$PACKAGE
+cd /pkgs
+mkdir -p /pkgs/$PACKAGE/usr/share/licenses/$PACKAGE
+ln -s "../../../lib/node_modules/$PACKAGE/LICENSE" "/pkgs/$PACKAGE/usr/share/licenses/$PACKAGE/"
+
+
+sudo echo "nodejs" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp -rp /pkgs/$PACKAGE/* /
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+
+
