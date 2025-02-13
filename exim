@@ -1,0 +1,59 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=4.98
+URL=https://ftp.exim.org/pub/exim/exim4/exim-$PKG_vER.tar.xz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+sed -e 's,^BIN_DIR.*$,BIN_DIRECTORY=/usr/sbin,'    \
+    -e 's,^CONF.*$,CONFIGURE_FILE=/etc/exim.conf,' \
+    -e 's,^EXIM_USER.*$,EXIM_USER=exim,'           \
+    -e '/# USE_OPENSSL/s,^#,,' src/EDITME > Local/Makefile &&
+sed -i '/# SUPPORT_PAM=yes/s,^#,,' Local/Makefile
+echo "EXTRALIBS=-lpam" >> Local/Makefile
+
+printf "USE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile
+
+
+make -j22
+
+
+# Install
+install -v -dm644 doc/exim.8 /pkgs/$PACKAGE/usr/share/man/man8
+install -vdm 755    /pkgs/$PACKAGE/usr/share/doc/exim
+cp -Rv doc/*   /pkgs/$PACKAGE/usr/share/doc/exim
+
+ln -sfv exim /pkgs/$PACKAGE/usr/sbin/sendmail
+install -v -d -m750 -o exim -g exim /pkgs/$PACKAGE/var/spool/exim
+sudo make DESTDIR=/pkgs/$PACKAGE install
+cd /pkgs
+
+
+
+sudo echo "libnsl file-fcntllock pcre2 cyrus-sasl libidn pam" > /pkgs/$PACKAGE/depends
+cat > /pkgs/$PACKAGE/postinst << EOF
+groupadd -g 31 exim &&
+useradd -d /dev/null -c "Exim Daemon" -g exim -s /bin/false -u 31 exim
+EOF
+sudo echo "mariadb openldap" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

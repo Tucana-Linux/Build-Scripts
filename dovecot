@@ -1,0 +1,54 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=2.4.0
+MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
+URL=https://www.dovecot.org/releases/$MAJOR/dovecot-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+	    --localstatedir=/var \
+	    --with-lua=no \
+	    --disable-static
+
+make -j22
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo make install
+cd /pkgs
+
+
+
+sudo echo "pam libtirpc cyrus-sasl icu libcap sqlite" > /pkgs/$PACKAGE/depends
+cat > /pkgs/$PACKAGE/postinst << EOF
+groupadd -g 42 dovecot &&
+useradd -c "Dovecot unprivileged user" -d /dev/null -u 42 -g dovecot -s /bin/false dovecot
+groupadd -g 43 dovenull &&
+useradd -c "Dovecot login user" -d /dev/null -u 43 -g dovenull -s /bin/false dovenull
+EOF
+sudo echo "lua openldap mariadb sqlite" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

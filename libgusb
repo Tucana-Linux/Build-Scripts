@@ -21,10 +21,10 @@ cd $DIR
 mkdir build
 cd build
 
-meson setup ..            \
+meson setup            \
       --prefix=/usr       \
       --buildtype=release \
-      -Ddocs=false  
+      -Ddocs=false ..
 
 ninja
 
