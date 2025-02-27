@@ -36,6 +36,8 @@ mkdir -pv /pkgs/$PACKAGE/usr/lib
 mkdir -pv /pkgs/$PACKAGE/usr/bin
 mkdir -pv /pkgs/$PACKAGE/usr/sbin
 mkdir -pv /pkgs/$PACKAGE/usr/bin
+mkdir -pv /pkgs/$PACKAGE/usr/local/bin
+mkdir -pv /pkgs/$PACKAGE/usr/local/include
 mkdir -pv /pkgs/$PACKAGE/var/lock
 mkdir -pv /pkgs/$PACKAGE/var/{cache,local,log,mail,opt,spool}
 mkdir -pv /pkgs/$PACKAGE/dev
