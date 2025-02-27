@@ -8,7 +8,7 @@ PKG_VER=1.21
 URL=https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=parse-yapp
+PACKAGE=perl-parse-yapp
 
 # Get Package
 
