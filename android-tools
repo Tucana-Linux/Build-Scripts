@@ -18,7 +18,7 @@ cd $DIR
 # Build
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON  -DCMAKE_BUILD_TYPE=Release  -G Ninja ..
+cmake -Dprotobuf_MODULE_COMPATIBLE=ON  -DCMAKE_INSTALL_PREFIX=/usr -DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON  -DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON  -DCMAKE_BUILD_TYPE=Release  -G Ninja ..
 
 
 ninja
@@ -31,7 +31,7 @@ cd /pkgs
 
 
 
-sudo echo "zlib libusb ncurses googletest" > /pkgs/$PACKAGE/depends
+sudo echo "protobuf fmt zlib libusb ncurses googletest" > /pkgs/$PACKAGE/depends
 sudo echo "protobuf" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

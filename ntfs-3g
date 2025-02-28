@@ -1,0 +1,45 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+URL=https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2022.10.3.tgz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tgz||g')
+PACKAGE=ntfs-3g
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+./configure --prefix=/usr        \
+            --disable-static     \
+
+
+make -j22
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+mkdir -p /pkgs/$PACKAGE/usr/sbin /pkgs/$PACKAGE/usr/share/man/man8
+ln -sv ../bin/ntfs-3g /pkgs/$PACKAGE/usr/sbin/mount.ntfs &&
+ln -sv ntfs-3g.8 /pkgs/$PACKAGE/usr/share/man/man8/mount.ntfs.8
+cd /pkgs
+
+
+
+sudo echo "fuse2" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

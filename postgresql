@@ -1,0 +1,50 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+# do not use still needs sysd unit
+PKG_VER=17.3
+URL=https://ftp.postgresql.org/pub/source/v$PKG_VER/postgresql-$PKG_VER.tar.bz2
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h &&
+./configure --prefix=/usr
+
+make -j22
+make -C contrib -j22
+
+
+# Install
+make DESTDIR=/pkgs/$PACKAGE install
+make DESTDIR=/pkgs/$PACKAGE -C contrib install
+make DESTDIR=/pkgs/$PACKAGE install-docs
+cd /pkgs
+mkdir -p /pkgs/$PACKAGE/usr/lib/systemd/system/
+
+
+sudo echo "icu openldap pam" > /pkgs/$PACKAGE/depends
+cat >> /pkgs/$PACKAGE/postinst << EOF
+groupadd -g 41 postgres &&
+useradd -c "PostgreSQL Server" -g postgres -d /srv/pgsql/data \
+        -u 41 postgres
+EOF
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
