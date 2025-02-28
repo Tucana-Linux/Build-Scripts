@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=5.0
+PKG_VER=6.1
 URL=https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -31,7 +31,7 @@ cd /pkgs
 
 
 sudo echo "gtkmm4 glibmm json-glib libcanberra libsigc++2 pulseaudio" > /pkgs/$PACKAGE/depends
-sudo echo "gtkmm4 glibmm json-glib libcanberra libsigc++2 pulseaudio" > /pkgs/$PACKAGE/make-depends
+sudo echo "lynx gtkmm4 glibmm json-glib libcanberra libsigc++2 pulseaudio" > /pkgs/$PACKAGE/make-depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

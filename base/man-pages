@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=6.10
+PKG_VER=6.12
 URL=https://www.kernel.org/pub/linux/docs/man-pages/man-pages-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -20,10 +20,9 @@ cd $DIR
 
 # Build
 
-
+rm -v man3/crypt*
 # Install
-sudo make prefix=/usr DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo make -R GIT=false prefix=/usr DESTDIR=/pkgs/$PACKAGE install
 cd /pkgs
 
 
