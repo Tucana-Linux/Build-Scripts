@@ -12,11 +12,14 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://raw.githubusercontent.com/Tucana-Linux/tucana-pkgs-extra/refs/heads/main/tigervnc/tigervnc-1.15.0-configuration_fixes-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
+# fltk fix
+sed -i "s/maximize)/::&/"         vncviewer/DesktopWindow.cxx &&
+sed -i "/FL_MINOR_VERSION/s/3/4/" CMakeLists.txt
 mkdir build
 cd build
 
@@ -24,9 +27,6 @@ cmake -G "Unix Makefiles"         \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release  \
       -Wno-dev ..
-  
-
-
 
 make -j16
 
