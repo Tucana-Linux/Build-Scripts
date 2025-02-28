@@ -20,10 +20,9 @@ cd $DIR
 
 # Build
 
-
+rm -v man3/crypt*
 # Install
-sudo make prefix=/usr DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo make -R GIT=false prefix=/usr DESTDIR=/pkgs/$PACKAGE install
 cd /pkgs
 
 
