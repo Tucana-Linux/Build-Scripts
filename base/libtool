@@ -3,9 +3,6 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-
 
 PKG_VER=2.5.4
 URL=https://ftp.gnu.org/gnu/libtool/libtool-$PKG_VER.tar.xz
@@ -21,7 +18,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+autoreconf -fi
 ./configure --prefix=/usr
 
 
