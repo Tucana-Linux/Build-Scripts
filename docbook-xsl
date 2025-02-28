@@ -3,7 +3,8 @@ set -e
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-URL=https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2
+PKG_VER=1.79.2
+URL=https://github.com/docbook/xslt10-stylesheets/releases/download/release/$PKG_VER/docbook-xsl-nons-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=docbook-xsl
