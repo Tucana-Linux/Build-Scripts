@@ -43,7 +43,7 @@ return; \
     --enable-compat-libdns_sd \
     --with-dbus-system-address='unix:path=/run/dbus/systemd_bus_socket'
 
-make -j16
+make -j20
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install
@@ -59,6 +59,7 @@ cd /pkgs
 
 
 sudo echo "gtk2 gtk3 libdaemon gobject-introspection glib libevent qt5" > /pkgs/$PACKAGE/depends
+sudo echo "libevent" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
