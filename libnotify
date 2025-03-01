@@ -17,6 +17,8 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+# hacky workaround to a chroot command bug
+sudo neptune reinstall docbook-xml docbook-xsl
 
 mkdir build
 cd build
