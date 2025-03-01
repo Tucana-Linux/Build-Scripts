@@ -19,7 +19,7 @@ cd $DIR
 
 # Build
 export CC="gcc -m32"
-
+autoreconf -fi
 ./configure --prefix=/usr          \
             --sysconfdir=/etc      \
             --with-openssl         \
