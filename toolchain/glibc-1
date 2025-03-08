@@ -10,6 +10,7 @@ URL=https://ftp.gnu.org/gnu/glibc/glibc-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+FINISHED=/pkgs/$PACKAGE
 set -e
 # Get Package
 
