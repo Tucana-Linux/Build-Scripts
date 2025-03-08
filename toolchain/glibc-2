@@ -70,12 +70,6 @@ zic -d /pkgs/$PACKAGE/usr/share/zoneinfo -p America/New_York
 # Fix bug in ldd script
 sed '/RTLDLIST=/s@/usr@@g' -i /pkgs/$PACKAGE/usr/bin/ldd
 
-# Install the NSCD conf files
-cp -v ../nscd/nscd.conf /pkgs/$PACKAGE/etc/nscd.conf
-mkdir -pv /pkgs/$PACKAGE/var/cache/nscd
-# Install the system service
-install -v -Dm644 ../nscd/nscd.service /pkgs/$PACKAGE/usr/lib/systemd/system/nscd.service
-
 
 # ld.so.conf
 cat >> /pkgs/$PACKAGE/etc/ld.so.conf << "EOF"
