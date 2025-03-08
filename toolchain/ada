@@ -5,8 +5,8 @@ export CXXFLAGS="-O2"
 
 
 # This is just for the build system, this SHOULD NOT be pushed to the repo or packaged
-
-URL=https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz
+PKG_VER=14.2.0
+URL=https://ftp.gnu.org/gnu/gcc/gcc-$PKG_VER/gcc-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

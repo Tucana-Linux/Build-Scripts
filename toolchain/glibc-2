@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 
 set -e
-PKG_VER=2.40
+PKG_VER=2.41
 URL=https://ftp.gnu.org/gnu/glibc/glibc-$PKG_VER.tar.xz
 # Not actually a seperate package just the time zone info
 ALT_URL=https://www.iana.org/time-zones/repository/releases/tzdata2024a.tar.gz
