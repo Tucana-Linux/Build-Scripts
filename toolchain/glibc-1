@@ -40,7 +40,7 @@ make -j22
 
 # Install
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
-sudo PATH=/opt/tucana/usr/bin:$PATH make install
+sudo PATH=/opt/tucana/usr/bin:$PATH make DESTDIR=/pkgs/glibc-temp install
 
 
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
@@ -48,4 +48,4 @@ sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 cd /blfs/builds
 sudo rm -r $DIR
 
-
+echo "COPY /pkgs/glibc-temp to root outside of the CHROOT!!!"
