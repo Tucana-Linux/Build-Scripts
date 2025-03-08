@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=2.40
+PKG_VER=2.41
 # Build Only
 set -e
 URL=https://ftp.gnu.org/gnu/glibc/glibc-$PKG_VER.tar.xz
