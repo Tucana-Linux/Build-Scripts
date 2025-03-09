@@ -37,6 +37,8 @@ LD=ld
              --enable-languages=c,c++,ada \
              --enable-multilib       \
              --with-multilib-list=m32,m64 \
+	     --disable-fixincludes \
+	     --enable-host-pie \
              --disable-bootstrap      \
              --with-system-zlib \
              --enable-default-pie        \
