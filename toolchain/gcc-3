@@ -41,6 +41,7 @@ CFLAGS="-O2" ../configure --prefix=/usr            \
              --with-multilib-list=m32,m64 \
              --enable-libada \
              --enable-default-pie \
+	     --disable-fixincludes \
              --enable-default-ssp  \
              --enable-threads=posix \
              --with-system-zlib \
