@@ -32,7 +32,7 @@ echo "rootsbindir=/usr/sbin" > configparms
       --with-headers=/usr/include    \
       --enable-multi-arch                \
       --disable-nscd \
-      --host=x86_64-tucana-linux-gnu libc_cv_slibdir=/usr/lib
+      --host=x86_64-pc-linux-gnu libc_cv_slibdir=/usr/lib
 
 
 make -j22
