@@ -36,7 +36,7 @@ cd       build
 LD=ld
 CFLAGS="-O2" ../configure --prefix=/usr            \
              LD=ld                    \
-             --enable-languages=c,c++,go,ada \
+             --enable-languages=c,c++,ada \
              --enable-multilib       \
              --with-multilib-list=m32,m64 \
              --enable-libada \
@@ -95,7 +95,7 @@ mv /pkgs/$PACKAGE/usr/lib/libgcc_s.so* /pkgs/$ALT_PACKAGE/usr/lib
 mv /pkgs/$PACKAGE/usr/lib/libgomp.so* /pkgs/$ALT_PACKAGE/usr/lib
 
 #LibGO
-mv /pkgs/$PACKAGE/usr/lib/libgo.so* /pkgs/$ALT_PACKAGE/usr/lib
+#mv /pkgs/$PACKAGE/usr/lib/libgo.so* /pkgs/$ALT_PACKAGE/usr/lib
 
 #Libquadmath
 mv /pkgs/$PACKAGE/usr/lib/libquadmath.so* /pkgs/$ALT_PACKAGE/usr/lib
