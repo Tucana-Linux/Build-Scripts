@@ -6,9 +6,9 @@ export CXXFLAGS="-O2"
 # Using git, there might be other submodules later
 URL=https://code.videolan.org/videolan/x264.git
 # If it's a frequently updated git repo without a set version, title it with the tucana version in the for t[version] no minor versions, just append to the major eg 1.1=t11
-TAR_FINAL=x264-t2.tar.xz
+TAR_FINAL=x264-t3.tar.xz
 # master?
-COMMIT=baee400fa9ced6f5481a728138fed6e867b0ff7f
+COMMIT=373697b467f7cd0af88f1e9e32d4f10540df4687
 # Don't touch
 DIR=$(echo $URL | sed -r 's|(.*)/||' | sed 's/.git//')
 

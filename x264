@@ -3,7 +3,8 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-TAR=x264-t2.tar.xz
+PKG_VER=t3
+TAR=x264-$PKG_VER.tar.xz
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
@@ -36,7 +37,7 @@ cd /pkgs
 
 
 sudo echo "" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "nasm" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
