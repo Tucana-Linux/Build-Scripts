@@ -43,7 +43,7 @@ cd /pkgs
 
 
 
-sudo echo "libnsl file-fcntllock pcre2 cyrus-sasl libidn pam" > /pkgs/$PACKAGE/depends
+sudo echo "libnsl perl-file-fcntllock pcre2 cyrus-sasl libidn pam" > /pkgs/$PACKAGE/depends
 cat > /pkgs/$PACKAGE/postinst << EOF
 groupadd -g 31 exim &&
 useradd -d /dev/null -c "Exim Daemon" -g exim -s /bin/false -u 31 exim
