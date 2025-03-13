@@ -43,12 +43,12 @@ cd /pkgs
 
 
 
-sudo echo "libnsl perl-file-fcntllock pcre2 cyrus-sasl libidn pam" > /pkgs/$PACKAGE/depends
+sudo echo "libnsl perl-file-fcntllock pcre2 cyrus-sasl libidn2 pam" > /pkgs/$PACKAGE/depends
 cat > /pkgs/$PACKAGE/postinst << EOF
 groupadd -g 31 exim &&
 useradd -d /dev/null -c "Exim Daemon" -g exim -s /bin/false -u 31 exim
 EOF
-sudo echo "perl-file-fcntllock pcre2 cyrus-sasl libidn pam mariadb openldap" > /pkgs/$PACKAGE/make-depends
+sudo echo "perl-file-fcntllock pcre2 cyrus-sasl libidn2 pam mariadb openldap" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
