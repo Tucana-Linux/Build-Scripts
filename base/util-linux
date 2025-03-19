@@ -8,7 +8,8 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=2.40.4
-MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
+# changed from the usual because they don't do .0 versions
+MAJOR=$(echo $PKG_VER | sed '/\..*\./ s/\.[^.]*$//')
 URL=https://www.kernel.org/pub/linux/utils/util-linux/v$MAJOR/util-linux-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
