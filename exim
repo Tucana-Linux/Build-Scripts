@@ -32,7 +32,6 @@ make -j22
 
 
 # Install
-install -v -dm644 doc/exim.8 /pkgs/$PACKAGE/usr/share/man/man8
 install -vdm 755    /pkgs/$PACKAGE/usr/share/doc/exim
 cp -Rv doc/*   /pkgs/$PACKAGE/usr/share/doc/exim
 
