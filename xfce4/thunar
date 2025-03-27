@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 PKG_VER=4.20.2
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
-URL=https://archive.xfce.org/src/xfce/thunar/$MAJOR/thunar-$PKG_VER.tar.bz2
+URL=https://archive.xfce.org/src/xfce/thunar/$MAJOR/thunar-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -19,15 +19,14 @@ cd $DIR
 # Build
 
 
-./configure --prefix=/usr \
-            --sysconfdir=/etc \
-
-make -j16
-
+mkdir build
+cd build
+meson setup --prefix=/usr ..
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 

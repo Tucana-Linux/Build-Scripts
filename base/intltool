@@ -32,8 +32,8 @@ cd /pkgs
 
 
 
-sudo echo "perl-xml-parser autoconf automake bash glibc grep perl sed" > /pkgs/$PACKAGE/depends
-sudo echo "bash gawk glibc make perl sed" > /pkgs/$PACKAGE/make-depends
+sudo echo "gettext perl-xml-parser autoconf automake bash glibc grep perl sed" > /pkgs/$PACKAGE/depends
+sudo echo "gettext bash gawk glibc make perl sed" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

@@ -6,7 +6,7 @@ export CXXFLAGS="-O2"
 
 PKG_VER=0.13.3
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
-URL=https://archive.xfce.org/src/apps/ristretto/$MAJOR/ristretto-$PKG_VER.tar.bz2
+URL=https://archive.xfce.org/src/apps/ristretto/$MAJOR/ristretto-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -19,18 +19,17 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+mkdir build
+cd build
+meson setup --prefix=/usr  ..
 
 
 
-./configure --prefix=/usr
-
-
-make -j16
-
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=2.2
+URL=https://github.com/festvox/flite/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=flite-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+  sed '/^#VOXES.*$/d; s/+//g; s/cmu_indic_lex/&\nVOXES = cmu_us_kal16 cmu_us_slt/' config/android.lv >config/archlinux.lv
+    sed -i '/$(INSTALL) -m 755 $(BINDIR)\/flite_time $(DESTDIR)$(INSTALLBINDIR)/d' main/Makefile
+
+./configure --prefix=/usr \
+            --enable-shared \
+            --with-audio=alsa 
+
+
+make -j1
+make get_voices
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo make install
+cd /pkgs
+
+
+
+sudo echo "alsa-lib" > /pkgs/$PACKAGE/depends
+sudo echo "wget" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

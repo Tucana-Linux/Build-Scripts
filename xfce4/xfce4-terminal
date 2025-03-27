@@ -21,14 +21,14 @@ cd $DIR
 # Build
 
 
-./configure --prefix=/usr
-
-make -j16
-
+mkdir build
+cd build
+meson setup --prefix=/usr ..
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 

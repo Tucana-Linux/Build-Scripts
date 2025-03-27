@@ -35,6 +35,7 @@ make -j22
 install -vdm 755    /pkgs/$PACKAGE/usr/share/doc/exim
 cp -Rv doc/*   /pkgs/$PACKAGE/usr/share/doc/exim
 
+sudo mkdir -p /pkgs/$PACKAGE/usr/sbin
 ln -sfv exim /pkgs/$PACKAGE/usr/sbin/sendmail
 install -v -d -m750 -o exim -g exim /pkgs/$PACKAGE/var/spool/exim
 sudo make DESTDIR=/pkgs/$PACKAGE install
