@@ -17,7 +17,7 @@ cd $DIR
 
 # Build
 
-sed -i 's/typedef.*//g' src/server/drmfourcc.h
+sed -i 's/typedef.*//g' src/server/drm_fourcc.h
 
 mkdir build
 cd build
