@@ -1,5 +1,6 @@
 #!/bin/bash
-URL=https://download.kde.org/stable/phonon/4.12.0/phonon-4.12.0.tar.xz
+PKG_VER=4.12.0
+URL=https://download.kde.org/stable/phonon/$PKG_VER/phonon-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
