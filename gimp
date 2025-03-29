@@ -15,7 +15,8 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-tar -xvf $TAR cd $DIR
+tar -xvf $TAR 
+cd $DIR
 
 # Build
 
