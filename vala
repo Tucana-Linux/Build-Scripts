@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 
 
-PKG_VER=0.56.17
+PKG_VER=0.56.18
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.gnome.org/sources/vala/$MAJOR/vala-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')

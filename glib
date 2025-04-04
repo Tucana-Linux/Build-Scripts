@@ -1,8 +1,8 @@
 #!/bin/bash
-
+set -e
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=2.84.0
+PKG_VER=2.84.1
 MINOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.gnome.org/sources/glib/$MINOR/glib-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -13,23 +13,20 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/glib-$PKG_VER-upstream_fixes-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 -i ../glib-$PKG_VER-upstream_fixes-1.patch
 mkdir build
 cd build
 
-meson --prefix=/usr       \
+meson setup --prefix=/usr       \
       --buildtype=release \
       -Dman=true          \
       ..     
 
 
 ninja
-
 
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
@@ -40,12 +37,8 @@ cd /pkgs
 
 
 
-sudo echo "pcre base" > /pkgs/$PACKAGE/depends
+sudo echo "pcre" > /pkgs/$PACKAGE/depends
 sudo echo "python-packaging" > /pkgs/$PACKAGE/make-depends
-echo "if [ -e /usr/include/glib-2.0 ]; then
-    rm -rf /usr/include/glib-2.0.old &&
-    mv -vf /usr/include/glib-2.0{,.old}
-fi" > /pkgs/$PACKAGE/preinst
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
