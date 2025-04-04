@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=4.20.0
+PKG_VER=4.21.0
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://archive.xfce.org/src/xfce/xfce4-session/$MAJOR/xfce4-session-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -21,7 +21,7 @@ cd $DIR
 mkdir build
 cd build
 
-meson setup --prefix=/usr ..
+meson setup --prefix=/usr --buildtype=release ..
 
 ninja
 
