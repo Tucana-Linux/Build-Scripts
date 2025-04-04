@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=2.3.2
+PKG_VER=2.3.3
 URL=https://github.com/OCL-dev/ocl-icd/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=ocl-icd-$PKG_VER
