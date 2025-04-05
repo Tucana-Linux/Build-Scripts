@@ -17,8 +17,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
-
+curl -LO https://github.com/lu-zero/cargo-c/releases/download/v$PKG_VER/Cargo.lock
 export CFLAGS+=' -ffat-lto-objects'
 cargo build --release
 
