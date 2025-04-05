@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=1.85.1
+PKG_VER=1.86.0
 URL=https://static.rust-lang.org/dist/rustc-$PKG_VER-src.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -14,18 +14,11 @@ set -e
 
 cd /blfs/builds
 wget $URL
-wget https://github.com/rust-lang/rust/pull/135177.patch
-wget https://github.com/rust-lang/rust/commit/97f6e4d34b7e103150c35d390e33d17041363af3.patch
-wget https://github.com/rust-lang/rust/pull/136895.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-# llvm 20.1.0 fixes
-patch -Np1 < ../135177.patch
-patch -Np1 < ../97f6e4d34b7e103150c35d390e33d17041363af3.patch
-patch -Np1 < ../136895.patch
 
 cat << EOF > config.toml
 
@@ -64,6 +57,7 @@ docdir = "share/doc/rustc"
 channel = "stable"
 rpath = false
 lto = "thin"
+lld = false
 codegen-units = 1
 
 [target.x86_64-unknown-linux-gnu]
