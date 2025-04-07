@@ -2,15 +2,15 @@
 set -e
 # Building Depends
 sudo neptune install URI lmdb
-bash ecm
-bash libdbusmenu-qt
-bash polkit-qt
-bash polkit-qt5
-bash phonon
-#bash phonon-backend-vlc
-bash plasma-wayland-protocols
-sudo bash qcoro
-sudo bash qca
+bash -e ecm
+bash -e libdbusmenu-qt
+bash -e polkit-qt
+bash -e polkit-qt5
+bash -e phonon
+#bash -e phonon-backend-vlc
+bash -e plasma-wayland-protocols
+sudo bash -e qcoro
+sudo bash -e qca
 # Plasma5-limited
 cd plasma5-limited
 bash -e build_plasma5_limited.sh
@@ -19,13 +19,13 @@ cd ..
 cd kf6
 bash -e build_kf6.sh
 cd ..
-sudo bash kirigami-addons
-sudo bash pulseaudio-qt
+sudo bash -e kirigami-addons
+sudo bash -e pulseaudio-qt
 # Desktop
 cd plasma
-bash -e build_plasma.sh
+ bash -e build_plasma.sh
 cd ..
 # Apps
-sudo bash poppler
+sudo bash -e poppler
 cd plasma-apps
 bash -e build_plasma_apps.sh

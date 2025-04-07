@@ -4,10 +4,10 @@ bash -e ark
 bash -e kio-extras
 bash -e dolphin
 bash -e kdenlive
-bash -e khelpcenter
+# needs qtwebengine
+#bash -e khelpcenter
 bash -e konsole
 bash -e libkexiv2
-bash -e plasma-activites
 bash -e okular
 bash -e libkdcraw
 bash -e gwenview

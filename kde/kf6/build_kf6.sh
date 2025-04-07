@@ -1,73 +1,73 @@
 #!/bin/bash
 sudo neptune install bison gperf pkgconf cmake make
-bash kirigami
-bash ktexttemplate
-bash kuserfeedback
-bash attica
-bash kapidox
-bash karchive
-bash kcodecs
-bash kconfig
-bash kcoreaddons
-bash kdbusaddons
-bash kdnssd
-bash kguiaddons
-bash ki18n
-bash kcolorscheme
-bash ksvg
-bash kidletime
-bash kimageformats
-bash kitemmodels
-bash kitemviews
-bash kplotting
-bash kwidgetsaddons
-bash kwindowsystem
-bash kstatusnotifieritem
-bash networkmanager-qt
-bash solid
-bash sonnet
-bash threadweaver
-bash kauth
-bash kcompletion
-bash kcrash
-bash kdoctools
-bash kpty
-bash kunitconversion
-bash kconfigwidgets
-bash kservice
-bash kglobalaccel
-bash kpackage
-bash breeze-icons
-bash kdesu
-bash kiconthemes
-bash knotifications
-bash kjobwidgets
-bash ktextwidgets
-bash kxmlgui
-bash kbookmarks
-bash kwallet
-bash kded
-bash kio
-bash kdeclarative
-bash kcmutils
-bash syndication
-bash knewstuff
-bash frameworkintegration
-bash kparts
-bash syntax-highlighting
-bash ktexteditor
-bash modemmanager-qt
-bash kcontacts
-bash kpeople
-bash bluez-qt
-bash kfilemetadata
-bash baloo
-bash krunner
-bash prison
-bash qqc2-desktop-style
-bash kholidays
-bash purpose
-bash kcalendarcore
-bash kquickcharts
-bash knotifyconfig
-bash kdav
+bash -e kirigami
+bash -e ktexttemplate
+bash -e kuserfeedback
+bash -e attica
+bash -e kapidox
+bash -e karchive
+bash -e kcodecs
+bash -e kconfig
+bash -e kcoreaddons
+bash -e kdbusaddons
+bash -e kdnssd
+bash -e kguiaddons
+bash -e ki18n
+bash -e kcolorscheme
+bash -e ksvg
+bash -e kidletime
+bash -e kimageformats
+bash -e kitemmodels
+bash -e kitemviews
+bash -e kplotting
+bash -e kwidgetsaddons
+bash -e kwindowsystem
+bash -e kstatusnotifieritem
+bash -e networkmanager-qt
+bash -e solid
+bash -e sonnet
+bash -e threadweaver
+bash -e kauth
+bash -e kcompletion
+bash -e kcrash
+bash -e kdoctools
+bash -e kpty
+bash -e kunitconversion
+bash -e kconfigwidgets
+bash -e kservice
+bash -e kglobalaccel
+bash -e kpackage
+bash -e breeze-icons
+bash -e kdesu
+bash -e kiconthemes
+bash -e knotifications
+bash -e kjobwidgets
+bash -e ktextwidgets
+bash -e kxmlgui
+bash -e kbookmarks
+bash -e kwallet
+bash -e kded
+bash -e kio
+bash -e kdeclarative
+bash -e kcmutils
+bash -e syndication
+bash -e knewstuff
+bash -e frameworkintegration
+bash -e kparts
+bash -e syntax-highlighting
+bash -e ktexteditor
+bash -e modemmanager-qt
+bash -e kcontacts
+bash -e kpeople
+bash -e bluez-qt
+bash -e kfilemetadata
+bash -e baloo
+bash -e krunner
+bash -e prison
+bash -e qqc2-desktop-style
+bash -e kholidays
+bash -e purpose
+bash -e kcalendarcore
+bash -e kquickcharts
+bash -e knotifyconfig
+bash -e kdav

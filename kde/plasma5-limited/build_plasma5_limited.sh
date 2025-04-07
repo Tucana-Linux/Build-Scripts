@@ -1,37 +1,37 @@
 #!/bin/bash
-bash qca-qt5
-bash attica5
-bash karchive5
-bash kcodecs5
-bash kconfig5
-bash kcoreaddons5
-bash kdbusaddons5
-bash kguiaddons5
-bash ki18n5
-bash kitemviews5
-bash kwidgetaddons5
-bash kwindowsystem5
-bash solid5
-bash sonnet5
-bash kauth5
-bash kcompletion5
-bash kcrash5
-bash kconfigwidgets5
-bash kservice5
-bash kglobalaccel5
-bash kpackage5
-bash kiconthemes5
-bash kjobwidgets5
-bash knotifications5
-bash ktextwidgets5
-bash kxmlgui5
-bash kbookmarks5
-bash kwallet5
-bash kded5
-bash kio5
-bash kirigami2
-bash syndication5
-bash knewstuff5
-bash frameworkintegration5
-bash kwayland5
+bash -e qca-qt5
+bash -e attica5
+bash -e karchive5
+bash -e kcodecs5
+bash -e kconfig5
+bash -e kcoreaddons5
+bash -e kdbusaddons5
+bash -e kguiaddons5
+bash -e ki18n5
+bash -e kitemviews5
+bash -e kwidgetaddons5
+bash -e kwindowsystem5
+bash -e solid5
+bash -e sonnet5
+bash -e kauth5
+bash -e kcompletion5
+bash -e kcrash5
+bash -e kconfigwidgets5
+bash -e kservice5
+bash -e kglobalaccel5
+bash -e kpackage5
+bash -e kiconthemes5
+bash -e kjobwidgets5
+bash -e knotifications5
+bash -e ktextwidgets5
+bash -e kxmlgui5
+bash -e kbookmarks5
+bash -e kwallet5
+bash -e kded5
+bash -e kio5
+bash -e kirigami2
+bash -e syndication5
+bash -e knewstuff5
+bash -e frameworkintegration5
+bash -e kwayland5
 
