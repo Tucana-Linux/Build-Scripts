@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=6.14
+PKG_VER=6.14.1
 URL=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -35,7 +35,10 @@ sudo cp .config ../linux-tucana/boot/config-tucana
 sudo rm -r block certs/ crypto/ Documentation/ drivers/ fs/ init/ ipc/ kernel/ lib/ LICENSES/ mm/ MAINTAINERS  modules.* net/ samples/ security/ sound/ usr/ virt/ vmlinux*
 cd ../linux-tucana
 echo "cd /boot" > postinst
-echo "mkinitramfs $KERNEL_VERSION-tucana" >> postinst
+if [[ $(echo "$KERNEL_VERSION" | sed -n 's/[^.]//g;p' | wc -c) -eq 2 ]]; then
+    echo "mkinitramfs $KERNEL_VERSION.0-tucana" >> postinst
+else
+    echo "mkinitramfs $KERNEL_VERSION-tucana" >> postinst
 echo "grub-mkconfig -o /boot/grub/grub.cfg" >> postinst
 
 mkdir -p ../linux-tucana-headers/usr/src
