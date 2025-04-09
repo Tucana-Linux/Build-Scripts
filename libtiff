@@ -20,7 +20,7 @@ cd $DIR
 mkdir -p libtiff-build &&
 cd       libtiff-build &&
 
-cmake -DCMAKE_INSTALL_PREFIX=/usr  ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 
 
 
