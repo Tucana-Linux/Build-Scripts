@@ -39,6 +39,8 @@ if [[ $(echo "$KERNEL_VERSION" | sed -n 's/[^.]//g;p' | wc -c) -eq 2 ]]; then
     echo "mkinitramfs $KERNEL_VERSION.0-tucana" >> postinst
 else
     echo "mkinitramfs $KERNEL_VERSION-tucana" >> postinst
+fi
+
 echo "grub-mkconfig -o /boot/grub/grub.cfg" >> postinst
 
 mkdir -p ../linux-tucana-headers/usr/src
