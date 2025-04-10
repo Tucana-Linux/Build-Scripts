@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=r59
+PKG_VER=r60
 URL=https://github.com/benhoyt/inih/archive/$PKG_VER/inih-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
