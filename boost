@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=1.88.0.beta1
+PKG_VER=1.88.0
 URL=https://github.com/boostorg/boost/releases/download/boost-$PKG_VER/boost-$PKG_VER-b2-nodocs.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=boost-$PKG_VER
