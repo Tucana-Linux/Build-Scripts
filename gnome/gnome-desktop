@@ -3,9 +3,9 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-GNOME_MAJOR=44
-GNOME_MINOR=1
-URL=https://download.gnome.org/sources/gnome-desktop/$GNOME_MAJOR/gnome-desktop-$GNOME_MAJOR.tar.xz
+PKG_VER=
+MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
+URL=https://download.gnome.org/sources/gnome-desktop/$MAJOR/gnome-desktop-$MAJOR.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
