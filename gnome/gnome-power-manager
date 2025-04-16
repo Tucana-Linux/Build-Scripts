@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=
+PKG_VER=43.0
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
 URL=https://download.gnome.org/sources/gnome-power-manager/$MAJOR/gnome-power-manager-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
