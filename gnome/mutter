@@ -23,7 +23,7 @@ cd    build &&
 
 
 
-meson setup --prefix=/usr --buildtype=release -Dtests=disabled -Dbash_completion=disabled .. &&
+meson setup --prefix=/usr --buildtype=release -Dtests=disabled -Dbash_completion=false .. &&
 
 ninja
 
