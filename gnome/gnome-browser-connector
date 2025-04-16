@@ -2,10 +2,12 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-URL=https://download.gnome.org/sources/gnome-browser-connector/42/gnome-browser-connector-42.1.tar.xz
+PKG_VER=42.1
+MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
+URL=https://download.gnome.org/sources/gnome-browser-connector/$MAJOR/gnome-browser-connector-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=chrome-gnome-shell
+PACKAGE=gnome-browser-connector
 set -e
 # Get Package
 cd /blfs/builds
@@ -30,7 +32,7 @@ DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "gnome-shell glib python-gobject" > /pkgs/$PACKAGE/depends
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE

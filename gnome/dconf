@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 PKG_VER=
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
-URL=https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz
+URL=https://download.gnome.org/sources/dconf/$MAJOR/dconf-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -22,7 +22,7 @@ cd $DIR
 mkdir build &&
 cd    build &&
 
-meson --prefix=/usr --buildtype=release -Dbash_completion=false ..
+meson setup --prefix=/usr --buildtype=release -Dbash_completion=false ..
 
 ninja 
 
