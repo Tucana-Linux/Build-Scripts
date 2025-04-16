@@ -14,11 +14,12 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://www.linuxfromscratch.org/patches/blfs/svn/mutter-48.0-upstream_fixes-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
+patch -Np1 < ../mutter-48.0-upstream_fixes-1.patch
 mkdir build &&
 cd    build &&
 
