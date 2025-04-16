@@ -19,7 +19,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../gnome-bluetooth-$PKG_VER-build-fix-1.patch
+patch -Np1 < ../gnome-bluetooth-$PKG_VER-build_fix-1.patch
 mkdir build &&
 cd    build &&
 
