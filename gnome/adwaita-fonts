@@ -1,0 +1,39 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=48.2
+MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
+URL=https://download.gnome.org/sources/adwaita-fonts/$MAJOR/adwaita-fonts-$PKG_VER.tar.xz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+
+# Build
+
+mkdir -p /pkgs/$PACKAGE/usr/share/fonts
+cd /pkgs/$PACKAGE/usr/share/fonts
+tar -xvf /blfs/builds/$TAR
+cd -
+
+# Install
+cd /pkgs
+
+
+
+sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "fc-cache -f" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+
+
