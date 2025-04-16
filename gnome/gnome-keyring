@@ -20,24 +20,19 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
-sed -i 's:"/desktop:"/org:' schema/*.xml &&
-
-./configure --prefix=/usr     \
-            --sysconfdir=/etc \
-	    --enable-ssh-agent \
-
-make -j16
-
+mkdir build
+cd build
+meson setup --prefix=/usr --buildtype=release ..
+ninja
 
 
 # Install
-make install
-make DESTDIR=/pkgs/$PACKAGE install
+ninja install
+DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
-sudo echo "dbus gcr libxslt gnupg pam" > /pkgs/$PACKAGE/depends
+sudo echo "dbus gcr-4 libxslt gnupg pam" > /pkgs/$PACKAGE/depends
 sudo echo "openssh" > /pkgs/$PACKAGE/make-depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
