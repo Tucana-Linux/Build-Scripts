@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=16.0.1
+PKG_VER=16.0.2
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
 URL=https://gitlab.gnome.org/GNOME/gucharmap/-/archive/$PKG_VER/gucharmap-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
