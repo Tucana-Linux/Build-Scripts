@@ -18,7 +18,8 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+find . -name meson.build | xargs sed -i -e '/catch2/d' &&
+sed -i '152,162d' src/meson.build
 mkdir build
 cd build
 
