@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 #HOLD_TUCANA
 #ARCH_PKG=tcl
 #ARCH_VAR=pkgver
-PKG_VER=9.0.1
+PKG_VER=8.6.16
 URL=https://downloads.sourceforge.net/tcl/tcl$PKG_VER-src.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=tcl$PKG_VER
