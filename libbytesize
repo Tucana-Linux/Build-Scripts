@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PGK_VER=2.11
+PKG_VER=2.11
 URL=https://github.com/storaged-project/libbytesize/releases/download/$PKG_VER/libbytesize-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
