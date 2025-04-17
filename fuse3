@@ -21,7 +21,7 @@ sed -i '/^udev/,$ s/^/#/' util/meson.build
 mkdir build
 cd build
 
-meson --prefix=/usr --buildtype=release .. 
+meson setup --prefix=/usr --buildtype=release .. 
 
 ninja
 
