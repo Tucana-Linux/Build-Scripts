@@ -4,10 +4,12 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 PACKAGE=kxmlgui
-URL=https://download.kde.org/stable/frameworks/5.115/$PACKAGE-5.115.0.tar.xz
+PKG_VER=5.115
+URL=https://download.kde.org/stable/frameworks/$PKG_VER/$PACKAGE-$PKG_VER.0.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')5
+PKG_VER=5.115
 
 # Get Package
 
