@@ -3,10 +3,8 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-#ARCH_PKG=liburing
-#ARCH_VAR=pkgver
 PKG_VER=2.8
-URL=https://git.kernel.dk/cgit/liburing/snapshot/liburing-$PKG_VER.tar.gz
+URL=https://github.com/axboe/liburing/archive/refs/tags/liburing-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
