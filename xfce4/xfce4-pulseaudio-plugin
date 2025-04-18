@@ -4,9 +4,9 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=0.4.9
+PKG_VER=0.5.0
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
-URL=https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/$MAJOR/xfce4-pulseaudio-plugin-$PKG_VER.tar.bz2
+URL=https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/$MAJOR/xfce4-pulseaudio-plugin-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -21,14 +21,13 @@ cd $DIR
 # Build
 
 
-./configure --prefix=/usr
-
-make -j16
-
+mkdir build
+cd build
+meson setup --prefix=/usr --buildtype=release .. 
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 

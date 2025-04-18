@@ -10,7 +10,6 @@ URL=https://rsync.osuosl.org/pub/mariadb/mariadb-$PKG_VER/source/mariadb-$PKG_VE
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
-BLFS_SYSTEMD_VER=20241211
 # Get Package
 
 
@@ -30,8 +29,11 @@ cmake -DCMAKE_BUILD_TYPE=Release                      \
       -DINSTALL_DOCREADMEDIR=share/doc/mariadb-$PKG_VER \
       -DINSTALL_MANDIR=share/man                      \
       -DINSTALL_MYSQLSHAREDIR=share/mariadb             \
+      -DINSTALL_SYSTEMD_UNITDIR=lib/systemd/system/ \
+      -DWITH_SYSTEMD=yes \
       -DINSTALL_MYSQLTESTDIR=share/mariadb/test         \
       -DINSTALL_PLUGINDIR=lib/mariadb/plugin            \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DINSTALL_SBINDIR=sbin                          \
       -DINSTALL_SCRIPTDIR=bin                         \
       -DINSTALL_SQLBENCHDIR=share/mariadb/bench         \
@@ -125,11 +127,10 @@ interactive-timeout
 EOF
 cp -rpv /pkgs/$PACKAGE/* /
 # Install systemd unit
-cd /blfs/builds
-wget https://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-$BLFS_SYSTEMD_VER.tar.xz
-tar -xvf blfs-systemd-units-$BLFS_SYSTEMD_VER.tar.xz
-cd blfs-systemd-units-$BLFS_SYSTEMD_VER
-make DESTDIR=/pkgs/mariadb install-mariadb
+
+
+
+
 # Done
 cd /pkgs
 
