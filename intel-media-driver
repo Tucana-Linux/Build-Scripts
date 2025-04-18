@@ -24,6 +24,7 @@ cd    build &&
 cmake -DCMAKE_INSTALL_PREFIX=/usr   \
       -DINSTALL_DRIVER_SYSCONF=OFF  \
       -DBUILD_TYPE=Release          \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DMEDIA_BUILD_FATAL_WARNINGS=OFF \
       -Wno-dev ..
 
