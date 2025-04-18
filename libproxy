@@ -3,8 +3,8 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=1.2.1
-URL=https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v$PKG_VER/xdg-utils-v$PKG_VER.tar.gz
+PKG_VER=0.5.9
+URL=https://github.com/libproxy/libproxy/archive/refs/tags/$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -18,21 +18,23 @@ cd $DIR
 
 # Build
 
-./configure --prefix=/usr
+mkdir build
+cd build
 
+meson setup --prefix=/usr --buildtype=release ..
 
-make -j22
+ninja
 
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo  DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 
 
-sudo echo "xmlto dbus" > /pkgs/$PACKAGE/depends
-sudo echo "lynx" > /pkgs/$PACKAGE/make-depends
+sudo echo "curl duktape glib" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

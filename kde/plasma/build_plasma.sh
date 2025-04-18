@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo neptune install libdisplay-info boost gtk3 libpwquality libqalculate libnl libxcvt bison gperf libxkbcommon mesa wayland pipewire pulseaudio sassc taglib xdotool gsettings-desktop-schemas libinput libcanberra pam lm-sensors pciutils power-profiles-daemon python-psutil accounts-service smartmontools xdg-desktop-portal xwayland appstream ibus
+sudo neptune install --y libdisplay-info boost gtk3 libpwquality libqalculate libnl libxcvt bison gperf libxkbcommon mesa wayland pipewire pulseaudio sassc taglib xdotool gsettings-desktop-schemas libinput libcanberra pam lm-sensors pciutils power-profiles-daemon python-psutil accounts-service smartmontools xdg-desktop-portal xwayland appstream ibus libwacom
 bash -e plasma-activities
 bash -e  kglobalacceld
 bash -e  libksysguard

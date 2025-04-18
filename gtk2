@@ -12,16 +12,17 @@ PACKAGE=gtk2
 
 cd /blfs/builds
 wget $URL
+wget https://gitlab.archlinux.org/archlinux/packaging/packages/gtk2/-/raw/main/0002-Stop-looking-for-modules-in-cwd.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
+patch -Np1 < ../0002-Stop-looking-for-modules-in-cwd.patch
 
+sed -i '/AM_INIT_AUTOMAKE/s/]/ foreign]/' configure.ac
+autoreconf -fvi
 
-sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
-    -i docs/{faq,tutorial}/Makefile.in      &&
-
-./configure --prefix=/usr --sysconfdir=/etc
+./configure --prefix=/usr --sysconfdir=/etc --disable-gtk-doc --with-xinput=yes
 
 make -j16
 
