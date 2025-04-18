@@ -3,7 +3,10 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-URL=https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2022.10.3.tgz
+#HOLD_TUCANA
+#NO_CURRENCY
+PKG_VER=2022.10.3
+URL=https://tuxera.com/opensource/ntfs-3g_ntfsprogs-$PKG_VER.tgz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tgz||g')
 PACKAGE=ntfs-3g

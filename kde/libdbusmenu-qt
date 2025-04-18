@@ -3,10 +3,10 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-
-URL=https://launchpad.net/ubuntu/+archive/primary/+files/libdbusmenu-qt_0.9.3+16.04.20160218.orig.tar.gz
+PKG_VER=0.9.3+16.04.20160218
+URL=https://launchpad.net/ubuntu/+archive/primary/+files/libdbusmenu-qt_$PKG_VER.orig.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=libdbusmenu-qt-0.9.3+16.04.20160218
+DIR=libdbusmenu-qt-$PKG_VER
 PACKAGE=libdbusmenu-qt
 
 # Get Package

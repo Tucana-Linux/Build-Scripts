@@ -3,6 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
+PKG_VER=1
 URL=https://github.com/ventoy/vtoydump.git
 DIR=vtoydump
 PACKAGE=$DIR

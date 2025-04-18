@@ -13,12 +13,11 @@ export CXXFLAGS="-O2"
 set -e
 PACKAGE=base
 TUCANA_VERSION='3.1'
+PKG_VER=3.1
 
 # Notes 
 # To update
 # If updates are pushed make sure to change the Tucana version
-# Then change the base-update package
-# So that people can update from one version to another
 
 
 
