@@ -79,6 +79,7 @@ useradd -c "Postfix Daemon User" -d /var/spool/postfix -g postfix \
 chown -v postfix:postfix /var/mail
 /usr/sbin/postfix -c /etc/postfix set-permissions
 ' > /pkgs/$PACKAGE/postinst
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

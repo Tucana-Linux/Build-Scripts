@@ -151,6 +151,7 @@ while read -r line; do
       make DESTDIR=/pkgs/kf6/$PACKAGE install
       sudo echo "boost giflib libepoxy libgcrypt libical libjpeg-turbo libpng libxslt lmdb qrencode phonon xorg plasma-wayland-protocols shared-mime-info URI libdbusmenu-qt network-manager polkit-qt5 jasper udisks upower mitkrb" > /pkgs/kf6/$PACKAGE/depends
       cd /pkgs/kf6
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
       sudo tar -cvzpf /finished/kf6/$PACKAGE.tar.xz $PACKAGE
       cd - 
       

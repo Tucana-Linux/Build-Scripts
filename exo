@@ -33,6 +33,7 @@ cd /pkgs
 
 
 sudo echo "gtk3 libxfce4ui libxfce4util" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -czvpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

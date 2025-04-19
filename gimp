@@ -43,6 +43,7 @@ cd /pkgs
 
 sudo echo "appstream-glib gegl gexiv2 glib-networking gtk3 harfbuzz libmypaint librsvg libtiff libxml2 lcms mypaint-brushes poppler graphviz ghostscript iso-codes libgudev pygobject3 xdg-utils gjs libjxl" > /pkgs/$PACKAGE/depends
 sudo echo "appstream-glib gegl gexiv2 glib-networking gtk3 harfbuzz libmypaint librsvg libtiff libxml2 lcms mypaint-brushes poppler graphviz ghostscript iso-codes libgudev pygobject3 xdg-utils gjs libjxl" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

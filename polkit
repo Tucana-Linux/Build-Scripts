@@ -73,6 +73,7 @@ sudo echo "duktape glib gobject-introspection pam systemd" > /pkgs/$PACKAGE/depe
 sudo echo 'groupadd -fg 27 polkitd &&
 useradd -c "PolicyKit Daemon Owner" -d /etc/polkit-1 -u 27 \
         -g polkitd -s /bin/false polkitd' > /pkgs/$PACKAGE/postinst
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

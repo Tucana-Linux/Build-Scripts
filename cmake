@@ -42,6 +42,7 @@ cd /pkgs
 
 
 sudo echo "libuv curl libarchive nghttp2" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

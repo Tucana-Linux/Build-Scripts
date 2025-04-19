@@ -43,6 +43,7 @@ cd /pkgs
 
 sudo echo "glibc kconfig kcoreaddons kcrash kglobalaccel ki18n kio kservice kwindowsystem kxmlgui" > /pkgs/$PACKAGE/depends
 sudo echo "boost ecm" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

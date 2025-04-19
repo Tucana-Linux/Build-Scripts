@@ -211,6 +211,7 @@ cat > /pkgs/$PACKAGE/backup << "EOF"
 
 EOF
 sudo echo "coreutils" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

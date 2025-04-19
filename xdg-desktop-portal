@@ -34,6 +34,7 @@ cd /pkgs
 
 sudo echo "json-glib fuse3 gdk-pixbuf glib pipewire systemd" > /pkgs/$PACKAGE/depends
 sudo echo "bubblewrap python-pytest umockdev docbook-xsl flatpak git libportal meson dbus-python dbusmock" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

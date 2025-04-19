@@ -47,6 +47,7 @@ cd /pkgs
 
 sudo echo "libffi lib32-glibc" > /pkgs/$PACKAGE/depends
 sudo echo "bash binutils coreutils gcc glibc make sed" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

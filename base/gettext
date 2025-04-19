@@ -33,6 +33,7 @@ chmod -v 0755 /pkgs/$PACKAGE/usr/lib/preloadable_libintl.so
 
 sudo echo "acl bash glibc libgcc libunistring" > /pkgs/$PACKAGE/depends
 sudo echo "bash binutils coreutils gawk gcc glibc grep make ncurses sed texinfo" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

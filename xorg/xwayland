@@ -37,6 +37,7 @@ cd /pkgs
 
 
 sudo echo "libxcvt pixman wayland-protocols base-fonts libepoxy libtirpc mesa" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

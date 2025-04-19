@@ -34,6 +34,7 @@ cd /pkgs
 
 
 sudo echo "xorg-libs hicolor-icons libjpeg-turbo libpng" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

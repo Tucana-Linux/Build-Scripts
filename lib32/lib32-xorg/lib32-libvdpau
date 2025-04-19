@@ -44,6 +44,7 @@ cd /pkgs
 
 
 sudo echo "libvdpau lib32-mesa lib32-xorg-libs" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

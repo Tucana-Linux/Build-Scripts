@@ -35,6 +35,7 @@ cd /pkgs
 
 sudo echo "cinnamon-desktop dconf exempi gvfs libnotify libxml2 python" > /pkgs/$PACKAGE/depends
 sudo echo "libexif libgsf" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

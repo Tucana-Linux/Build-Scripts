@@ -40,6 +40,7 @@ cd /pkgs
 
 sudo echo "qt5 alsa-lib dbus libssh2 v4l-utils libpng libtheora libva libvorbis opus x264 ffmpeg pulseaudio" > /pkgs/$PACKAGE/depends
 sudo echo "lua5.2 lua a52dec" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

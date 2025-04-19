@@ -37,6 +37,7 @@ cd /pkgs
 
 sudo echo "glib cryptsetup keyutils smartmontools volume-key libatasmart libbytesize libnvme lvm parted" > /pkgs/$PACKAGE/depends
 sudo echo "gtk-doc json-glib" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

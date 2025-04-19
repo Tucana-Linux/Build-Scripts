@@ -43,6 +43,7 @@ cd /pkgs
 
 
 sudo echo "libgcc glibc kconfig kcoreaddons kcrash kdbusaddons kfilemetadata ki18n kidletime kio lmdb qt6" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

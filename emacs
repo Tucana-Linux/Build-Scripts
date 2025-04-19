@@ -33,6 +33,7 @@ cd /pkgs
 
 sudo echo "gtk-update-icon-cache -qtf /usr/share/icons/hicolor" > /pkgs/$PACKAGE/postinst
 sudo echo "harfbuzz giflib gnutls jansson libtiff imagemagick" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -czvpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

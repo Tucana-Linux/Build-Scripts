@@ -35,6 +35,7 @@ cd /pkgs
 
 
 sudo echo "glib libgcrypt p11-kit gnupg gtk3 libsecret libxslt vala" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

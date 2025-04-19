@@ -57,6 +57,7 @@ ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so
 
 sudo echo "nspr sqlite" > /pkgs/$PACKAGE/depends
 sudo echo "ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so" > /pkgs/$PACKAGE/postinst
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

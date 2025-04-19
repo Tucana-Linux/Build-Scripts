@@ -38,6 +38,7 @@ cd /pkgs
 
 sudo echo "cogl at-spi2-core cogl json-glib gtk3 libgudev libxkbcommon wayland" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

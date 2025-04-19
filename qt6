@@ -137,6 +137,7 @@ cd /pkgs
 
 sudo echo "libavif sqlite xorg brotli dbus fontconfig libgcc glibc glib harfbuzz icu mitkrb bzip2 mesa xorg-libs libjpeg-turbo libinput libdrm libpng mtdev pcre openssl systemd libvulkan vulkan-headers xorg zlib zstd libtiff" > /pkgs/$PACKAGE/depends
 sudo echo "protobuf-c" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

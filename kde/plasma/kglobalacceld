@@ -42,6 +42,7 @@ cd /pkgs
 
 
 sudo echo "kconfig kcoreaddons kcrash kdbusaddons kglobalaccel kio kjobwidgets kservice kwindowsystem libX11 libxcb qt6 xcb-util-keysyms" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

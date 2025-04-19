@@ -40,6 +40,7 @@ cd /pkgs
 sudo echo "rm -rf /usr/bin/gst-* /usr/{lib,libexec}/gstreamer-1.0" > /pkgs/$PACKAGE/prerm
 sudo echo "rm -rf /usr/bin/gst-* /usr/{lib,libexec}/gstreamer-1.0" > /pkgs/$PACKAGE/preupdate
 sudo echo "libunwind glib gobject-introspection" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

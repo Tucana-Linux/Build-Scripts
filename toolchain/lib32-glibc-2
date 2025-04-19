@@ -74,6 +74,7 @@ cd /pkgs
 # Postinst
 echo "ldconfig" > /pkgs/$PACKAGE/postinst
 sudo echo "linux-api-headers gcc lib32-libgcc" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

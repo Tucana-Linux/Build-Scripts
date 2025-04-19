@@ -39,6 +39,7 @@ cd /pkgs
 
 sudo echo "libyaml graphviz" > /pkgs/$PACKAGE/depends
 sudo echo "rustc" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

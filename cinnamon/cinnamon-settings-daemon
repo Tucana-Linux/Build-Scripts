@@ -34,6 +34,7 @@ cd /pkgs
 
 
 sudo echo "cinnamon-desktop colord dbus-glib libcanberra cups libgnomekbd libgudev libnotify librsvg libwacom nss polkit pulseaudio alsa-lib upower" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

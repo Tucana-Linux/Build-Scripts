@@ -41,6 +41,7 @@ cd /pkgs
 
 
 sudo echo "sysprof glib-networking libpsl libxml2 sqlite gobject-introspection vala mitkrb" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

@@ -140,6 +140,7 @@ rm /pkgs/$PACKAGE/usr/lib/*.a
 sudo echo "bzip2 libxml2 lz4 systemd" > /pkgs/$PACKAGE/depends
 sudo echo 'groupadd -g 40 mariadb &&
 useradd -c "MariaDB Server" -d /srv/mariadb -g mariadb -s /bin/false -u 40 mariadb' > /pkgs/$PACKAGE/postinst
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

@@ -66,6 +66,7 @@ mv /pkgs/tcl/usr/share/man/man3/{Thread,Tcl_Thread}.3
 
 cd /pkgs
 sudo echo "glibc zlib" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

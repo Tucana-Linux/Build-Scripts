@@ -60,6 +60,7 @@ sudo echo "libgcc readline bash zlib autoconf213 clang llvm python3 rust zip git
 cd /pkgs/$PACKAGE
 sudo rm -rf root blfs
 cd ..
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 sudo cp -rpv /pkgs/$PACKAGE/* /

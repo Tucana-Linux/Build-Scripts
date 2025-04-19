@@ -48,6 +48,7 @@ chmod 4750 /usr/libexec/qemu-bridge-helper
 
 sudo echo "glib" > /pkgs/$PACKAGE/depends
 sudo echo "xkeyboard-config pulseaudio alsa-lib" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -czvpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

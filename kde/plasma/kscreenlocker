@@ -83,6 +83,7 @@ EOF
 
 
 sudo echo "kconfig kcoreaddons kcrash kdeclarative kglobalaccel ki18n kidletime kio kirigami knotifications kpackage ksvg kwindowsystem kxmlgui layer-shell-qt libkscreen libX11 libxcb libXi pam libplasma qt6 xcb-util-keysyms" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

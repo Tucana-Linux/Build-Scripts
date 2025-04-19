@@ -30,6 +30,7 @@ sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "python-packaging python-pluggy" > /pkgs/$PACKAGE/depends
 sudo echo "setuptools python-packaging python-pluggy python-wheel setuptools-scm python-build python-installer" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
