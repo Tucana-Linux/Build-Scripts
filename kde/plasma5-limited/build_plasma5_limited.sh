@@ -9,7 +9,7 @@ bash -e kdbusaddons5
 bash -e kguiaddons5
 bash -e ki18n5
 bash -e kitemviews5
-bash -e kwidgetaddons5
+bash -e kwidgetsaddons5
 bash -e kwindowsystem5
 bash -e solid5
 bash -e sonnet5
