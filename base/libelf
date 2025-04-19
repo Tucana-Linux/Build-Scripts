@@ -58,7 +58,7 @@ sudo cp $PACKAGE.tar.xz /finished
 # elfutils
 sudo echo "libelf" > /pkgs/$ALT_PACKAGE/depends
 sudo echo "" > /pkgs/$ALT_PACKAGE/make-depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$ALT_PACKAGE/version
 sudo tar -cvzpf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
 sudo cp $ALT_PACKAGE.tar.xz /finished
 
