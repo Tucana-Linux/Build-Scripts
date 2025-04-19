@@ -142,7 +142,7 @@ cp -rpv /pkgs/$PACKAGE2/* /
 cd /pkgs
 
 sudo echo "lib32-llvm" > /pkgs/$PACKAGE2/depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE2/version
 sudo tar -cvzpf $PACKAGE2.tar.xz $PACKAGE2
 sudo cp $PACKAGE2.tar.xz /finished
 
