@@ -119,7 +119,7 @@ cd /pkgs
 
 
 sudo echo "glibc gcc llvm" > /pkgs/$PACKAGE2/depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE2/version
 sudo tar -cvzpf $PACKAGE2.tar.xz $PACKAGE2
 sudo cp $PACKAGE2.tar.xz /finished
 
@@ -160,7 +160,7 @@ cd /pkgs
 
 
 sudo echo "libgcc" > /pkgs/$PACKAGE3/depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE3/version
 sudo tar -cvzpf $PACKAGE3.tar.xz $PACKAGE3
 sudo cp $PACKAGE3.tar.xz /finished
 
