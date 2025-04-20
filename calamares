@@ -3,7 +3,7 @@ set -e
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 #HOLD_TUCANA
-PKG_VER=3.3.8
+PKG_VER=3.3.14
 URL=https://github.com/calamares/calamares/releases/download/v$PKG_VER/calamares-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
