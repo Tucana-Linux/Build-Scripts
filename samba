@@ -77,7 +77,7 @@ cd /pkgs
 rm -r /pkgs/$PACKAGE/var/run
 cp -rpv samba/* /
 
-sudo echo "gnutls jansson libtirpc lmdb rpcsvc-proto fuse3 gpgme icu perl-parse-yapp openldap avahi cups-filter cups cyrus-sasl libarchive mitkrb nss popt vala talloc" > /pkgs/$PACKAGE/depends
+sudo echo "gnutls jansson libtirpc lmdb rpcsvc-proto fuse3 gpgme icu perl-parse-yapp openldap avahi cups-filters cups cyrus-sasl libarchive mitkrb nss popt vala talloc" > /pkgs/$PACKAGE/depends
 sudo echo "lmdb perl-parse-yapp" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
