@@ -33,7 +33,7 @@ ninja install && DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
-sudo echo "desktop-file-utils folks geoclue geocode-glib gfbgraph gjs libchamplain libgweather libgee libhandy rest libshumate geocode-glib-2" > /pkgs/$PACKAGE/depends
+sudo echo "desktop-file-utils folks geoclue geocode-glib gjs libchamplain libgweather libgee libhandy rest libshumate geocode-glib-2" > /pkgs/$PACKAGE/depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
