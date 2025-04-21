@@ -38,7 +38,7 @@ cd /pkgs
 
 
 
-sudo echo "pango cairo xorg-libs libjpeg-turbo libpng libtool" > /pkgs/$PACKAGE/depends
+sudo echo "lua pango cairo xorg-libs libjpeg-turbo libpng libtool" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
