@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2.9.1
+PKG_VER=2.9.2
 URL=https://invisible-mirror.net/archives/lynx/tarballs/lynx$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
