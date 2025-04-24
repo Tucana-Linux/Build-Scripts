@@ -3,9 +3,9 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 <<<<<<< HEAD
-PKG_VER=1.5.3
+PKG_VER=
 =======
-PKG_VER=1.5.3
+PKG_VER=1.5.2
 >>>>>>> parent of ea8c28e9 (Update xrandr to 1.5.3)
 
 URL=https://www.x.org/pub/individual/app/xrandr-$PKG_VER.tar.xz
