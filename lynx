@@ -25,6 +25,7 @@ cd $DIR
             --with-ssl              \
             --with-screen=ncursesw  \
             --enable-locale-charset \
+            --datadir=/usr/share/doc/lynx
 
 
 make -j22
@@ -33,13 +34,13 @@ make -j22
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install-full
 sudo make install-full
-chgrp -v -R root /usr/share/doc/lynx/lynx_doc
+chgrp -v -R root /pkgs/$PACKAGE/usr/share/doc/lynx/lynx_doc
 cd /pkgs
 
 
 
-sudo echo "zip unzip" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "zip unzip" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
