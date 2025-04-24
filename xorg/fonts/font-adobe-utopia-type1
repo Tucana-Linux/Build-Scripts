@@ -5,7 +5,7 @@ export CXXFLAGS="-O2 "
 
 PACKAGE=font-adobe-utopia-type1
 PKG_VER=1.0.5
-URL=https://www.x.org/pub/individual/font/$PACKAGE-$PKG_VER.tar.xz
+URL=https://www.x.org/pub/individual/font/font-adobe-utopia-type1-$PKG_VER.tar.xz
 TAR=$PACKAGE-$PKG_VER.tar.xz
 DIR=$PACKAGE-$PKG_VER
 

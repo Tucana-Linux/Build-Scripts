@@ -5,7 +5,7 @@ export CXXFLAGS="-O2 "
 
 PACKAGE=encodings
 PKG_VER=1.1.0
-URL=https://www.x.org/pub/individual/font/$PACKAGE-$PKG_VER.tar.xz
+URL=https://www.x.org/pub/individual/font/encodings-$PKG_VER.tar.xz
 TAR=$PACKAGE-$PKG_VER.tar.xz
 DIR=$PACKAGE-$PKG_VER
 

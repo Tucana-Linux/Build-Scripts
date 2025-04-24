@@ -5,7 +5,7 @@ export CXXFLAGS="-O2 "
 
 PACKAGE=font-bh-ttf
 PKG_VER=1.0.4
-URL=https://www.x.org/pub/individual/font/$PACKAGE-$PKG_VER.tar.xz
+URL=https://www.x.org/pub/individual/font/font-bh-ttf-$PKG_VER.tar.xz
 TAR=$PACKAGE-$PKG_VER.tar.xz
 DIR=$PACKAGE-$PKG_VER
 
