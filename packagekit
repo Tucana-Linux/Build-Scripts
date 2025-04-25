@@ -15,18 +15,15 @@ set -e
 
 cd /blfs/builds
 wget $URL
-wget https://raw.githubusercontent.com/xXTeraXx/Tucana/main/mercury/patches/packagekit-remove-depend.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-patch -Np1 < ../packagekit-remove-depend.patch
-
 mkdir build
 cd build
 
-meson --prefix=/usr ..
+meson setup --prefix=/usr ..
 
 ninja
 

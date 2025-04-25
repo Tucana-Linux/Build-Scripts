@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 PKG_VER=42.2
 MAJOR=$(echo $PKG_VER | sed 's/\..*//g')
-URL=https://download.gnome.org/sources/yelp/$MAJOR/yelp-$PKG_vER.tar.xz
+URL=https://download.gnome.org/sources/yelp/$MAJOR/yelp-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
