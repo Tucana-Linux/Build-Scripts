@@ -43,7 +43,6 @@ useradd  -c 'Realtime Kit Daemon User' \
          -g rtkit           \
          -s /bin/false       \
          -u 113 rtkit
-chown    -v rtkit:rtkit /var/lib/rtkit
 	 " > /pkgs/$PACKAGE/postinst
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
