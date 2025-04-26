@@ -1,9 +1,10 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-PKG_VER=1.20.0
-URL=https://github.com/flatpak/xdg-desktop-portal/releases/download/$PKG_VER/xdg-desktop-portal-$PKG_VER.tar.xz
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=0.13
+URL=https://github.com/heftig/rtkit/releases/download/v$PKG_VER/rtkit-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -22,6 +23,7 @@ cd build
 
 meson setup --prefix=/usr --buildtype=release ..
 
+
 ninja
 
 
@@ -32,9 +34,8 @@ cd /pkgs
 
 
 
-sudo echo "rtkit json-glib fuse3 gdk-pixbuf glib pipewire systemd" > /pkgs/$PACKAGE/depends
-sudo echo "bubblewrap python-pytest umockdev docbook-xsl flatpak git libportal meson dbus-python dbusmock" > /pkgs/$PACKAGE/make-depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "dbus polkit systemd" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
