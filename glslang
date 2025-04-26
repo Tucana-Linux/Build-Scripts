@@ -14,13 +14,10 @@ PACKAGE=glslang
 
 cd /blfs/builds
 wget $URL
-# 15.2.0 broke libspirv.so
-wget https://gitlab.archlinux.org/archlinux/packaging/packages/glslang/-/raw/main/fix_spirv_backcompat.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../fix_spirv_backcompat.patch
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DALLOW_EXTERNAL_SPIRV_TOOLS=ON -DBUILD_SHARED_LIBS=ON -G Ninja ..
