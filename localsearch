@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=3.9.0
+PKG_VER=3.8.0
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.gnome.org/sources/localsearch/$MAJOR/localsearch-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -15,11 +15,12 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://www.linuxfromscratch.org/patches/blfs/svn/localsearch-3.9.0-libxml2_2_14-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
+patch -Np1 < ../localsearch-3.9.0-libxml2_2_14-1.patch
 mkdir build &&
 cd    build &&
 
