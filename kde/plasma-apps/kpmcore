@@ -13,12 +13,13 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://invent.kde.org/system/kpmcore/-/commit/98838306.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-
+patch -Np1 < ../98838306.patch
 
 mkdir build
 cd build
