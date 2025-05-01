@@ -24,7 +24,7 @@ cd $DIR
 
 
 ./configure --prefix=/usr                         \
-            --docdir=/usr/share/doc/man-db-2.10.2 \
+            --docdir=/usr/share/doc/man-db \
             --sysconfdir=/etc                     \
             --disable-setuid                      \
             --enable-cache-owner=bin              \
@@ -44,7 +44,7 @@ cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "groff gdbm bash less zlib" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
