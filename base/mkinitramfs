@@ -7,7 +7,7 @@ export CXXFLAGS="-O2"
 # Added firmware detection - Rahul Chandra Feburary 9th 2023
 # Added ability to load kernel modules in the initrd
 # added depmod
-PKG_VER=2.0.2
+PKG_VER=2.0.3
 URL=https://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
 PACKAGE=mkinitramfs
 
@@ -59,7 +59,7 @@ fi
 
 printf "Creating $INITRAMFS_FILE... "
 depmod $KERNEL_VERSION
-binfiles="sh cat cp dd killall ls mkdir mknod mount "
+binfiles="sh cat cp dd killall ls mkdir mknod mount find"
 binfiles="$binfiles umount sed sleep ln rm uname"
 binfiles="$binfiles readlink basename"
 
