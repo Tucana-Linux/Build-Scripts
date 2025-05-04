@@ -18,6 +18,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+sed 's@/bin/sh@/bin/sh -l@' -i gnome-session/gnome-session.in
 mkdir build &&
 cd    build &&
 
@@ -29,6 +30,10 @@ ninja -j16
 
 # Install
 ninja install && DESTDIR=/pkgs/$PACKAGE ninja install
+
+
+rm -v /pkgs/$PACKAGE/usr/share/xsessions/gnome.desktop
+rm -v /pkgs/$PACKAGE/usr/share/wayland-sessions/gnome.desktop
 cd /pkgs
 
 

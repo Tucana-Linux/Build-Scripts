@@ -33,7 +33,7 @@ ninja install && DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
-sudo echo "evolution-data-server gjs gnome-autoar gnome-control-center gtk4 mutter sassc startup-notification systemd desktop-file-utils gnome-bluetooth gst-plugins-base network-manager gcr-4" > /pkgs/$PACKAGE/depends
+sudo echo "power-profiles-daemon evolution-data-server gjs gnome-autoar gnome-control-center gtk4 mutter sassc startup-notification systemd desktop-file-utils gnome-bluetooth gst-plugins-base network-manager gcr-4" > /pkgs/$PACKAGE/depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
