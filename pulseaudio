@@ -33,7 +33,7 @@ ninja
 
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-sudo ninja install
+sudo rm /pkgs/$PACKAGE/usr/share/dbus-1/system.d/pulseaudio-system.conf
 cd /pkgs
 
 
