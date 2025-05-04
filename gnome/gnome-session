@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 PKG_VER=48.0
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
-URL=https://gitlab.gnome.org/GNOME/gnome-session/-/archive/main/gnome-session-main.tar.gz
+URL=https://download.gnome.org/sources/gnome-session/$MAJOR/gnome-session-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=gnome-session
