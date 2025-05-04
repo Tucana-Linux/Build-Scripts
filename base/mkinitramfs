@@ -7,7 +7,7 @@ export CXXFLAGS="-O2"
 # Added firmware detection - Rahul Chandra Feburary 9th 2023
 # Added ability to load kernel modules in the initrd
 # added depmod
-PKG_VER=2.0.3
+PKG_VER=3.0.0
 URL=https://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
 PACKAGE=mkinitramfs
 
@@ -25,6 +25,29 @@ cat > /pkgs/mkinitramfs/usr/sbin/mkinitramfs << "EOF"
 
 # This file based in part on the mkinitramfs script for the LFS LiveCD (And later Tucana :))
 # written by Alexander E. Patrakov and Jeremy Huntwork.
+
+# Heavily modified by Rahul Chandra to generalize to all sysetms
+
+LIVE_MODE=false
+
+# Check arguments
+for arg in "$@"; do
+  case "$arg" in
+    --live)
+      LIVE_MODE=true
+      ;;
+    *)
+      if [[ "$arg" != "--"* ]]; then
+        KERNEL_VERSION=$arg
+        INITRAMFS_FILE=initrd.img-$KERNEL_VERSION
+      fi
+      ;;
+  esac
+done
+
+if [ -z "$INITRAMFS_FILE" ]; then
+  INITRAMFS_FILE=initrd.img-no-kmods
+fi
 
 copy()
 {
@@ -45,12 +68,6 @@ copy()
   fi
 }
 
-if [ -z $1 ] ; then
-  INITRAMFS_FILE=initrd.img-no-kmods
-else
-  KERNEL_VERSION=$1
-  INITRAMFS_FILE=initrd.img-$KERNEL_VERSION
-fi
 
 if [ -n "$KERNEL_VERSION" ] && [ ! -d "/usr/lib/modules/$1" ] ; then
   echo "No modules directory named $1"
@@ -228,23 +245,30 @@ fi
 
 # Install the kernel modules if requested
 if [ -n "$KERNEL_VERSION" ]; then
-  find \
-     /usr/lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib,arch,virt}                      \
-     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,nvme,md,firewire} \
-     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,video,gpu,media,vfio} \
-     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage}           \
-     -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+  if $LIVE_MODE; then
+    echo "Including ALL modules for live mode"
+    find /usr/lib/modules/$KERNEL_VERSION/kernel \
+         -type f -name '*.ko*' 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+  else
+    echo "Including selected modules for standard mode"
+    find \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib,arch,virt} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,nvme,md,firewire} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,video,gpu,media,vfio} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage} \
+      -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+  fi
 
   cp /usr/lib/modules/$KERNEL_VERSION/modules.{builtin,order} \
-            $WDIR/usr/lib/modules/$KERNEL_VERSION
+     $WDIR/usr/lib/modules/$KERNEL_VERSION
+
   if [ -f /usr/lib/modules/$KERNEL_VERSION/modules.builtin.modinfo ]; then
     cp /usr/lib/modules/$KERNEL_VERSION/modules.builtin.modinfo \
-            $WDIR/usr/lib/modules/$KERNEL_VERSION
+       $WDIR/usr/lib/modules/$KERNEL_VERSION
   fi
 
   depmod -b $WDIR $KERNEL_VERSION
 fi
-
 ( cd $WDIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
 
 # Prepare early loading of microcode if available
