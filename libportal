@@ -14,16 +14,19 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget  https://www.linuxfromscratch.org/patches/blfs/svn/libportal-0.9.1-qt6.9_fixes-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
+patch -Np1 < ../libportal-0.9.1-qt6.9_fixes-1.patch
+
 mkdir build
 cd build
 
 
-meson --prefix=/usr --buildtype=release -Ddocs=false ..
+meson setup --prefix=/usr --buildtype=release -Ddocs=false ..
 
 ninja
 
