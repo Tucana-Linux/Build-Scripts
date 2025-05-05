@@ -23,7 +23,7 @@ cd $DIR
 sed -i 's:"/desktop:"/org:' schema/*.xml
 mkdir gbuild
 cd gbuild
-meson setup --prefix=/usr --buildtype=release ..
+meson setup --prefix=/usr --buildtype=release -Dssh-agent=true ..
 ninja
 
 
