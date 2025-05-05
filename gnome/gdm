@@ -27,6 +27,7 @@ meson setup --prefix=/usr               \
       --buildtype=release         \
       -Dgdm-xsession=true \
       -Dinitial-vt=7 \
+      -D run-dir=/run/gdm \
       -Ddefault-pam-config=lfs ..
 
 ninja -j16
