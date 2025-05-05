@@ -35,7 +35,7 @@ meson --prefix=/usr              \
       -Dselinux=false            \
       -Dqt=false                 \
       -Dsession_tracking=systemd \
-      -Dmodem_manager=true \
+      -Dmodem_manager=false \
       .. &&
 ninja
 
