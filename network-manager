@@ -30,13 +30,15 @@ meson --prefix=/usr              \
       --buildtype=release        \
       -Dlibaudit=no              \
       -Dnmtui=true               \
+      -Dnetconfig=no \
+      -Dconfig_dns_rc_manager_default=symlink \
       -Dovs=false                \
       -Dppp=false                \
       -Dselinux=false            \
       -Dqt=false                 \
       -Dsession_tracking=systemd \
       -Dmodem_manager=false \
-      .. &&
+      ..
 ninja
 
 
@@ -50,10 +52,15 @@ sudo ninja install
 cd /pkgs
 
 
-
 sudo echo "libpsl jansson libndp dhcpcd iptables newt nss pygobject3 systemd upower wpa_supplicant curl" > /pkgs/$PACKAGE/depends
 sudo echo "modem-manager" > /pkgs/$PACKAGE/make-depends
+sudo echo "systemctl disable NetworkManager-wait-online" > /pkgs/$PACKAGE/postinst
+cat > /pkgs/$PACKAGE/etc/NetworkManager/NetworkManager.conf << "EOF"
+[main]
+plugins=keyfile
+EOF
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "/etc/NetworkManager/NetworkManager.conf" > /pkgs/$PACKAGE/backup
 sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 

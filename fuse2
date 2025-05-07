@@ -31,7 +31,8 @@ sudo make install
 cd /pkgs
 
 
-
+rm -rf /pkgs/$PACKAGE/etc/init.d
+rm -rf /pkgs/$PACKAGE/dev
 sudo echo "fuse3" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
