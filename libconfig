@@ -3,9 +3,9 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 PKG_VER=1.7.3
-URL=https://github.com/hyperrealm/libconfig/releases/download/v$PKG_VER/libconfig-$PKG_VER.tar.gz
+URL=https://github.com/hyperrealm/libconfig/archive/v$PKG_VER/libconfig-v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=$(echo $TAR | sed 's|.tar.*||g')
+DIR=libconfig-$PKG_VER
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 # Get Package
@@ -16,7 +16,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+autoreconf -fiv
 
 ./configure --prefix=/usr
 
