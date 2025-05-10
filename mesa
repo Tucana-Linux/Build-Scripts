@@ -24,31 +24,30 @@ mkdir build
 cd build
 
 meson setup --prefix=/usr   \
-      --buildtype=release     \
+    --buildtype=release     \
     -Dplatforms=x11,wayland \
-    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
-    -Dvulkan-drivers=amd,intel,intel_hasvk,swrast,virtio \
+    -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,i915,iris,crocus,zink,d3d12 \
+    -Dvulkan-drivers=amd,intel,intel_hasvk,virtio \
     -Dvulkan-layers=device-select,intel-nullhw,overlay \
     -Degl=enabled \
-    -Dgallium-extra-hud=true \
-    -Dgallium-nine=true \
+    -Dgallium-extra-hud=enabled \
+    -Dgallium-nine=enabled  \
     -Dgallium-va=enabled \
     -Dgallium-vdpau=enabled \
     -Dgallium-xa=enabled \
-    -Drust_std=2021 \
     -Dgbm=enabled \
     -Dgles1=disabled \
     -Dgles2=enabled \
-    -Dglvnd=true \
+    -Dglvnd=enabled  \
     -Dglx=dri \
     -Dlibunwind=enabled \
     -Dllvm=enabled \
     -Dlmsensors=enabled \
-    -Dosmesa=true \
+    -Dosmesa=enabled  \
     -Dshared-glapi=enabled \
     -Dmicrosoft-clc=disabled \
     -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec \
-      ..             
+     ..             
 
 
 ninja
