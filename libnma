@@ -41,7 +41,7 @@ cd /pkgs
 sudo echo "gcr gtk3 gtk4 iso-codes network-manager vala" > /pkgs/$PACKAGE/depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

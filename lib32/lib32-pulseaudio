@@ -52,7 +52,7 @@ cd /pkgs
 
 sudo echo "lib32-alsa-lib lib32-dbus lib32-xorg-libs pulseaudio" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

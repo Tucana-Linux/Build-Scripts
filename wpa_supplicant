@@ -88,7 +88,7 @@ sudo echo "libnl desktop-file-utils libxml2" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "update-desktop-database -q" > /pkgs/$PACKAGE/postinst
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

@@ -42,7 +42,7 @@ cd /pkgs
 sudo echo "gst-plugins-base a52dec x264 libdvdread" > /pkgs/$PACKAGE/depends
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

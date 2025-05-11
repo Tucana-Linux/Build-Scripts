@@ -50,7 +50,7 @@ useradd -d /dev/null -c "Exim Daemon" -g exim -s /bin/false -u 31 exim
 EOF
 sudo echo "perl-file-fcntllock pcre2 cyrus-sasl libidn2 pam mariadb openldap" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

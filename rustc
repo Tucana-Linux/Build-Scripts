@@ -92,7 +92,7 @@ cd /pkgs
 sudo echo "curl gcc clang libssh2" > /pkgs/$PACKAGE/depends
 sudo echo "llvm curl libssh2 cmake gcc clang" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

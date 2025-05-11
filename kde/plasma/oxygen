@@ -44,7 +44,7 @@ cd /pkgs
 
 sudo echo "frameworkintegration glibc kcmutils kcolorscheme kcompletion kconfig kconfigwidgets kcoreaddons kdecoration kguiaddons ki18n kwidgetsaddons kwindowsystem libxcb qt6" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

@@ -52,14 +52,14 @@ cd /pkgs
 sudo echo "glibc zlib" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 # elfutils
 sudo echo "libelf" > /pkgs/$ALT_PACKAGE/depends
 sudo echo "" > /pkgs/$ALT_PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$ALT_PACKAGE/version
-sudo tar -cvzpf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
+sudo tar -cvapf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
 sudo cp $ALT_PACKAGE.tar.xz /finished
 
 

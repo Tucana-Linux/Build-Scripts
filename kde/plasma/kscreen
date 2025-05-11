@@ -44,7 +44,7 @@ cd /pkgs
 
 sudo echo "kcmutils kconfig kcoreaddons kdbusaddons kdeclarative ki18n kirigami ksvg kwindowsystem layer-shell-qt libkscreen libX11 libxcb libXi libplasma plasma5support qt6" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

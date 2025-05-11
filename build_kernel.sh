@@ -56,9 +56,9 @@ echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/linux-tucana/make-d
 echo "linux-tucana rsync" > /pkgs/linux-tucana-headers/depend
 cd /pkgs
 sudo echo "$PKG_VER" > /pkgs/linux-tucana/version
-tar -cvzpf linux-tucana.tar.xz linux-tucana
+tar -cvapf linux-tucana.tar.xz linux-tucana
 sudo echo "$PKG_VER" > /pkgs/linux-tucana-headers/version
-tar -cvzpf linux-tucana-headers.tar.xz linux-tucana-headers
+tar -cvapf linux-tucana-headers.tar.xz linux-tucana-headers
 cp linux-tucana.tar.xz /finished
 cp linux-tucana-headers.tar.xz /finished
 

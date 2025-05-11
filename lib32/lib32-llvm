@@ -97,7 +97,7 @@ cd $LLVM_DIR
  
  sudo echo "lib32-glibc lib32-libgcc llvm" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
- sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+ sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
  sudo cp $PACKAGE.tar.xz /finished
  
  cd /blfs/builds
@@ -143,7 +143,7 @@ cd /pkgs
 
 sudo echo "lib32-llvm" > /pkgs/$PACKAGE2/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE2/version
-sudo tar -cvzpf $PACKAGE2.tar.xz $PACKAGE2
+sudo tar -cvapf $PACKAGE2.tar.xz $PACKAGE2
 sudo cp $PACKAGE2.tar.xz /finished
 
 

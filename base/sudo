@@ -68,7 +68,7 @@ cd /pkgs
 echo "pam glibc " > /pkgs/$PACKAGE/depends
 echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
 cp $PACKAGE.tar.xz /finished
 
 

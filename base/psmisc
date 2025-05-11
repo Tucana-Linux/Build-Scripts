@@ -38,7 +38,7 @@ cd /pkgs
 sudo echo "glibc ncurses" > /pkgs/$PACKAGE/depends
 sudo echo "bash binutils coreutils gcc gettext glibc grep libffi make ncurses sed" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

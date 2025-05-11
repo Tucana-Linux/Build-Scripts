@@ -44,7 +44,7 @@ cd /pkgs
 
 sudo echo "kcmutils kcolorscheme kcompletion kconfig kcoreaddons kdbusaddons kdeclarative ki18n kio kirigami knotifications kquickcharts ksvg kwallet kwidgetsaddons kwindowsystem network-manager libplasma modemmanager-qt networkmanager-qt plasma-workspace prison qca qcoro qt6 solid" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

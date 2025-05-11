@@ -70,7 +70,7 @@ while read -r line; do
       sudo echo "gtk2 gtk3 kf5 libpwquality libqalculate libxkbcommon mesa wayland network-manager pipewire pulseaudio qca sassc taglib xcb-util-cursor fftw gsettings-desktop-schemas libdbusmenu-qt libcanberra libinput libpcap lm-sensors oxygen-icons pciutils accounts-service smartmontools qtwebengine kuserfeedback appstream libdisplay-info python-chai pulseaudio-qt" > /pkgs/kde/$PACKAGE/depends
       cd /pkgs/kde
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-      sudo tar -cvzpf /finished/kde/$PACKAGE.tar.xz $PACKAGE
+      sudo tar -cvapf /finished/kde/$PACKAGE.tar.xz $PACKAGE
       cd - 
       
     popd
@@ -127,7 +127,7 @@ EOF
 # Recompress & Re-Copy
 cd /pkgs/kde
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-tar -cvzpf kscreenlocker.tar.xz kscreenlocker
+tar -cvapf kscreenlocker.tar.xz kscreenlocker
 mv kscreenlocker.tar.xz /finished/kde
 
 

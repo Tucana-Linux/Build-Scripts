@@ -49,7 +49,7 @@ cd /pkgs
 
 sudo echo "lib32-libpsl lib32-brotli lib32-openssl lib32-glibc curl" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

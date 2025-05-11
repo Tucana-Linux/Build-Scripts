@@ -45,7 +45,7 @@ sudo echo "brotli giflib highway lcms libjpeg-turbo libpng" > /pkgs/$PACKAGE/dep
 sudo echo "gdk-pixbuf-query-loaders --update-cache" > /pkgs/$PACKAGE/postinst
 sudo echo "gdk-pixbuf cmake" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

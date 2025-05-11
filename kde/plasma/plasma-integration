@@ -44,7 +44,7 @@ cd /pkgs
 
 sudo echo "glibc kcolorscheme kcompletion kconfig kcoreaddons kguiaddons kiconthemes ki18n kio kjobwidgets kservice kstatusnotifieritem kwidgetsaddons kwindowsystem kxmlgui libxcb libXcursor qqc2-breeze-style qqc2-desktop-style qt6 wayland kcompletion5 kconfig5 kconfigwidgets5 kcoreaddons5 ki18n5 kiconthemes5 kio5 kjobwidgets5 knotifications5 kservice5 kwayland5 kwidgetsaddons5 kwindowsystem5 kxmlgui5" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

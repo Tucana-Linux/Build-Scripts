@@ -45,7 +45,7 @@ useradd -c "Dovecot login user" -d /dev/null -u 43 -g dovenull -s /bin/false dov
 EOF
 sudo echo "lua openldap mariadb sqlite" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

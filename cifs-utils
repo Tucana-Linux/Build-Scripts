@@ -37,7 +37,7 @@ rm -r /pkgs/$PACKAGE/sbin
 
 sudo echo "mitkrb samba talloc keyutils" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

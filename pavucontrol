@@ -34,7 +34,7 @@ sudo echo "gtkmm4 glibmm json-glib libcanberra libsigc++2 pulseaudio" > /pkgs/$P
 sudo echo "lynx gtkmm4 glibmm json-glib libcanberra libsigc++2 pulseaudio" > /pkgs/$PACKAGE/make-depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

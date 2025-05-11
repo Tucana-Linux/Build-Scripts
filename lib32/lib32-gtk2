@@ -46,7 +46,7 @@ sudo echo "lib32-at-spi2-core lib32-gdk-pixbuf lib32-pango gtk2 hicolor-icons" >
 sudo echo "gtk-query-immodules-2.0 --update-cache" > /pkgs/$PACKAGE/postinst
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

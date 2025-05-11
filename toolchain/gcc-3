@@ -159,18 +159,18 @@ cd /pkgs
 
 echo "libgcc glibc zstd mpc mpfr gmp flex isl" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
 cp $PACKAGE.tar.xz /finished
 
 
 echo "glibc isl" > /pkgs/$ALT_PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$ALT_PACKAGE/version
-tar -cvzpf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
+tar -cvapf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
 cp $ALT_PACKAGE.tar.xz /finished
 
 echo "lib32-glibc glibc" > /pkgs/$ALT_PACKAGE2/depends
 sudo echo "$PKG_VER" > /pkgs/$ALT_PACKAGE2/version
-tar -cvzpf $ALT_PACKAGE2.tar.xz $ALT_PACKAGE2
+tar -cvapf $ALT_PACKAGE2.tar.xz $ALT_PACKAGE2
 cp $ALT_PACKAGE2.tar.xz /finished
 # Remove Temp Files
 

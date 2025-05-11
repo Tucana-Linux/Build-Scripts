@@ -41,9 +41,9 @@ sudo echo "boost lua" > /pkgs/$PACKAGE/depends
 sudo echo "highlight qt5" > /pkgs/$ALT_PACKAGE/depends
 sudo echo "qt5" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo echo "$PKG_VER" > /pkgs/$ALT_PACKAGE/version
-sudo tar -cvzpf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
+sudo tar -cvapf $ALT_PACKAGE.tar.xz $ALT_PACKAGE
 sudo cp $ALT_PACKAGE.tar.xz /finished
 sudo cp $PACKAGE.tar.xz /finished
 

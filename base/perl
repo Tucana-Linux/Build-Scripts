@@ -53,7 +53,7 @@ unset BUILD_ZLIB BUILD_BZIP2
 sudo echo "gdbm glibc libxcrypt" > /pkgs/$PACKAGE/depends
 sudo echo "bash binutils coreutils gawk gcc gdbm glibc grep groff make sed zlib" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

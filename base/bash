@@ -293,7 +293,7 @@ EOF
 sudo echo "glibc readline ncurses" > /pkgs/$PACKAGE/depends
 sudo echo "bash binutils bison coreutils diffutils gawk gcc glibc grep make ncurses patch readline sed texinfo" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

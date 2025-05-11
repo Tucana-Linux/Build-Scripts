@@ -37,7 +37,7 @@ sudo echo "webkitgtk fuse3 xorg pulseaudio alsa-lib icu libjpeg-turbo ffmpeg lib
 sudo echo "pkcs11-helper" > /pkgs/$PACKAGE/make-depends
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

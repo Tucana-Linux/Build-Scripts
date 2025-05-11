@@ -57,8 +57,8 @@ mv $PACKAGE-headers /pkgs
 echo "" > /pkgs/$PACKAGE/depend
 echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
 cd /pkgs
-tar -cvzpf $PACKAGE.tar.xz $PACKAGE
-tar -cvzpf $PACKAGE-headers.tar.xz $PACKAGE-headers
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
+tar -cvapf $PACKAGE-headers.tar.xz $PACKAGE-headers
 
 cp $PACKAGE.tar.xz /finished
 cp $PACKAGE-headers.tar.xz /finished

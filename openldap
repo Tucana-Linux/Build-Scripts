@@ -45,7 +45,7 @@ cd /pkgs
 sudo echo "glibc pam cyrus-sasl" > /pkgs/$PACKAGE1/depends
 sudo echo "" > /pkgs/$PACKAGE1/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvzpf $PACKAGE1.tar.xz $PACKAGE1
+sudo tar -cvapf $PACKAGE1.tar.xz $PACKAGE1
 sudo cp $PACKAGE1.tar.xz /finished
 
 
@@ -89,7 +89,7 @@ sudo echo "groff" > /pkgs/$PACKAGE2/make-depends
 cd /pkgs
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE2/version
-sudo tar -cvzpf $PACKAGE2.tar.xz $PACKAGE2
+sudo tar -cvapf $PACKAGE2.tar.xz $PACKAGE2
 sudo cp $PACKAGE2.tar.xz /finished
 
 cd /blfs/builds/
@@ -101,5 +101,5 @@ mkdir -p $PACKAGE/var/cache/mercury/meta-pkgs
 echo "openldap-client" > $PACKAGE/var/cache/mercury/meta-pkgs/openldap
 echo "openldap-client" > $PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
 cp $PACKAGE.tar.xz /finished
