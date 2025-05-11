@@ -14,13 +14,11 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://github.com/LibVNC/x11vnc/commit/a48b0b1cd887.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-patch -Np1 < ../a48b0b1cd887.patch
 ./autogen.sh
 ./configure --prefix=/usr
 
