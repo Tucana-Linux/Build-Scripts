@@ -7,7 +7,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=1.4.19
+PKG_VER=1.4.20
 URL=https://ftp.gnu.org/gnu/m4/m4-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
