@@ -35,21 +35,19 @@ meson setup --prefix=/usr
       --native-file crossfile.ini \
       --buildtype=plain     \
       -Dplatforms=x11,wayland \
-      -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,zink,d3d12,i915  \
+      -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,zink,d3d12,i915,llvm  \
       -Dglx=dri               \
       -Degl=enabled \
       -Dglvnd=enabled \
       -Db_ndebug=enabled \
       -Dllvm=enabled \
       -Dlibunwind=disabled  \
-      -Dgallium-nine=enabled \
       -Dgallium-va=enabled \
       -Dgallium-vdpau=enabled \
       -Dvideo-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
       -Dvalgrind=disabled     \
       -Dvulkan-drivers=amd,intel,intel_hasvk \
       -Dvulkan-layers=device-select,intel-nullhw,overlay \
-      -Dosmesa=enabled \
        --libdir=/usr/lib32 \
       ..             
 
