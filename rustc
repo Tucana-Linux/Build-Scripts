@@ -24,10 +24,10 @@ cat << EOF > config.toml
 
 # credit to LFS
 # tell x.py to not keep printing an annoying warning
-change-id = 131075
+change-id = 136941
 [llvm]
 # by default, rust will build for a myriad of architectures
-targets = "X86"
+target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
 
 # When using system llvm prefer shared libraries
 link-shared = true
@@ -62,6 +62,10 @@ codegen-units = 1
 
 [target.x86_64-unknown-linux-gnu]
 llvm-config = "/usr/bin/llvm-config"
+
+[target.i686-unknown-linux-gnu]
+llvm-config = "/usr/bin/llvm-config"
+
 
 EOF
 
