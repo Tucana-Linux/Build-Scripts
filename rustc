@@ -62,7 +62,10 @@ codegen-units = 1
 llvm-config = "/usr/bin/llvm-config"
 
 [target.i686-unknown-linux-gnu]
-llvm-config = "/usr/bin/llvm-config"
+cc = "/usr/bin/gcc"
+cxx = "/usr/bin/g++"
+ar = "/usr/bin/gcc-ar"
+ranlib = "/usr/bin/gcc-ranlib"
 
 
 EOF
