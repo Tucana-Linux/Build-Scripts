@@ -31,15 +31,14 @@ cd build
 llvm-config = '/usr/bin/llvm-config32'
 END
 
-meson setup --prefix=/usr    
+meson setup --prefix=/usr   \
       --native-file crossfile.ini \
       --buildtype=plain     \
       -Dplatforms=x11,wayland \
-      -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,zink,d3d12,i915,llvm  \
+      -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,zink,d3d12,i915,llvmpipe \
       -Dglx=dri               \
       -Degl=enabled \
       -Dglvnd=enabled \
-      -Db_ndebug=enabled \
       -Dllvm=enabled \
       -Dlibunwind=disabled  \
       -Dgallium-va=enabled \
