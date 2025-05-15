@@ -26,15 +26,13 @@ cat << EOF > config.toml
 # tell x.py to not keep printing an annoying warning
 change-id = 136941
 [llvm]
-# by default, rust will build for a myriad of architectures
-target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
-
 # When using system llvm prefer shared libraries
 link-shared = true
 
 download-ci-llvm = false
 
 [build]
+target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
 docs = false
 
 # install cargo as well as rust
