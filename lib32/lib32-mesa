@@ -33,7 +33,7 @@ END
 
 meson setup --prefix=/usr   \
       --native-file crossfile.ini \
-      --buildtype=plain     \
+      --buildtype=release      \
       -Dplatforms=x11,wayland \
       -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,iris,crocus,zink,d3d12,i915,llvmpipe \
       -Dglx=dri               \
