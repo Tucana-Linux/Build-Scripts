@@ -4,7 +4,7 @@ export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
 
-PKG_VER=4.20.0
+PKG_VER=4.21.0
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=http://archive.xfce.org/src/xfce/xfce4-dev-tools/$MAJOR/xfce4-dev-tools-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
