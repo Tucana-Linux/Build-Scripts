@@ -44,6 +44,8 @@ cd /pkgs
 
 sudo echo "glibc lvm2 sqlite runc libtool containerd btrfs-progs pigz docker-buildx" > /pkgs/$PACKAGE/depends
 sudo echo "go" > /pkgs/$PACKAGE/make-depends
+sudo echo "groupadd -g 211 docker &&
+useradd -d /dev/null -c "Docker Daemon" -g docker -s /bin/false -u 211 docker" > /pkgs/$PACKAGE/postinst
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
