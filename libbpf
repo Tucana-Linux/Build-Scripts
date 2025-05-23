@@ -19,14 +19,11 @@ cd $DIR
 # Build
 
 
-
-
 make -C src -j22
 
 
 # Install
 sudo make -C src DESTDIR=/pkgs/$PACKAGE LIBSUBDIR=lib install install_headers
-sudo make install
 cd /pkgs
 
 
