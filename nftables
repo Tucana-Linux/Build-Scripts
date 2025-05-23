@@ -28,7 +28,7 @@ cd $DIR
   --disable-debug
 
 cd py
-python -m build --wheel --no-isolation
+python3 -m build --wheel --no-isolation
 
 
 make -j22
@@ -36,7 +36,7 @@ make -j22
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo python -m installer --destdir=/pkgs/$PACKAGE py/dist/*.whl
+sudo python3 -m installer --destdir=/pkgs/$PACKAGE py/dist/*.whl
 mkdir -p /pkgs/$PACKAGE/etc
 cat > /pkgs/$PACKAGE/etc/nftables << EOF
 #!/usr/bin/nft -f
