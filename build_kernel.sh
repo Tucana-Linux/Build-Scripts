@@ -4,26 +4,30 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=6.14.7
+PKG_VER=6.14.8
 URL=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 KERNEL_VERSION=$(echo $DIR | sed 's/linux-//')
+PACKAGE=linux-tucana
 set -e
 
+# Always use /usr/src
 cd /usr/src
-
 wget $URL
-
 tar -xvf $TAR
-
 cd $DIR
 
-cp /boot/config-tucana .config
+# Build
 
+# Copy .config
+cp /boot/config-tucana .config
+# Add extraversions so that modules directory doesn't confllict with self-builds
 sed -i 's/EXTRAVERSION\ =/EXTRAVERSION\ =\ -tucana/' Makefile
 make olddefconfig
-make -j16
+make -j22
+
+# Install into the proper location
 
 mkdir -p ../$PACKAGE/boot
 mkdir -p ../$PACKAGE/usr
@@ -48,14 +52,22 @@ cd ..
 sudo cp -rpv $DIR $PACKAGE-headers/usr/src
 
 # Package
+
+# Move to /pkgs
 cd /usr/src
 mv $PACKAGE /pkgs
 mv $PACKAGE-headers /pkgs
 echo "" > /pkgs/$PACKAGE/depend
 echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
+
+# Setup backup file
+
 cd $PACKAGE 
 find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
+sed -i '/config-tucana/d'   /pkgs/$PACKAGE/backup
 cd ..
+
+# Install
 echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
 cd /pkgs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
