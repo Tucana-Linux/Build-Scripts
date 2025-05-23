@@ -27,9 +27,6 @@ export GOPATH=/blfs/builds/$DIR
 go mod download
 
 go build -v \
-  -buildmode=pie \
-  -linkmode external \
-  -extldflags \"${LDFLAGS}\" \
   -X $PACKAGE/version.Version=$PKG_VER \
   -o build \
   ./cmd/...
