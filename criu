@@ -46,7 +46,7 @@ cd /pkgs
 
 
 
-sudo echo "libgcc gnutls libbpf libdrm libnet libnl nftables protobuf python util-linux" > /pkgs/$PACKAGE/depends
+sudo echo "libbsd libgcc gnutls libbpf libdrm libnet libnl nftables protobuf python util-linux" > /pkgs/$PACKAGE/depends
 sudo echo "asciidoc git python-build python-installer setuptools wheel xmlto" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
