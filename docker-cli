@@ -18,6 +18,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+go mod get
 make -j22 VERSION=$PKG_VER dynbinary
 make manpages
 
