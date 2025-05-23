@@ -17,7 +17,7 @@ git checkout tags/v$PKG_VER
 
 # Build
 
-sed -i 's,/sbin,/usr/bin,;s,/usr/local,/usr,' containerd.service
+sed -i 's,/usr/local,/usr,' containerd.service
 
 make 
 make man
