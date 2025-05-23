@@ -13,12 +13,13 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://src.fedoraproject.org/rpms/libnet/raw/rawhide/f/libnet-config.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
-autoreconf -fi
+patch -Np1 < ../libnet-config.patch
+autoreconf -vfi
 ./configure --prefix=/usr
 
 
