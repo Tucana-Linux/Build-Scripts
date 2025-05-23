@@ -32,7 +32,7 @@ cd /pkgs
 
 
 
-sudo echo "libmnl" > /pkgs/$PACKAGE/depends
+sudo echo "libnftnl ncurses readline jansson gmp libmnl" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
