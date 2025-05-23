@@ -19,6 +19,11 @@ cd $DIR
 
 # Build
 
+# Build python module first
+cd python
+python3 setup.py build
+cd ..
+
 mkdir build
 cd build
 
@@ -33,15 +38,23 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr      \
 ninja
 
 
+
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-sudo ninja install
+# python module
+cd python
+python3 setup.py install --skip-build --root="/pkgs/$PACKAGE"
+# no read perms?
+chmod +r /pkgs/$PACKAGE/usr/lib/python*/site-packages/*/*
+
+
+
 cd /pkgs
 
 
 
 sudo echo "abseil-cpp" > /pkgs/$PACKAGE/depends
-sudo echo "cmake" > /pkgs/$PACKAGE/make-depends
+sudo echo "python setuptools wheel cmake" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
