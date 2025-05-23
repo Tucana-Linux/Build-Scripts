@@ -53,6 +53,13 @@ sudo cp -rpv $DIR $PACKAGE-headers/usr/src
 
 # Package
 
+# Setup backup file
+cd /usr/src
+cd $PACKAGE 
+find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
+sed -i '/config-tucana/d'   /pkgs/$PACKAGE/backup
+cd ..
+
 # Move to /pkgs
 cd /usr/src
 mv $PACKAGE /pkgs
@@ -60,12 +67,6 @@ mv $PACKAGE-headers /pkgs
 echo "" > /pkgs/$PACKAGE/depend
 echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
 
-# Setup backup file
-
-cd $PACKAGE 
-find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
-sed -i '/config-tucana/d'   /pkgs/$PACKAGE/backup
-cd ..
 
 # Install
 echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
