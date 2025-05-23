@@ -18,7 +18,10 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-go get
+export GOPATH=$PWD
+mkdir -p  $GOPATH/src/github.com/docker/
+ln -sfv . $GOPATH/src/github.com/docker/
+
 make -j22 VERSION=$PKG_VER dynbinary
 make manpages
 
