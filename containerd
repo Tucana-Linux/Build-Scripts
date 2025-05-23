@@ -24,7 +24,7 @@ make man
 
 
 # Install
-make PREFIX=/usr DESTDIR=/pkgs/$PKG_VER/ install
+make PREFIX=/usr DESTDIR=/pkgs/$PACKAGE/ install
 
 # credit to arch
 install -Dm644 containerd.service /pkgs/$PACKAGE/usr/lib/systemd/system/containerd.service
