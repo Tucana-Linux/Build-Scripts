@@ -53,6 +53,9 @@ mv $PACKAGE /pkgs
 mv $PACKAGE-headers /pkgs
 echo "" > /pkgs/$PACKAGE/depend
 echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
+cd $PACKAGE 
+find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
+cd ..
 echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
 cd /pkgs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
