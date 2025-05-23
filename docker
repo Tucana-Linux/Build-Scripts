@@ -14,7 +14,7 @@ PACKAGE=docker
 # Install
 cd /pkgs
 mkdir -p /pkgs/$PACKAGE
-echo "tini docker-cli moby" > /pkgs/$PACKAGE/depends
+echo "tini docker-cli docker-moby" > /pkgs/$PACKAGE/depends
 echo "$PKG_VER" > /pkgs/$PACKAGE/version
 tar -cvapf $PACKAGE.tar.xz $PACKAGE
 cp $PACKAGE.tar.xz /finished
