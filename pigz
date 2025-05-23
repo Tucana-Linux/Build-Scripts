@@ -1,0 +1,56 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+#ARCH_PKG=pigz
+#ARCH_VAR=pkgver
+PKG_VER=2.8
+URL=https://www.zlib.net/pigz/pigz-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+
+make -j22
+
+
+# Install
+
+install -Dm755 pigz \
+  /pkgs/$PACKAGE/usr/bin/pigz
+
+pushd /pkgs/$PACKAGE/usr/bin
+  ln -s pigz unpigz 
+popd
+
+install -Dm644 pigz.1 \
+  /pkgs/$PACKAGE/usr/share/man/man1/pigz.1
+install -Dm644 README \
+  /pkgs/$PACKAGE/usr/share/licenses/$PACKAGE/README
+
+
+cd /pkgs
+
+
+
+sudo echo "zlib" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

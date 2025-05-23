@@ -1,0 +1,51 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=2.1.1
+URL=https://github.com/containerd/containerd/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=containerd-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+sed -i 's,/sbin,/usr/bin,;s,/usr/local,/usr,' containerd.service
+
+make VERSION=v$PKG_VER
+make VERSION=v$PKG_VER man
+
+
+# Install
+make PREFIX=/usr DESTDIR=/pkgs/$PKG_VER/ install
+
+# credit to arch
+install -Dm644 containerd.service /pkgs/$PACKAGE/usr/lib/systemd/system/containerd.service
+install -Dm644 man/*.8 -t /pkgs/$PACKAGE/usr/share/man/man8
+install -Dm644 man/*.5 -t /pkgs/$PACKAGE/usr/share/man/man5
+install -Dm644 contrib/autocomplete/ctr /pkgs/$PACKAGE/usr/share/bash-completion/completions/ctr
+install -Dm644 contrib/autocomplete/zsh_autocomplete /pkgs/$PACKAGE/usr/share/zsh/site-functions/_ctr
+
+
+cd /pkgs
+
+
+
+sudo echo "runc" > /pkgs/$PACKAGE/depends
+sudo echo "go git btrfs-progs libseccomp go-md2man" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
