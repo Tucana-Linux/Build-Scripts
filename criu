@@ -21,8 +21,8 @@ cd $DIR
 # shellcheck disable=SC2001 -- archlinux
 export CFLAGS=$(echo "$CFLAGS" | sed 's/-Wp,-D_FORTIFY_SOURCE=[0-9]//g')
 make criu crit amdgpu_plugin docs
-python3 -m build --wheel --skip-dependency-check
-python -m build --wheel --skip-dependency-check lib
+python3 -m build --wheel --skip-dependency-check crit
+python3 -m build --wheel --skip-dependency-check lib
 
 
 
@@ -37,8 +37,8 @@ make \
   LIBDIR=/usr/lib \
   LIBEXECDIR=/usr/lib \
   install
-python -m installer --destdir="/pkgs/$PACKAGE" crit/dist/*.whl
-python -m installer --destdir="/pkgs/$PACKAGE" lib/dist/*.whl
+python3 -m installer --destdir="/pkgs/$PACKAGE" crit/dist/*.whl
+python3 -m installer --destdir="/pkgs/$PACKAGE" lib/dist/*.whl
 # suppress warning
 rm -r "$pkgdir/usr/include/compel/common/asm"
 
