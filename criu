@@ -22,7 +22,7 @@ cd $DIR
 export CFLAGS=$(echo "$CFLAGS" | sed 's/-Wp,-D_FORTIFY_SOURCE=[0-9]//g')
 make criu crit amdgpu_plugin docs
 python3 -m build --wheel --skip-dependency-check crit
-python3 -m build --wheel --skip-dependency-check lib
+python3 -m build --wheel --no-isolation --skip-dependency-check lib
 
 
 
