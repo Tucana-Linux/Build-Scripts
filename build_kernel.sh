@@ -4,36 +4,40 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=6.14.7
+PKG_VER=6.14.8
 URL=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 KERNEL_VERSION=$(echo $DIR | sed 's/linux-//')
+PACKAGE=linux-tucana
 set -e
 
+# Always use /usr/src
 cd /usr/src
-
 wget $URL
-
 tar -xvf $TAR
-
 cd $DIR
 
-cp /boot/config-tucana .config
+# Build
 
+# Copy .config
+cp /boot/config-tucana .config
+# Add extraversions so that modules directory doesn't confllict with self-builds
 sed -i 's/EXTRAVERSION\ =/EXTRAVERSION\ =\ -tucana/' Makefile
 make olddefconfig
-make -j16
+make -j22
 
-mkdir -p ../linux-tucana/boot
-mkdir -p ../linux-tucana/usr
+# Install into the proper location
 
-make INSTALL_MOD_PATH=../linux-tucana/usr modules_install
+mkdir -p ../$PACKAGE/boot
+mkdir -p ../$PACKAGE/usr
 
-sudo cp arch/x86/boot/bzImage ../linux-tucana/boot/vmlinuz-$KERNEL_VERSION-tucana
-sudo cp .config ../linux-tucana/boot/config-tucana
+make INSTALL_MOD_PATH=../$PACKAGE/usr modules_install
+
+sudo cp arch/x86/boot/bzImage ../$PACKAGE/boot/vmlinuz-$KERNEL_VERSION-tucana
+sudo cp .config ../$PACKAGE/boot/config-tucana
 sudo rm -r block certs/ crypto/ Documentation/ drivers/ fs/ init/ ipc/ kernel/ lib/ LICENSES/ mm/ MAINTAINERS  modules.* net/ samples/ security/ sound/ usr/ virt/ vmlinux*
-cd ../linux-tucana
+cd ../$PACKAGE
 echo "cd /boot" > postinst
 if [[ $(echo "$KERNEL_VERSION" | sed -n 's/[^.]//g;p' | wc -c) -eq 2 ]]; then
     echo "mkinitramfs $KERNEL_VERSION.0-tucana" >> postinst
@@ -43,22 +47,33 @@ fi
 
 echo "grub-mkconfig -o /boot/grub/grub.cfg" >> postinst
 
-mkdir -p ../linux-tucana-headers/usr/src
+mkdir -p ../$PACKAGE-headers/usr/src
 cd ..
-sudo cp -rpv $DIR linux-tucana-headers/usr/src
+sudo cp -rpv $DIR $PACKAGE-headers/usr/src
 
 # Package
+
+# Move to /pkgs
 cd /usr/src
-mv linux-tucana /pkgs
-mv linux-tucana-headers /pkgs
-echo "" > /pkgs/linux-tucana/depend
-echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/linux-tucana/make-depends
-echo "linux-tucana rsync" > /pkgs/linux-tucana-headers/depend
+mv $PACKAGE /pkgs
+mv $PACKAGE-headers /pkgs
+echo "" > /pkgs/$PACKAGE/depend
+echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
+
+# Setup backup file
+
+cd $PACKAGE 
+find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
+sed -i '/config-tucana/d'   /pkgs/$PACKAGE/backup
+cd ..
+
+# Install
+echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
 cd /pkgs
-sudo echo "$PKG_VER" > /pkgs/linux-tucana/version
-tar -cvapf linux-tucana.tar.xz linux-tucana
-sudo echo "$PKG_VER" > /pkgs/linux-tucana-headers/version
-tar -cvapf linux-tucana-headers.tar.xz linux-tucana-headers
-cp linux-tucana.tar.xz /finished
-cp linux-tucana-headers.tar.xz /finished
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE-headers/version
+tar -cvapf $PACKAGE-headers.tar.xz $PACKAGE-headers
+cp $PACKAGE.tar.xz /finished
+cp $PACKAGE-headers.tar.xz /finished
 
