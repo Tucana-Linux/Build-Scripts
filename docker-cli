@@ -38,7 +38,7 @@ sudo cp -r man/man* /pkgs/$PACKAGE/usr/share/man/
 
 cd /pkgs
 
-sudo echo "glibc" > /pkgs/$PACKAGE/depends
+sudo echo "glibc lvm2 sqlite runc libtool containerd btrfs-progs pigz docker-buildx" > /pkgs/$PACKAGE/depends
 sudo echo "go" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
