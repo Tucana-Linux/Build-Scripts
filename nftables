@@ -39,7 +39,7 @@ make -j22
 sudo make DESTDIR=/pkgs/$PACKAGE install
 sudo python3 -m installer --destdir=/pkgs/$PACKAGE py/dist/*.whl
 mkdir -p /pkgs/$PACKAGE/etc
-cat > /pkgs/$PACKAGE/etc/nftables << EOF
+cat > /pkgs/$PACKAGE/etc/nftables.conf << EOF
 #!/usr/bin/nft -f
 # vim:set ts=2 sw=2 et:
 
