@@ -6,7 +6,7 @@ export CXXFLAGS="-O2 "
 PKG_VER=0.22.0
 URL=https://github.com/moby/buildkit/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=$(echo $TAR | sed 's|.tar.*||g')
+DIR=buildkit-$PKG_VER
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 # Get Package
