@@ -41,7 +41,7 @@ sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 # Method 2 install
-cp -rpv /pkgs/$PACKAGE /
+cp -rpv /pkgs/$PACKAGE/* /
 cd /blfs/builds
 sudo rm -r $DIR
 
