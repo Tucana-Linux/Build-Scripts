@@ -3,6 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
+
 PKG_VER=1.1.3
 URL=https://www.netfilter.org/projects/nftables/files/nftables-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -18,22 +19,77 @@ cd $DIR
 
 # Build
 
-# hasn't been updated since 2022
-autoreconf -fi
-./configure --prefix=/usr
+./configure \
+  --prefix=/usr \
+  --sysconfdir=/usr/share \
+  --with-json \
+  --with-cli=readline \
+  --disable-python \
+  --disable-debug
+
+cd py
+python -m build --wheel --no-isolation
+
 
 make -j22
 
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo python -m installer --destdir=/pkgs/$PACKAGE py/dist/*.whl
+mkdir -p /pkgs/$PACKAGE/etc
+cat > /pkgs/$PACKAGE/etc/nftables << EOF
+#!/usr/bin/nft -f
+# vim:set ts=2 sw=2 et:
+
+# IPv4/IPv6 Simple & Safe firewall ruleset.
+# More examples in /usr/share/nftables/ and /usr/share/doc/nftables/examples/.
+# Origin: Archlinux 
+# https://gitlab.archlinux.org/archlinux/packaging/packages/nftables/-/blob/main/nftables.conf
+destroy table inet filter
+table inet filter {
+  chain input {
+    type filter hook input priority filter
+    policy drop
+
+    ct state invalid drop comment "early drop of invalid connections"
+    ct state {established, related} accept comment "allow tracked connections"
+    iif lo accept comment "allow from loopback"
+    ip protocol icmp accept comment "allow icmp"
+    meta l4proto ipv6-icmp accept comment "allow icmp v6"
+    tcp dport ssh accept comment "allow sshd"
+    pkttype host limit rate 5/second counter reject with icmpx type admin-prohibited
+    counter
+  }
+  chain forward {
+    type filter hook forward priority filter
+    policy drop
+  }
+}
+EOF
+
+mkdir -p /pkgs/$PACKAGE/usr/lib/systemd/system
+cat > /pkgs/$PACKAGE/usr/lib/systemd/system/nftables.service << EOF
+[Unit]
+Description=Netfilter Tables
+Documentation=man:nft(8)
+Wants=network-pre.target
+Before=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nft -f /etc/nftables.conf
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
 cd /pkgs
 
 
-
 sudo echo "libnftnl ncurses readline jansson gmp libmnl" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-build python-installer python-wheel git asciidoc" > /pkgs/$PACKAGE/make-depends
+sudo echo "/etc/nftables.conf" > /pkgs/$PACKAGE/backup
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
