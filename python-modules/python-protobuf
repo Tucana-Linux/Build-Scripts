@@ -32,7 +32,7 @@ sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "glibc protobuf" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
-sudo echo "" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
