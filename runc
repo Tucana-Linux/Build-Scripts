@@ -22,7 +22,7 @@ make runc -j22
 
 
 # Install
-install -Dm755 runc /pkgs/$PACKAGE/usr/bin
+install -Dm755 runc /pkgs/$PACKAGE/usr/bin/runc
 install -Dm644 contrib/completions/bash/runc \
     /pkgs/$PACKAGE/usr/share/bash-completion/completions/runc
 cd /pkgs
