@@ -19,6 +19,7 @@ cd $DIR
 
 # Build
 patch -Np1 < ../libnet-config.patch
+echo "$PKG_VER" > VERSION
 autoreconf -vfi
 ./configure --prefix=/usr
 
