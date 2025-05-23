@@ -17,7 +17,10 @@ cd $DIR
 
 
 # Build 
-make -j22 dynbinary
+export DOCKER_BUILDTAGS="seccomp journald"
+export VERSION=$PKG_VER
+export DOCKER_GITCOMMIT="report-bugs-to-tucana-not-docker-upstream"
+hack/make.sh dynbinary
 
 # Install
 sudo mkdir -p /pkgs/$PACKAGE/usr/bin
@@ -34,4 +37,4 @@ sudo cp $PACKAGE.tar.xz /finished
 
 cd /blfs/builds
 sudo rm -r $DIR
-
+sudo rm $TAR
