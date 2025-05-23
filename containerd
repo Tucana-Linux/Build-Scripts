@@ -19,8 +19,8 @@ cd $DIR
 # Build
 sed -i 's,/sbin,/usr/bin,;s,/usr/local,/usr,' containerd.service
 
-make VERSION=v$PKG_VER
-make VERSION=v$PKG_VER man
+make 
+make man
 
 
 # Install
