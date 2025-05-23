@@ -26,6 +26,9 @@ hack/make.sh dynbinary
 sudo mkdir -p /pkgs/$PACKAGE/usr/bin
 sudo cp bundles/dynbinary-daemon/dockerd /pkgs/$PACKAGE/usr/bin/
 sudo cp bundles/dynbinary-daemon/docker-proxy /pkgs/$PACKAGE/usr/bin/
+cd contrib
+install -Dm644 "init/systemd/docker.service" /pkgs/$PACKAGE/usr/lib/systemd/system/docker.service
+install -Dm644 "init/systemd/docker.socket" /pkgs/$PACKAGE/usr/lib/systemd/system/docker.socket
 
 cd /pkgs
 
