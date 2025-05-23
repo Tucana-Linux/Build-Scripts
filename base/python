@@ -12,11 +12,13 @@ PACKAGE=python
 
 cd /blfs/builds
 wget $URL
+# Fix CVE-2025-4516
+wget https://patch-diff.githubusercontent.com/raw/python/cpython/pull/133944.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
+patch -Np1 < ../133944.patch
 ./configure --prefix=/usr        \
             --enable-shared      \
             --with-system-expat  \
