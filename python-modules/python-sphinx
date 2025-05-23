@@ -28,7 +28,7 @@ cd /pkgs
 
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
-sudo echo "python-alabaster python-babel python-docutils python-imagesize python-packaging pygments python-requests python-snowballstemmer python-sphinxcontrib-applehelp python-sphinxcontrib-devhelp python-sphinxcontrib-htmlhelp python-sphinxcontrib-jsmath python-sphinxcontrib-qthelp python-sphinxcontrib-serializinghtml" > /pkgs/$PACKAGE/depends
+sudo echo "python-roman-numerals-py python-alabaster python-babel python-docutils python-imagesize python-packaging pygments python-requests python-snowballstemmer python-sphinxcontrib-applehelp python-sphinxcontrib-devhelp python-sphinxcontrib-htmlhelp python-sphinxcontrib-jsmath python-sphinxcontrib-qthelp python-sphinxcontrib-serializinghtml" > /pkgs/$PACKAGE/depends
 sudo echo "python-build python-installer" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
