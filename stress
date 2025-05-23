@@ -1,14 +1,10 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-
-
-PKG_VER=3.12
-URL=https://ftp.gnu.org/gnu/grep/grep-$PKG_VER.tar.xz
+PKG_VER=1.0.7
+URL=https://github.com/resurrecting-open-source-projects/stress/releases/download/$PKG_VER/stress-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -22,10 +18,11 @@ cd $DIR
 
 # Build
 
+autoreconf -fi
 ./configure --prefix=/usr
 
 
-make -j16
+make -j22
 
 
 # Install
@@ -35,8 +32,8 @@ cd /pkgs
 
 
 
-sudo echo "pcre glibc" > /pkgs/$PACKAGE/depends
-sudo echo "bash binutils coreutils diffutils gcc gettext glibc grep make patch sed texinfo pcre" > /pkgs/$PACKAGE/make-depends
+sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

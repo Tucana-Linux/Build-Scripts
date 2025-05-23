@@ -1,0 +1,24 @@
+#!/bin/bash
+# meta
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=1.0
+PACKAGE=docker
+
+# Get Package
+
+
+# Build
+
+# Install
+cd /pkgs
+mkdir -p /pkgs/$PACKAGE
+echo "tini docker-cli docker-moby" > /pkgs/$PACKAGE/depends
+echo "$PKG_VER" > /pkgs/$PACKAGE/version
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
+cp $PACKAGE.tar.xz /finished
+
+
+
+

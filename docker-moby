@@ -1,0 +1,43 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=28.1.1
+URL=https://github.com/moby/moby/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=moby-$PKG_VER
+PACKAGE=docker-moby
+
+# Get package
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+
+# Build 
+export DOCKER_BUILDTAGS="seccomp journald"
+export VERSION=$PKG_VER
+export DOCKER_GITCOMMIT="report-bugs-to-tucana-not-docker-upstream"
+hack/make.sh dynbinary
+
+# Install
+sudo mkdir -p /pkgs/$PACKAGE/usr/bin
+sudo cp bundles/dynbinary-daemon/dockerd /pkgs/$PACKAGE/usr/bin/
+sudo cp bundles/dynbinary-daemon/docker-proxy /pkgs/$PACKAGE/usr/bin/
+cd contrib
+install -Dm644 "init/systemd/docker.service" /pkgs/$PACKAGE/usr/lib/systemd/system/docker.service
+install -Dm644 "init/systemd/docker.socket" /pkgs/$PACKAGE/usr/lib/systemd/system/docker.socket
+
+cd /pkgs
+
+sudo echo "glibc" > /pkgs/$PACKAGE/depends
+sudo echo "go" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+cd /blfs/builds
+sudo rm -r $DIR
+sudo rm $TAR

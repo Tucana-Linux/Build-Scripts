@@ -21,11 +21,8 @@ cd $DIR
 patch -Np1 -i ../vlc-3.0.21-taglib-1.patch
 patch -Np1 -i ../vlc-3.0.21-fedora_ffmpeg7-1.patch
 
-export LUAC=/usr/bin/luac5.2                   &&
-export LUA_LIBS="$(pkg-config --libs lua52)"   &&
-export CPPFLAGS="$(pkg-config --cflags lua52)" &&
 
-BUILDCC=gcc ./configure --prefix=/usr --disable-libva   \
+BUILDCC=gcc ./configure --prefix=/usr --disable-libplacebo \
 
 
 make -j16
@@ -38,8 +35,8 @@ cd /pkgs
 
 
 
-sudo echo "qt5 alsa-lib dbus libssh2 v4l-utils libpng libtheora libva libvorbis opus x264 ffmpeg pulseaudio" > /pkgs/$PACKAGE/depends
-sudo echo "lua5.2 lua a52dec" > /pkgs/$PACKAGE/make-depends
+sudo echo "alsa-lib dbus libssh2 v4l-utils libpng libtheora libva libvorbis opus x264 ffmpeg pulseaudio" > /pkgs/$PACKAGE/depends
+sudo echo "luajit lua a52dec" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

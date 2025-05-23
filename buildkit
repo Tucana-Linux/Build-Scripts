@@ -1,0 +1,61 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=0.22.0
+URL=https://github.com/moby/buildkit/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=buildkit-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+sed -i 's:/usr/local:/usr:' \
+  examples/systemd/{system,user}/*.service
+
+mkdir build
+
+export GOPATH=/blfs/builds/$DIR
+go mod download
+
+go build -v \
+  -o build \
+  ./cmd/...
+
+
+
+
+# Install
+
+install -vDm755 -t /pkgs/$PACKAGE/usr/bin build/*
+
+install -vDm644 -t /pkgs/$PACKAGE/usr/share/doc/$PACKAGE README.md
+cp -rpv docs/* /pkgs/$PACKAGE/usr/share/doc/$PACKAGE/
+
+install -vDm644 -t /pkgs/$PACKAGE/usr/lib/systemd/system examples/systemd/system/*
+install -vDm644 -t /pkgs/$PACKAGE/usr/lib/systemd/user examples/systemd/user/*
+
+
+cd /pkgs
+
+
+
+sudo echo "runc containerd" > /pkgs/$PACKAGE/depends
+sudo echo "go git" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=0.24.0
+URL=https://github.com/docker/buildx/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=buildx-$PKG_VER
+PACKAGE=docker-buildx
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+go build -mod=vendor -o docker-buildx -ldflags "-linkmode=external \
+  -compressdwarf=false \
+  -X $_buildx_r/version.Version=${pkgver} \
+  -X $_buildx_r/version.Package=$_buildx_r" \
+  ./cmd/buildx
+
+
+
+
+# Install
+install -Dm755 docker-buildx /pkgs/$PACKAGE/usr/lib/docker/cli-plugins/docker-buildx
+cd /pkgs
+
+
+
+sudo echo "glibc" > /pkgs/$PACKAGE/depends
+sudo echo "go git" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

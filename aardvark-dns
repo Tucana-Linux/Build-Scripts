@@ -4,10 +4,10 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=0.29.0
-URL=https://github.com/eqrion/cbindgen/archive/v$PKG_VER/cbindgen-$PKG_VER.tar.gz
+PKG_VER=1.15.0
+URL=https://github.com/containers/aardvark-dns/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=$(echo $TAR | sed 's|.tar.*||g')
+DIR=aardvark-dns-$PKG_VER
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 # Get Package
@@ -19,15 +19,18 @@ cd $DIR
 
 # Build
 
+export RUSTUP_TOOLCHAIN=stable
+export CARGO_TARGET_DIR=target
 
-cargo build --release
+
+cargo fetch --locked
+cargo build --release --all-features --frozen
 
 
 
-# Installinstall -Dm755 target/release/cbindgen /usr/bin/
+# Install
 mkdir -p /pkgs/$PACKAGE/usr/bin
-install -Dm755 target/release/cbindgen /pkgs/$PACKAGE/usr/bin/
-install -Dm755 target/release/cbindgen /usr/bin/
+install -vDm755 target/release/$PACKAGE  -t /pkgs/$PACKAGE/usr/lib/podman
 cd /pkgs
 
 

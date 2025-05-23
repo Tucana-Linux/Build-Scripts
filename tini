@@ -1,0 +1,39 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=0.19.0
+URL=https://github.com/krallin/tini/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=tini-$PKG_VER
+PACKAGE=tini
+
+# Get package
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+cmake -DCMAKE_BUILD_PREFIX=/usr          \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      .
+make tini-static
+
+
+# Install
+sudo mkdir -p /pkgs/$PACKAGE/usr/bin
+sudo cp tini-static /pkgs/$PACKAGE/usr/bin/docker-init
+
+cd /pkgs
+
+sudo echo "glibc" > /pkgs/$PACKAGE/depends
+sudo echo "cmake" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+cd /blfs/builds
+sudo rm -r $DIR

@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Credit to arch for build instructions for all docker related packages
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=28.1.1
+URL=https://github.com/docker/cli/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=cli-$PKG_VER
+PACKAGE=docker-cli
+
+# Get package
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+export GOPATH=/blfs/builds/$DIR
+mkdir -p  $GOPATH/src/github.com/docker/
+ln -sf $GOPATH $GOPATH/src/github.com/docker/cli
+
+make -j22 VERSION=$PKG_VER dynbinary
+make manpages
+
+
+# Install
+sudo mkdir -p /pkgs/$PACKAGE/usr/bin
+sudo cp build/docker /pkgs/$PACKAGE/usr/bin/
+
+sudo mkdir -p /pkgs/$PACKAGE/usr/share/bash-completion/completions
+sudo mkdir -p /pkgs/$PACKAGE/usr/share/zsh/site-functions
+sudo mkdir -p /pkgs/$PACKAGE/usr/share/fish/vendor_completions.d
+sudo ./build/docker completion bash > /pkgs/$PACKAGE/usr/share/bash-completion/completions/docker
+sudo ./build/docker completion zsh > /pkgs/$PACKAGE/usr/share/zsh/site-functions/_docker
+sudo ./build/docker completion fish > /pkgs/$PACKAGE/usr/share/fish/vendor_completions.d/docker.fish
+
+sudo mkdir -p /pkgs/$PACKAGE/usr/share/man
+sudo cp -r man/man* /pkgs/$PACKAGE/usr/share/man/
+
+cd /pkgs
+
+sudo echo "glibc lvm sqlite runc libtool containerd btrfs-progs pigz docker-buildx" > /pkgs/$PACKAGE/depends
+sudo echo "go" > /pkgs/$PACKAGE/make-depends
+sudo echo "groupadd -g 211 docker &&
+useradd -d /dev/null -c 'Docker Daemon' -g docker -s /bin/false -u 211 docker" > /pkgs/$PACKAGE/postinst
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+cd /blfs/builds
+sudo rm -r $DIR
+sudo rm $TAR

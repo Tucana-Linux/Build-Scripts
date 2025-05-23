@@ -1,0 +1,57 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=4.1
+URL=https://github.com/checkpoint-restore/criu/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=criu-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+# shellcheck disable=SC2001 -- archlinux
+export CFLAGS=$(echo "$CFLAGS" | sed 's/-Wp,-D_FORTIFY_SOURCE=[0-9]//g')
+make criu crit amdgpu_plugin docs
+python3 -m build --wheel --skip-dependency-check crit
+python3 -m build --wheel --no-isolation --skip-dependency-check lib
+
+
+
+make -j22
+
+
+# Install
+make \
+  DESTDIR=/pkgs/$PACKAGE \
+  PREFIX=/usr \
+  SBINDIR=/usr/bin \
+  LIBDIR=/usr/lib \
+  LIBEXECDIR=/usr/lib \
+  install
+# suppress warning
+rm -rf "/pkgs/$PACKAGE/usr/include/compel/common/asm"
+
+cd /pkgs
+
+
+
+sudo echo "python-protobuf libbsd libgcc gnutls libbpf libdrm libnet libnl nftables protobuf python util-linux" > /pkgs/$PACKAGE/depends
+sudo echo "asciidoc git python-build python-installer setuptools wheel xmlto" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
