@@ -4,19 +4,19 @@ export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
 PKG_VER=2.1.1
-URL=https://github.com/containerd/containerd/archive/refs/tags/v$PKG_VER.tar.gz
-TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=containerd-$PKG_VER
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+URL=https://github.com/containerd/containerd.git
+DIR=containerd
+PACKAGE=containerd
 
 # Get Package
 
 cd /blfs/builds
-wget $URL
-tar -xvf $TAR
+git clone $URL
 cd $DIR
+git checkout tags/v$PKG_VER
 
 # Build
+
 sed -i 's,/sbin,/usr/bin,;s,/usr/local,/usr,' containerd.service
 
 make 
