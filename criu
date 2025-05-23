@@ -38,7 +38,7 @@ make \
   LIBEXECDIR=/usr/lib \
   install
 # suppress warning
-rm -r "$pkgdir/usr/include/compel/common/asm"
+rm -rf "/pkgs/$PACKAGE/usr/include/compel/common/asm"
 
 cd /pkgs
 
