@@ -56,8 +56,8 @@ sudo cp -rpv $DIR $PACKAGE-headers/usr/src
 # Setup backup file
 cd /usr/src
 cd $PACKAGE 
-find . -type f | cut -c2- > /pkgs/$PACKAGE/backup
-sed -i '/config-tucana/d'   /pkgs/$PACKAGE/backup
+find . -type f | cut -c2- > backup
+sed -i '/config-tucana/d'   backup
 cd ..
 
 # Move to /pkgs
