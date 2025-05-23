@@ -9,6 +9,7 @@ URL=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 KERNEL_VERSION=$(echo $DIR | sed 's/linux-//')
+PACKAGE=linux-tucana
 set -e
 
 # Always use /usr/src
