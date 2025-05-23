@@ -37,8 +37,6 @@ make \
   LIBDIR=/usr/lib \
   LIBEXECDIR=/usr/lib \
   install
-python3 -m installer --destdir="/pkgs/$PACKAGE" crit/dist/*.whl
-python3 -m installer --destdir="/pkgs/$PACKAGE" lib/dist/*.whl
 # suppress warning
 rm -r "$pkgdir/usr/include/compel/common/asm"
 
