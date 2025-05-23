@@ -25,15 +25,15 @@ sed -i 's/EXTRAVERSION\ =/EXTRAVERSION\ =\ -tucana/' Makefile
 make olddefconfig
 make -j16
 
-mkdir -p ../linux-tucana/boot
-mkdir -p ../linux-tucana/usr
+mkdir -p ../$PACKAGE/boot
+mkdir -p ../$PACKAGE/usr
 
-make INSTALL_MOD_PATH=../linux-tucana/usr modules_install
+make INSTALL_MOD_PATH=../$PACKAGE/usr modules_install
 
-sudo cp arch/x86/boot/bzImage ../linux-tucana/boot/vmlinuz-$KERNEL_VERSION-tucana
-sudo cp .config ../linux-tucana/boot/config-tucana
+sudo cp arch/x86/boot/bzImage ../$PACKAGE/boot/vmlinuz-$KERNEL_VERSION-tucana
+sudo cp .config ../$PACKAGE/boot/config-tucana
 sudo rm -r block certs/ crypto/ Documentation/ drivers/ fs/ init/ ipc/ kernel/ lib/ LICENSES/ mm/ MAINTAINERS  modules.* net/ samples/ security/ sound/ usr/ virt/ vmlinux*
-cd ../linux-tucana
+cd ../$PACKAGE
 echo "cd /boot" > postinst
 if [[ $(echo "$KERNEL_VERSION" | sed -n 's/[^.]//g;p' | wc -c) -eq 2 ]]; then
     echo "mkinitramfs $KERNEL_VERSION.0-tucana" >> postinst
@@ -43,22 +43,22 @@ fi
 
 echo "grub-mkconfig -o /boot/grub/grub.cfg" >> postinst
 
-mkdir -p ../linux-tucana-headers/usr/src
+mkdir -p ../$PACKAGE-headers/usr/src
 cd ..
-sudo cp -rpv $DIR linux-tucana-headers/usr/src
+sudo cp -rpv $DIR $PACKAGE-headers/usr/src
 
 # Package
 cd /usr/src
-mv linux-tucana /pkgs
-mv linux-tucana-headers /pkgs
-echo "" > /pkgs/linux-tucana/depend
-echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/linux-tucana/make-depends
-echo "linux-tucana rsync" > /pkgs/linux-tucana-headers/depend
+mv $PACKAGE /pkgs
+mv $PACKAGE-headers /pkgs
+echo "" > /pkgs/$PACKAGE/depend
+echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
+echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
 cd /pkgs
-sudo echo "$PKG_VER" > /pkgs/linux-tucana/version
-tar -cvapf linux-tucana.tar.xz linux-tucana
-sudo echo "$PKG_VER" > /pkgs/linux-tucana-headers/version
-tar -cvapf linux-tucana-headers.tar.xz linux-tucana-headers
-cp linux-tucana.tar.xz /finished
-cp linux-tucana-headers.tar.xz /finished
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE-headers/version
+tar -cvapf $PACKAGE-headers.tar.xz $PACKAGE-headers
+cp $PACKAGE.tar.xz /finished
+cp $PACKAGE-headers.tar.xz /finished
 
