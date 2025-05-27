@@ -54,3 +54,4 @@ bash -e  plasma-systemmonitor
 bash -e  qqc2-breeze-style
 bash -e  ksystemstats
 bash -e  oxygen-sounds
+bash -e  spectacle

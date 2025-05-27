@@ -29,7 +29,7 @@ sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "python" > /pkgs/$PACKAGE/depends
 sudo echo "python-build python-installer" > /pkgs/$PACKAGE/make-depends
-sudo echo "" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
