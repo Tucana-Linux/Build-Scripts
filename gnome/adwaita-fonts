@@ -27,8 +27,8 @@ cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
-sudo echo "fc-cache -f" > /pkgs/$PACKAGE/depends
+sudo echo "fontconfig" > /pkgs/$PACKAGE/depends
+sudo echo "fc-cache -f" > /pkgs/$PACKAGE/postinst
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
