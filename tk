@@ -31,7 +31,7 @@ make -j22
 
 # Install
 sudo make INSTALL_ROOT=/pkgs/$PACKAGE install
-ln -s libtk${PKG_VER%.*}.so /pkgs/$PACKAGE/usr/lib
+ln -sfv libtk${PKG_VER%.*}.so /pkgs/$PACKAGE/usr/lib
 cd /pkgs
 # Remove references to build directory (Credit Arch Linux & LFS)
 sed -e "s#/blfs/builds/$DIR/tk$PKG_VER/unix#/usr/lib#" \
