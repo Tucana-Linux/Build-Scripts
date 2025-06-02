@@ -17,6 +17,10 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+
+# sometimes svg doesn't get registered properly
+dot -c
+
 mkdir build
 cd build
 meson setup --prefix=/usr --buildtype=release ..

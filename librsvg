@@ -35,7 +35,7 @@ cd /pkgs
 
 sudo echo "cairo gdk-pixbuf pango freetype2" > /pkgs/$PACKAGE/depends
 sudo echo "rustc cairo gdk-pixbuf pango freetype2 base-fonts cargo-c" > /pkgs/$PACKAGE/make-depends
-sudo echo "gdk-pixbuf-query-loaders --update-cache" > /pkgs/$PACKAGE/postinst
+sudo echo "gdk-pixbuf-query-loaders --update-cache && dot -c" > /pkgs/$PACKAGE/postinst
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
