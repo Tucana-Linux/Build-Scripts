@@ -44,7 +44,7 @@ cd /pkgs
 
 sudo echo "glibc pam cyrus-sasl" > /pkgs/$PACKAGE1/depends
 sudo echo "" > /pkgs/$PACKAGE1/make-depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE1/version
 sudo tar -cvapf $PACKAGE1.tar.xz $PACKAGE1
 sudo cp $PACKAGE1.tar.xz /finished
 
@@ -96,7 +96,7 @@ cd /blfs/builds/
 rm -rf $DIR
 # Meta
 cd /pkgs
-mkdir -p $PACKAGE/var/cache/mercury/meta-pkgs
+mkdir -p $PACKAGE/var/cache/neptune/meta-pkgs
 # Most of the time you only need the client
 echo "openldap-client" > $PACKAGE/var/cache/mercury/meta-pkgs/openldap
 echo "openldap-client" > $PACKAGE/depends
