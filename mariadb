@@ -19,14 +19,13 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+sed -e "s/BASE_BUFFER_SIZE/__XML_TREE_H__/" \
+    -i storage/connect/plgxml.h
 mkdir build &&
 cd    build &&
 
 cmake -DCMAKE_BUILD_TYPE=Release                      \
       -DCMAKE_INSTALL_PREFIX=/usr                     \
-      -DINSTALL_DOCDIR=share/doc/mariadb-$PKG_VER       \
-      -DINSTALL_DOCREADMEDIR=share/doc/mariadb-$PKG_VER \
       -DINSTALL_MANDIR=share/man                      \
       -DINSTALL_MYSQLSHAREDIR=share/mariadb             \
       -DINSTALL_SYSTEMD_UNITDIR=lib/systemd/system/ \
