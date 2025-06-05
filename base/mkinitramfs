@@ -6,8 +6,10 @@ export CXXFLAGS="-O2"
 # Taken straight from LFS (with a couple modifications)
 # Added firmware detection - Rahul Chandra Feburary 9th 2023
 # Added ability to load kernel modules in the initrd
-# added depmod
-PKG_VER=3.0.0
+# Added live mode to include all modules (fallback initramfs)
+# Added depmod
+# Fixed udev groups -- Rahul Chandra June 5th 2025
+PKG_VER=4.0.1
 URL=https://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
 PACKAGE=mkinitramfs
 
@@ -26,7 +28,10 @@ cat > /pkgs/mkinitramfs/usr/sbin/mkinitramfs << "EOF"
 # This file based in part on the mkinitramfs script for the LFS LiveCD (And later Tucana :))
 # written by Alexander E. Patrakov and Jeremy Huntwork.
 
-# Heavily modified by Rahul Chandra to generalize to all sysetms
+# Heavily modified by Rahul Chandra for Tucana
+# - Added forceful early module loading
+# - Added live mode to include all modules
+# - Fixed udev groups on systemd
 
 LIVE_MODE=false
 
@@ -106,6 +111,44 @@ WDIR=$(mktemp -d /tmp/initrd-work.XXXXXXXXXX)
 mkdir -p $WDIR/{dev,run,sys,proc,usr/{bin,lib/{firmware,modules},sbin}}
 mkdir -p $WDIR/etc/{modprobe.d,udev/rules.d}
 touch $WDIR/etc/modprobe.d/modprobe.conf
+
+# Create /etc/group so udev will work
+cat > $WDIR/etc/group << "FOF"
+root:x:0:
+bin:x:1:daemon
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+video:x:12:
+utmp:x:13:
+cdrom:x:15:
+adm:x:16:
+messagebus:x:18:
+systemd-journal:x:23:
+input:x:24:
+mail:x:34:
+kvm:x:61:
+systemd-journal-gateway:x:73:
+systemd-journal-remote:x:74:
+systemd-journal-upload:x:75:
+systemd-network:x:76:
+systemd-resolve:x:77:
+systemd-timesync:x:78:
+systemd-coredump:x:79:
+uuidd:x:80:
+systemd-oom:x:81:
+wheel:x:97:
+users:x:999:
+nogroup:x:65534:
+FOF
+
 # Copy modprobe.conf
 
 if [ -z "$(ls -A /etc/modprobe.d/)" ]; then
@@ -188,11 +231,16 @@ elif [ -x /usr/lib/systemd/systemd-udevd ] ; then
   ldd /usr/lib/systemd/systemd-udevd | sed "s/\t//" | cut -d " " -f1 >> $unsorted
 fi
 
+# Add libkmod
+cp -a /usr/lib/libkmod* $WDIR/usr/lib/
+
 # Add module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /usr/bin/kmod ] ; then
   ln -s kmod $WDIR/usr/bin/lsmod
   ln -s kmod $WDIR/usr/bin/insmod
 fi
+
+
 
 # Add lvm symlinks if appropriate
 # Also copy the lvm.conf file
