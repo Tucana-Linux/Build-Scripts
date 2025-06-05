@@ -151,7 +151,7 @@ FOF
 
 # Copy modprobe.conf
 
-if [ -z "$(ls -A /etc/modprobe.d/)" ]; then
+if [ -d /etc/modprobe.d ]; then
    cp -rp /etc/modprobe.d/* $WDIR/etc/modprobe.d/
 fi
 ln -s usr/bin  $WDIR/bin
