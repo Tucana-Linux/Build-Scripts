@@ -470,7 +470,7 @@ else
 fi
 
 ${UDEVD} --daemon --resolve-names=never
-udevadm trigger
+udevadm trigger --action=add
 udevadm settle
 
 if [ -f /etc/mdadm.conf ] ; then mdadm -As                       ; fi
