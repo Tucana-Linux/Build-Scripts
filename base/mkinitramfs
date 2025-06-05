@@ -28,10 +28,10 @@ cat > /pkgs/mkinitramfs/usr/sbin/mkinitramfs << "EOF"
 # This file based in part on the mkinitramfs script for the LFS LiveCD (And later Tucana :))
 # written by Alexander E. Patrakov and Jeremy Huntwork.
 
-# Heavily modified by Rahul Chandra for Tucana
+# Heavily modified by Rahul Chandra
 # - Added forceful early module loading
 # - Added live mode to include all modules
-# - Fixed udev groups on systemd
+# - Fixed udev by adding cgroup support, adding /etc/group, and libkmod files
 
 LIVE_MODE=false
 
