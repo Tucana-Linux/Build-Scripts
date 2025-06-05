@@ -34,7 +34,11 @@ mkdir -p ../$PACKAGE/usr
 
 make INSTALL_MOD_PATH=../$PACKAGE/usr modules_install
 
-sudo cp arch/x86/boot/bzImage ../$PACKAGE/boot/vmlinuz-$KERNEL_VERSION-tucana
+if [[ $(echo "$KERNEL_VERSION" | sed -n 's/[^.]//g;p' | wc -c) -eq 2 ]]; then
+    cp arch/x86/boot/bzImage ../$PACKAGE/boot/vmlinuz-$KERNEL_VERSION.0-tucana
+else
+    cp arch/x86/boot/bzImage ../$PACKAGE/boot/vmlinuz-$KERNEL_VERSION-tucana
+fi
 sudo cp .config ../$PACKAGE/boot/config-tucana
 sudo rm -r block certs/ crypto/ Documentation/ drivers/ fs/ init/ ipc/ kernel/ lib/ LICENSES/ mm/ MAINTAINERS  modules.* net/ samples/ security/ sound/ usr/ virt/ vmlinux*
 cd ../$PACKAGE
