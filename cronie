@@ -1,0 +1,78 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=1.7.2
+URL=https://github.com/cronie-crond/cronie/releases/download/cronie-$PKG_VER/cronie-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--enable-anacron \
+		--with-inotify \
+		--with-pam
+ 
+
+make -j22
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+
+# thanks arch 
+chmod u+s /pkgs/$PACKAGE/usr/bin/crontab
+install -d /pkgs/$PACKAGE/var/spool/{ana,}cron
+install -d /pkgs/$PACKAGE/etc/cron.{d,hourly,daily,weekly,monthly}
+
+install -Dm0644 ../80-cronie.hook /pkgs/$PACKAGE/usr/share/libalpm/hooks/80-cronie.hook
+install -Dm0644 ../cron-deny /pkgs/$PACKAGE/etc/cron.deny
+install -Dm0644 ../crontab /pkgs/$PACKAGE/etc/crontab
+install -Dm0644 ../default-anacron /pkgs/$PACKAGE/etc/default/anacron
+
+install -Dm0644 contrib/anacrontab /pkgs/$PACKAGE/etc/anacrontab
+install -Dm0644 contrib/0hourly /pkgs/$PACKAGE/etc/cron.d/0hourly
+install -Dm0755 contrib/0anacron /pkgs/$PACKAGE/etc/cron.hourly/0anacron
+
+install -Dm0644 contrib/cronie.systemd /pkgs/$PACKAGE/usr/lib/systemd/system/cronie.service
+install -Dm0644 crond.sysconfig /pkgs/$PACKAGE/etc/sysconfig/crond
+install -Dm0644 pam/crond /pkgs/$PACKAGE/etc/pam.d/crond
+
+
+cd /pkgs
+
+
+
+sudo echo "pam bash" > /pkgs/$PACKAGE/depends
+cat > /pkgs/$PACKAGE/backup << EOF
+/etc/anacrontab
+/etc/cron.d/0hourly
+/etc/cron.deny
+/etc/crontab
+/etc/default/anacron
+/etc/pam.d/crond
+/etc/sysconfig/crod
+EOF
+sudo echo "inotify-tools" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
