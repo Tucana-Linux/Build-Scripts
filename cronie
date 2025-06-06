@@ -38,7 +38,6 @@ chmod u+s /pkgs/$PACKAGE/usr/bin/crontab
 install -d /pkgs/$PACKAGE/var/spool/{ana,}cron
 install -d /pkgs/$PACKAGE/etc/cron.{d,hourly,daily,weekly,monthly}
 
-install -Dm0644 ../80-cronie.hook /pkgs/$PACKAGE/usr/share/libalpm/hooks/80-cronie.hook
 install -Dm0644 ../cron-deny /pkgs/$PACKAGE/etc/cron.deny
 install -Dm0644 ../crontab /pkgs/$PACKAGE/etc/crontab
 install -Dm0644 ../default-anacron /pkgs/$PACKAGE/etc/default/anacron
