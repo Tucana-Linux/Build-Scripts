@@ -38,9 +38,25 @@ chmod u+s /pkgs/$PACKAGE/usr/bin/crontab
 install -d /pkgs/$PACKAGE/var/spool/{ana,}cron
 install -d /pkgs/$PACKAGE/etc/cron.{d,hourly,daily,weekly,monthly}
 
-install -Dm0644 ../cron-deny /pkgs/$PACKAGE/etc/cron.deny
-install -Dm0644 ../crontab /pkgs/$PACKAGE/etc/crontab
-install -Dm0644 ../default-anacron /pkgs/$PACKAGE/etc/default/anacron
+mkdir -p /pkgs/$PACKAGE/etc/default
+cat > /pkgs/$PACKAGE/etc/default/anacron << EOF
+# /etc/default/anacron
+# Set this to 'yes' to have anacron run while on battery
+# By default it is not run while on battery
+#ANACRON_RUN_ON_BATTERY_POWER=no
+
+EOF
+cat > /pkgs/$PACKAGE/etc/cron-deny << EOF
+# needed so users outside of cron.allow can use the cron daemon
+EOF
+cat > /pkgs/$PACKAGE/etc/crontab << EOF
+# /etc/crontab: configuration file for cron
+
+# See cron(8) and crontab(5) for details.
+
+# m h dom mon dow user command
+EOF
+
 
 install -Dm0644 contrib/anacrontab /pkgs/$PACKAGE/etc/anacrontab
 install -Dm0644 contrib/0hourly /pkgs/$PACKAGE/etc/cron.d/0hourly
