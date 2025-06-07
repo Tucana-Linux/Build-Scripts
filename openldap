@@ -43,7 +43,7 @@ cd /pkgs
 
 
 sudo echo "glibc pam cyrus-sasl" > /pkgs/$PACKAGE1/depends
-sudo echo "" > /pkgs/$PACKAGE1/make-depends
+sudo echo "groff" > /pkgs/$PACKAGE1/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE1/version
 sudo tar -cvapf $PACKAGE1.tar.xz $PACKAGE1
 sudo cp $PACKAGE1.tar.xz /finished
@@ -85,7 +85,6 @@ make -j20
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE2 install
 sudo echo "mariadb cyrus-sasl pam coreutils iproute2" > /pkgs/$PACKAGE2/depends
-sudo echo "groff" > /pkgs/$PACKAGE2/make-depends
 cd /pkgs
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE2/version
