@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=1.8
+PKG_VER=1.8.1
 URL=https://github.com/hyperrealm/libconfig/archive/v$PKG_VER/libconfig-v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=libconfig-$PKG_VER
