@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=1.26.1
+PKG_VER=1.26.2
 URL=https://www.mupdf.com/downloads/archive/mupdf-$PKG_VER-source.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=mupdf-$PKG_VER-source
