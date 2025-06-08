@@ -2,8 +2,8 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=3.0.11
-URL=https://github.com/cython/cython/releases/download/$PKG_VER-1/Cython-$PKG_VER.tar.gz
+PKG_VER=3.1.1
+URL=https://github.com/cython/cython/releases/download/$PKG_VER/Cython-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=cython-$PKG_VER
 PACKAGE=cython
@@ -17,20 +17,19 @@ cd $DIR
 
 # Build
 
-
-python3 setup.py build
+python -m build --wheel --no-isolation
 
 
 
 
 # Install
-sudo python3 setup.py install --root="/pkgs/$PACKAGE" --optimize=1
+python -m installer --destdir=/pkgs/$PACKAGE dist/*.whl
 cd /pkgs
 
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "python" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-build python-installer python-setuptools wheel" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
