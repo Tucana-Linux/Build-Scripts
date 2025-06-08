@@ -42,7 +42,7 @@ gtk-update-icon-cache -qtf /usr/share/icons/hicolor &&
 update-desktop-database -q" >> /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

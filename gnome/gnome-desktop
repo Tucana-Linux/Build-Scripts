@@ -39,7 +39,7 @@ sudo echo "gsettings-desktop-schemas gtk3 gtk4 iso-codes libseccomp systemd bubb
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

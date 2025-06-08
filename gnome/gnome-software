@@ -37,7 +37,7 @@ sudo echo "packagekit appstream gnome-online-accounts gsettings-desktop-schemas 
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 

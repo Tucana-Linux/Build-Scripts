@@ -39,7 +39,7 @@ cd /pkgs
 sudo echo "cairo" > /pkgs/$PACKAGE/depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -cvpzf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 
