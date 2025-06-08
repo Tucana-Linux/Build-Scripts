@@ -32,7 +32,7 @@ cd /pkgs
 
 sudo echo "geoclue xorg gtk3 gtk2 atk librsvf hicolor-icons xcb-xrm pygobject2 pygobject3" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
-sudo tar -czvpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
 
