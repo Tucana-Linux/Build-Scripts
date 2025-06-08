@@ -68,12 +68,12 @@ cd ..
 cd /usr/src
 mv $PACKAGE /pkgs
 mv $PACKAGE-headers /pkgs
-echo "" > /pkgs/$PACKAGE/depend
+echo "" > /pkgs/$PACKAGE/depends
 echo "bc check gcc make bison openssl gawk autoconf" > /pkgs/$PACKAGE/make-depends
 
 
 # Install
-echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depend
+echo "$PACKAGE rsync" > /pkgs/$PACKAGE-headers/depends
 cd /pkgs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 tar -cvapf $PACKAGE.tar.xz $PACKAGE
