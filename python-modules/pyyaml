@@ -20,7 +20,7 @@ cd $DIR
 # Build
 
 
-python3 -m build --wheel --skip-dependency-check --config-settings=--with-libyaml
+python3 -m build --wheel --skip-dependency-check --config-setting=--with-libyaml
 
 
 
