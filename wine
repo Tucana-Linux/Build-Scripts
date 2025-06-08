@@ -25,7 +25,7 @@ cd wine-64
 make -j22
 
 cd ../wine-32
-../configure --prefix=/usr --with-x --with-wine64=../wine-64 --libdir=/usr/lib32
+../configure --prefix=/usr --with-x --with-wine64=../wine-64
 make -j22
 
 
