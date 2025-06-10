@@ -33,8 +33,8 @@ cd /pkgs
 
 
 
-sudo echo "jsoncpp" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "onig" > /pkgs/$PACKAGE/depends
+sudo echo "jsoncpp" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
