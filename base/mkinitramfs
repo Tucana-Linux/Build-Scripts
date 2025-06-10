@@ -9,7 +9,8 @@ export CXXFLAGS="-O2"
 # Added live mode to include all modules (fallback initramfs)
 # Added depmod
 # Fixed udev groups -- Rahul Chandra June 5th 2025
-PKG_VER=4.0.1
+# Add all modules currently loaded
+PKG_VER=5.0.0
 URL=https://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
 PACKAGE=mkinitramfs
 
@@ -150,20 +151,6 @@ for file in $(find /etc/udev/rules.d/ -type f) ; do
   cp $file $WDIR/etc/udev/rules.d
 done
 
-# Install any firmware present
-#cp -a /usr/lib/firmware $WDIR/usr/lib 
- # Create directories
-for FOLDER in $(find /usr/lib/firmware -type d); do
-        mkdir -p $WDIR/$FOLDER
-done
-sleep 1
-MODULES=$(sudo lsmod | awk '{print $1}' | sed 's/Module//')
-for MODULE in $MODULES; do
-        FIRMWARE=$(sudo modinfo $MODULE | grep firmware: | sed 's/firmware:       //')
-        for FILE in $FIRMWARE; do
-                cp /usr/lib/firmware/$FILE.xz $WDIR/usr/lib/firmware/$FILE.xz &> /dev/null
-        done
-done
 
 
 
@@ -210,7 +197,7 @@ elif [ -x /usr/lib/systemd/systemd-udevd ] ; then
 fi
 
 # Add libkmod
-cp -a /usr/lib/libkmod* $WDIR/usr/lib/
+echo libkmod.so.2 >> $unsorted
 
 # Add module symlinks if appropriate
 if [ -n "$KERNEL_VERSION" ] && [ -x /usr/bin/kmod ] ; then
@@ -269,6 +256,7 @@ if [ -d /usr/lib/elogind ]; then
   cp -a /usr/lib/elogind $WDIR/usr/lib
 fi
 
+
 # Install the kernel modules if requested
 if [ -n "$KERNEL_VERSION" ]; then
   if $LIVE_MODE; then
@@ -276,25 +264,55 @@ if [ -n "$KERNEL_VERSION" ]; then
     find /usr/lib/modules/$KERNEL_VERSION/kernel \
          -type f -name '*.ko*' 2> /dev/null | cpio --make-directories -p --quiet $WDIR
   else
-    echo "Including selected modules for standard mode"
-    find \
-      /usr/lib/modules/$KERNEL_VERSION/kernel/{crypto,fs,lib,arch,virt} \
-      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{block,ata,nvme,md,firewire} \
-      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,video,gpu,media,vfio} \
-      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage} \
-      -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+    echo "Including currently loaded modules only"
+    MODULES=$(lsmod | awk 'NR>1 {print $1}')
+    for MODULE in $MODULES; do
+      MODFILE=$(modinfo -n $MODULE)
+      REL_PATH="${MODFILE#*/kernel/}"
+      MODFILE="/usr/lib/modules/$KERNEL_VERSION/kernel/$REL_PATH"
+      if [ -f "$MODFILE" ]; then
+        echo "Copying $MODULE"
+        cp --parents "$MODFILE" "$WDIR"
+      else 
+        echo "Could not find module $MODULE, regenerate initramfs after reboot"
+      fi
+    done
   fi
 
+  # Copy required metadata files
   cp /usr/lib/modules/$KERNEL_VERSION/modules.{builtin,order} \
-     $WDIR/usr/lib/modules/$KERNEL_VERSION
+     $WDIR/usr/lib/modules/$KERNEL_VERSION 2>/dev/null
 
   if [ -f /usr/lib/modules/$KERNEL_VERSION/modules.builtin.modinfo ]; then
     cp /usr/lib/modules/$KERNEL_VERSION/modules.builtin.modinfo \
        $WDIR/usr/lib/modules/$KERNEL_VERSION
   fi
 
+  # Generate new module dependency files inside WDIR
   depmod -b $WDIR $KERNEL_VERSION
 fi
+
+# Install any firmware present
+if [ -n "$KERNEL_VERSION" ]; then
+  if $LIVE_MODE; then
+    echo "Adding all firmware for live mode"
+    cp -a /usr/lib/firmware $WDIR/usr/lib 
+  else
+    MODULES=$(find $WDIR/usr/lib/modules/$KERNEL_VERSION/kernel -type f 2>/dev/null)
+    for MODULE in $MODULES; do
+      FIRMWARE=$(modinfo $MODULE | grep firmware: | sed 's/firmware: *//')
+      for FILE in $FIRMWARE; do
+        if [ -f /usr/lib/firmware/$FILE ]; then
+          cp --parents /usr/lib/firmware/$FILE $WDIR
+        elif [ -f /usr/lib/firmware/$FILE.xz ]; then
+          cp --parents /usr/lib/firmware/$FILE.xz $WDIR
+        fi
+      done
+    done
+  fi
+fi
+
+
 ( cd $WDIR ; find . | cpio -o -H newc --quiet | gzip -9 ) > $INITRAMFS_FILE
 
 # Prepare early loading of microcode if available
@@ -324,8 +342,6 @@ fi
 # Remove the temporary directories and files
 rm -rf $WDIR $unsorted
 printf "done.\n"
-
-
 EOF
 
 chmod 0755 /pkgs/$PACKAGE/usr/sbin/mkinitramfs
