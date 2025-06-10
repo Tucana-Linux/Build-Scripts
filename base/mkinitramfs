@@ -10,7 +10,7 @@ export CXXFLAGS="-O2"
 # Added depmod
 # Fixed udev groups -- Rahul Chandra June 5th 2025
 # Add all modules currently loaded
-PKG_VER=5.0.0
+PKG_VER=5.0.2
 URL=https://www.linuxfromscratch.org/blfs/view/svn/postlfs/initramfs.html
 PACKAGE=mkinitramfs
 
@@ -260,9 +260,13 @@ fi
 # Install the kernel modules if requested
 if [ -n "$KERNEL_VERSION" ]; then
   if $LIVE_MODE; then
-    echo "Including ALL modules for live mode"
-    find /usr/lib/modules/$KERNEL_VERSION/kernel \
-         -type f -name '*.ko*' 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+    echo "Including storage modules for live mode"
+    find \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/{block,crypto,fs,lib,arch,virt} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{mmc,misc,block,ata,cdrom,nvme,md,firewire} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,char,media,video,vfio,i2c,input} \
+      /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage} \
+      -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
   else
     echo "Including currently loaded modules only"
     MODULES=$(lsmod | awk 'NR>1 {print $1}')
@@ -294,22 +298,17 @@ fi
 
 # Install any firmware present
 if [ -n "$KERNEL_VERSION" ]; then
-  if $LIVE_MODE; then
-    echo "Adding all firmware for live mode"
-    cp -a /usr/lib/firmware $WDIR/usr/lib 
-  else
-    MODULES=$(find $WDIR/usr/lib/modules/$KERNEL_VERSION/kernel -type f 2>/dev/null)
-    for MODULE in $MODULES; do
-      FIRMWARE=$(modinfo $MODULE | grep firmware: | sed 's/firmware: *//')
-      for FILE in $FIRMWARE; do
-        if [ -f /usr/lib/firmware/$FILE ]; then
-          cp --parents /usr/lib/firmware/$FILE $WDIR
-        elif [ -f /usr/lib/firmware/$FILE.xz ]; then
-          cp --parents /usr/lib/firmware/$FILE.xz $WDIR
-        fi
-      done
+  MODULES=$(find $WDIR/usr/lib/modules/$KERNEL_VERSION/kernel -type f 2>/dev/null)
+  for MODULE in $MODULES; do
+    FIRMWARE=$(modinfo $MODULE | grep firmware: | sed 's/firmware: *//')
+    for FILE in $FIRMWARE; do
+      if [ -f "/usr/lib/firmware/$FILE" ]; then
+        cp --parents /usr/lib/firmware/$FILE $WDIR
+      elif [ -f "/usr/lib/firmware/$FILE.xz" ]; then
+        cp --parents /usr/lib/firmware/$FILE.xz $WDIR
+      fi
     done
-  fi
+  done
 fi
 
 
