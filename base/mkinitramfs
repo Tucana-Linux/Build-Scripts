@@ -259,29 +259,37 @@ fi
 
 # Install the kernel modules if requested
 if [ -n "$KERNEL_VERSION" ]; then
-  if $LIVE_MODE; then
-    echo "Including storage modules for live mode"
-    find \
+  # This whoel situation leads to some serious module conflicts with things like the SOF firmware
+  # if $LIVE_MODE; then
+  #   echo "Including storage modules for live mode"
+  #   find \
+  #     /usr/lib/modules/$KERNEL_VERSION/kernel/{block,crypto,fs,lib,arch,virt} \
+  #     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{mmc,misc,block,ata,cdrom,nvme,md,firewire} \
+  #     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,char,media,video,vfio,i2c,input} \
+  #     /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage} \
+  #     -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
+  # else
+  #   echo "Including currently loaded modules only"
+  #   MODULES=$(lsmod | awk 'NR>1 {print $1}')
+  #   for MODULE in $MODULES; do
+  #     MODFILE=$(modinfo -n $MODULE)
+  #     REL_PATH="${MODFILE#*/kernel/}"
+  #     MODFILE="/usr/lib/modules/$KERNEL_VERSION/kernel/$REL_PATH"
+  #     if [ -f "$MODFILE" ]; then
+  #       echo "Copying $MODULE"
+  #       cp --parents "$MODFILE" "$WDIR"
+  #     else 
+  #       echo "Could not find module $MODULE, regenerate initramfs after reboot"
+  #     fi
+  #   done
+  # fi
+
+  find \
       /usr/lib/modules/$KERNEL_VERSION/kernel/{block,crypto,fs,lib,arch,virt} \
       /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{mmc,misc,block,ata,cdrom,nvme,md,firewire} \
       /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/{scsi,message,pcmcia,virtio,char,media,video,vfio,i2c,input} \
       /usr/lib/modules/$KERNEL_VERSION/kernel/drivers/usb/{host,storage} \
       -type f 2> /dev/null | cpio --make-directories -p --quiet $WDIR
-  else
-    echo "Including currently loaded modules only"
-    MODULES=$(lsmod | awk 'NR>1 {print $1}')
-    for MODULE in $MODULES; do
-      MODFILE=$(modinfo -n $MODULE)
-      REL_PATH="${MODFILE#*/kernel/}"
-      MODFILE="/usr/lib/modules/$KERNEL_VERSION/kernel/$REL_PATH"
-      if [ -f "$MODFILE" ]; then
-        echo "Copying $MODULE"
-        cp --parents "$MODFILE" "$WDIR"
-      else 
-        echo "Could not find module $MODULE, regenerate initramfs after reboot"
-      fi
-    done
-  fi
 
   # Copy required metadata files
   cp /usr/lib/modules/$KERNEL_VERSION/modules.{builtin,order} \
