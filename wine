@@ -38,7 +38,7 @@ make -j22
 # Install Wine32
 sudo make install
 sudo make DESTDIR=/pkgs/$PACKAGE install
-cd /pkgs/wine/usr/lib32/wine/i386-windows
+cd /pkgs/$PACKAGE/usr/lib/wine/i386-windows
 i686-w64-mingw32-strip *.dll
 unset PKG_CONFIG_PATH
 
@@ -46,7 +46,7 @@ unset PKG_CONFIG_PATH
 cd /blfs/builds/$DIR/wine-64
 sudo make install
 sudo make DESTDIR=/pkgs/$PACKAGE install
-cd /pkgs/wine/usr/lib/wine/x86_64-windows
+cd /pkgs/$PACKAGE/usr/lib/wine/x86_64-windows
 x86_64-w64-mingw32-strip *.dll
 
 cd /pkgs
