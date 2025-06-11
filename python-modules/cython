@@ -17,13 +17,13 @@ cd $DIR
 
 # Build
 
-python -m build --wheel --no-isolation
+python3 -m build --wheel --no-isolation
 
 
 
 
 # Install
-python -m installer --destdir=/pkgs/$PACKAGE dist/*.whl
+python3 -m installer --destdir=/pkgs/$PACKAGE dist/*.whl
 cd /pkgs
 
 sudo cp -rpv /pkgs/$PACKAGE/* /

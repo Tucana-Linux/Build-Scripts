@@ -36,8 +36,8 @@ make -j20
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install
 cd /pkgs
-mkdir -p /pkgs/python/etc
-cat > /pkgs/python/etc/pip.conf << EOF
+mkdir -p /pkgs/$PACKAGE/etc
+cat > /pkgs/$PACKAGE/etc/pip.conf << EOF
 [global]
 root-user-action = ignore
 disable-pip-version-check = true
@@ -47,6 +47,9 @@ EOF
 curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py --ignore-installed --root=/pkgs/$PACKAGE
 rm get-pip.py
+
+# Add python symlink
+ln -sfv /usr/bin/python /pkgs/$PACKAGE/usr/bin/python3
 
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
