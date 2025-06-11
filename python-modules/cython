@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=3.1.1
+PKG_VER=3.1.2
 URL=https://github.com/cython/cython/releases/download/$PKG_VER/Cython-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=cython-$PKG_VER
