@@ -19,10 +19,53 @@ git submodule update --init --recursive
 
 # Build
 
+# System boost fix
+sed -E 's&<boost/process.hpp>&"/blfs/builds/'"$DIR"'/boost_process_v1.hpp"&' \
+  -i /blfs/builds/$DIR/src/platform/common.h
+
+sed -E 's&(namespace bp = boost::process);&\1::v1;&' \
+  -i /blfs/builds/$DIR/src/platform/linux/misc.cpp
+
+sed -E 's&<boost/process/v1.hpp>&"/blfs/builds/'"$DIR"'/boost_process_v1.hpp"&' \
+  -i /blfs/builds/$DIR/src/platform/linux/misc.cpp \
+  /blfs/builds/$DIR/src/process.h
+
+install -Dm644 /dev/stdin "boost_process_v1.hpp" << END
+#ifndef BOOST_PROCESS_V1_HPP
+#define BOOST_PROCESS_V1_HPP
+#include <boost/process/v1/args.hpp>
+#include <boost/process/v1/async.hpp>
+#include <boost/process/v1/async_system.hpp>
+#include <boost/process/v1/group.hpp>
+#include <boost/process/v1/child.hpp>
+#include <boost/process/v1/cmd.hpp>
+#include <boost/process/v1/env.hpp>
+#include <boost/process/v1/environment.hpp>
+#include <boost/process/v1/error.hpp>
+#include <boost/process/v1/exe.hpp>
+#include <boost/process/v1/group.hpp>
+#include <boost/process/v1/handles.hpp>
+#include <boost/process/v1/io.hpp>
+#include <boost/process/v1/pipe.hpp>
+#include <boost/process/v1/shell.hpp>
+#include <boost/process/v1/search_path.hpp>
+#include <boost/process/v1/spawn.hpp>
+#include <boost/process/v1/system.hpp>
+#include <boost/process/v1/start_dir.hpp>
+#endif //BOOST_PROCESS_V1_HPP
+END
+
 mkdir build
 cd build
 
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=release -G Ninja ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=release \
+      -DSUNSHINE_ENABLE_DRM=ON \
+      -DSUNSHINE_ENABLE_TRAY=ON \
+      -DSUNSHINE_ENABLE_VAAPI=ON \
+      -DSUNSHINE_ENABLE_WAYLAND=ON \
+      -DSUNSHINE_ENABLE_X11=ON \
+      -G Ninja ..
 
 ninja
 
