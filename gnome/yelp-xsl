@@ -20,8 +20,7 @@ cd $DIR
 # Build
 
 
-./configure --prefix=/usr
-
+meson setup --prefix=/usr --buildtype=release
 
 
 # Install
@@ -32,7 +31,7 @@ cd /pkgs
 
 
 sudo echo "" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "itstool libxslt meson" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
