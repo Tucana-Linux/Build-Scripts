@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
+export CFLAGS="-O2"
 export CXXFLAGS="-O2"
 PKG_VER=1.88.0
 URL=https://github.com/boostorg/boost/releases/download/boost-$PKG_VER/boost-$PKG_VER-b2-nodocs.tar.xz
@@ -16,8 +16,8 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-./bootstrap.sh --prefix=/pkgs/boost/usr --with-python=python3 &&
-./b2 stage -j16 threading=multi link=shared
+./bootstrap.sh --prefix=/pkgs/$PACKAGE/usr --with-python=python3 &&
+./b2 stage -j16 threading=multi
 
 
 
