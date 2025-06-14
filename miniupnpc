@@ -17,7 +17,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+./configure --prefix=/usr
 make -j22
 python setup.py build
 
