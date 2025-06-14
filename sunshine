@@ -60,6 +60,10 @@ cd build
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=release \
+      -DBUILD_DOCS=OFF \
+      -DSUNSHINE_ASSETS_DIR="share/sunshine" \
+      -DSUNSHINE_EXECUTABLE_PATH='/usr/bin/sunshine' \
+      -DBoost_USE_STATIC_LIBS=OFF \
       -DSUNSHINE_ENABLE_DRM=ON \
       -DSUNSHINE_ENABLE_TRAY=ON \
       -DSUNSHINE_ENABLE_VAAPI=ON \
