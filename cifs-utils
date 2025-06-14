@@ -19,7 +19,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+autoreconf -fi
 ./configure --prefix=/usr --sbindir=/usr/sbin
 
 
