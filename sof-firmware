@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2025.05
+PKG_VER=2025.04
 URL=https://github.com/thesofproject/sof-bin/releases/download/v$PKG_VER/sof-bin-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
