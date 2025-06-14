@@ -17,8 +17,10 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-autoreconf -fi
-./configure --prefix=/usr
+autoupdate
+autoreconf -fiv
+# we don't build the gtk2 version
+./configure --prefix=/usr --sysconfdir=/etc --enable-gtk3
 
 
 make -j16
