@@ -23,12 +23,12 @@ cd $DIR
 mkdir build &&
 cd    build &&
 
-meson setup --prefix=/usr --buildtype=release -Dcompat-rules=true -Dxorg-rules-symlinks=true  -Dxkb-base="/usr/share/X11/xkb".. &&
+meson setup --prefix=/usr --buildtype=release -Dcompat-rules=true -Dxorg-rules-symlinks=true  -Dxkb-base="/usr/share/X11/xkb"..
+
 ninja
 
 # Install
- DESTDIR=/pkgs/$PACKAGE ninja install
-ninja install
+DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
