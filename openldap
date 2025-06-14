@@ -97,7 +97,7 @@ rm -rf $DIR
 cd /pkgs
 mkdir -p $PACKAGE/var/cache/neptune/meta-pkgs
 # Most of the time you only need the client
-echo "openldap-client" > $PACKAGE/var/cache/mercury/meta-pkgs/openldap
+echo "openldap-client" > $PACKAGE/var/cache/neptune/meta-pkgs/openldap
 echo "openldap-client" > $PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 tar -cvapf $PACKAGE.tar.xz $PACKAGE
