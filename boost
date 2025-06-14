@@ -23,7 +23,7 @@ cd $DIR
 
 
 # Install
-./b2 install threading=multi link=shared
+./b2 install threading=multi
 cd /pkgs
 
 
