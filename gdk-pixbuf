@@ -23,7 +23,7 @@ cd $DIR
 mkdir build
 cd build
 
-meson --prefix=/usr -Dgtk_doc=false --buildtype=release -Ddocs=false ..
+meson setup --prefix=/usr -Ddocumentation=true --buildtype=release ..
 
 ninja
 
@@ -36,7 +36,7 @@ cd /pkgs
 
 
 sudo echo "glib libjpeg-turbo libpng shared-mime-info librsvg libtiff gobject-introspection" > /pkgs/$PACKAGE/depends
-sudo echo "python-docutils" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-docutils gtk-doc" > /pkgs/$PACKAGE/make-depends
 sudo echo "gdk-pixbuf-query-loaders --update-cache" > /pkgs/$PACKAGE/postinst
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
