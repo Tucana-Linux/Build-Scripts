@@ -13,22 +13,17 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://github.com/miniupnp/miniupnp/commit/bf4215a7574f88aa55859db9db00e3ae58cf42d6.diff
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
-# Fix header file not including stddef
-patch -Np1 < ../bf4215a7574f88aa55859db9db00e3ae58cf42d6.diff
-
-
 make -j22
 python setup.py build
 
-
 # Install
+# Fix header file missing stddef.h
 sudo make DESTDIR=/pkgs/$PACKAGE install
+sed -i '/miniupnpctypes.h/ a #include <stddef.h>' /pkgs/$PACKAGE/usr/include/miniupnpc/upnpcommands.h
 install -Dm 644 man3/miniupnpc.3 -t /pkgs/$PACKAGE/usr/share/man/man3
 python setup.py install --optimize=1 --skip-build --root=/pkgs/$PACKAGE
 
