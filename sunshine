@@ -77,7 +77,7 @@ ninja
 
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-sudo ninja install
+sudo setcap -r /pkgs/$PACKAGE/usr/bin/sunshine
 cd /pkgs
 
 
