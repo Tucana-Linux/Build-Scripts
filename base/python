@@ -16,7 +16,6 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../133944.patch
 ./configure --prefix=/usr        \
             --enable-shared      \
             --with-system-expat  \
