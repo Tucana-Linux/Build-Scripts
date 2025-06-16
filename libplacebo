@@ -33,7 +33,7 @@ cd /pkgs
 
 
 
-sudo echo "libgcc glsalng lcms shaderc libunwind libvulkan xxhash" > /pkgs/$PACKAGE/depends
+sudo echo "libgcc glslang lcms shaderc libunwind libvulkan xxhash" > /pkgs/$PACKAGE/depends
 sudo echo "glad mesa jinja markupsafe setuptools vulkan-headers" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
