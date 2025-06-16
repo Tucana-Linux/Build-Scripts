@@ -89,7 +89,7 @@ cd /pkgs
 
 
 sudo echo "libedit libnftnl ncurses readline jansson gmp libmnl" > /pkgs/$PACKAGE/depends
-sudo echo "python-build python-installer python-wheel git asciidoc" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-build python-installer wheel git asciidoc" > /pkgs/$PACKAGE/make-depends
 sudo echo "/etc/nftables.conf" > /pkgs/$PACKAGE/backup
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
