@@ -51,7 +51,7 @@ cd /pkgs
 
 
 sudo echo "util-linux lib32-glibc" > /pkgs/$PACKAGE/depends
-sudo echo "bash binutils coreutils diffutils eudev findutils gawk libgcc gettext glibc grep libcap make ncurses sed zlib" > /pkgs/$PACKAGE/make-depends
+sudo echo "bash binutils coreutils diffutils findutils gawk libgcc gettext glibc grep libcap make ncurses sed zlib" > /pkgs/$PACKAGE/make-depends
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
