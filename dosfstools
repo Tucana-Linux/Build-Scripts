@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=4.2
+PKG_VER=4.1
 URL=https://github.com/dosfstools/dosfstools/releases/download/v$PKG_VER/dosfstools-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
