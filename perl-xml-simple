@@ -8,7 +8,7 @@ PKG_VER=2.25
 URL=https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=perl-parse-yapp
+PACKAGE=perl-xml-simple
 
 # Get Package
 
