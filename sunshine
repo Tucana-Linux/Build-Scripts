@@ -82,7 +82,7 @@ cd /pkgs
 
 
 
-sudo echo "libayatana-appindicator libcap libdrm mesa libevdev icu miniupnpc libnotify pulseaudio libva opus wayland" > /pkgs/$PACKAGE/depends
+sudo echo "numactl libayatana-appindicator libcap libdrm mesa libevdev icu miniupnpc libnotify pulseaudio libva opus wayland" > /pkgs/$PACKAGE/depends
 sudo echo "intel-media-driver gcc boost cmake git nodejs" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
