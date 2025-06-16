@@ -34,7 +34,7 @@ cd /pkgs
 
 
 sudo echo "pango giflib libtiff libxml2 libspiro python potrace woff2 gtk3 libuninameslist" > /pkgs/$PACKAGE/depends
-sudo echo "python-sphinx cmake git python-setuptools" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-sphinx cmake git setuptools" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
