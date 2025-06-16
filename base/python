@@ -46,7 +46,7 @@ python3 get-pip.py --ignore-installed --root=/pkgs/$PACKAGE
 rm get-pip.py
 
 # Add python symlink
-ln -sfv /usr/bin/python /pkgs/$PACKAGE/usr/bin/python3
+ln -sfv /usr/bin/python3 /pkgs/$PACKAGE/usr/bin/python
 
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
