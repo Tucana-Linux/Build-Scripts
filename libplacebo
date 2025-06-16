@@ -17,10 +17,12 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-meson setup ..            \
+mkdir build
+cd build
+meson setup            \
       --prefix=/usr       \
       --buildtype=release \
-      -D demos=false
+      -D demos=false ..
 
 ninja
 
