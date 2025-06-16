@@ -6,8 +6,8 @@ export CXXFLAGS="-O2 "
 PKG_VER=6.1.0
 URL=https://github.com/moonlight-stream/moonlight-qt/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=moonlight-$PKG_VER
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+DIR=moonlight-qt-$PKG_VER
+PACKAGE=moonlight
 
 # Get Package
 
