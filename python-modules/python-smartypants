@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=2.0.1
+PKG_VER=2.0.2
 URL=https://github.com/leohemsted/smartypants.py/archive/v$PKG_VER/smartypants-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=smartypants.py-$PKG_VER
