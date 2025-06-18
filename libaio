@@ -35,6 +35,7 @@ cd /pkgs
 sudo echo "" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo cp $PACKAGE.tar.xz /finished
 
 

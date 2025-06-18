@@ -37,6 +37,7 @@ cd /pkgs
 
 sudo echo "enchant icu gtk3 glib vala" > /pkgs/$PACKAGE/depends
 sudo echo "gtk-doc" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
