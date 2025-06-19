@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=47.0
+PKG_VER=48.2.1
 MAJOR=$(echo $PKG_VER | cut -c-2)
 URL=https://download.gnome.org/sources/gnome-backgrounds/$MAJOR/gnome-backgrounds-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
