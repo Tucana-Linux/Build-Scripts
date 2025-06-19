@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=48.4
+PKG_VER=47.7
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
 URL=https://download.gnome.org/sources/gnome-maps/$MAJOR/gnome-maps-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
