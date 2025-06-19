@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=48.2
+PKG_VER=49
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
 URL=https://download.gnome.org/sources/gnome-shell-extensions/$MAJOR/gnome-shell-extensions-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
