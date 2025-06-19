@@ -26,7 +26,7 @@ meson setup --prefix=/usr --buildtype=release ..
 ninja
 
 # Install
-sudo ninja DESTDIR=/pkgs/$PACKAGE install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
 sudo ninja install
 cd /pkgs
 
