@@ -9,7 +9,6 @@ bash -e polkit-qt5
 bash -e phonon
 #bash -e phonon-backend-vlc
 bash -e plasma-wayland-protocols
-sudo bash -e qcoro
 sudo bash -e qca
 # Plasma5-limited
 cd plasma5-limited
