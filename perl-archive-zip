@@ -6,7 +6,7 @@ PKG_VER=1.68
 URL=https://www.cpan.org/authors/id/P/PH/PHRED/Archive-Zip-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+PACKAGE=perl-archive-zip
 
 # Get Package
 

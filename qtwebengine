@@ -8,7 +8,7 @@ MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.qt.io/official_releases/qt/$MAJOR/$PKG_VER/submodules/qtwebengine-everywhere-src-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+PACKAGE=qtwebengine
 
 # Get Package
 
