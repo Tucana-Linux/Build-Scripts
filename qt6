@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 set -e
-PKG_VER=6.9.0
+PKG_VER=6.9.1
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.qt.io/archive/qt/$MAJOR/$PKG_VER/single/qt-everywhere-src-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -14,12 +14,10 @@ PACKAGE=qt6
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/qt-everywhere-src-$PKG_VER-protobuf_30-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../qt-everywhere-src-6.9.0-protobuf_30-1.patch
 mkdir build
 cd build
 
