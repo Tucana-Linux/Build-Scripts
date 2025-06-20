@@ -18,13 +18,14 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+mkdir build
+cd build
+meson setup --prefix=/usr --buildtype=release
 
-./configure --prefix=/usr --disable-static --with-webkit2gtk-4-0 &&
-make -j16
-
+ninja
 # Install
-sudo make install
-sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo ninja install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 

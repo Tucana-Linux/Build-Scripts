@@ -1,13 +1,14 @@
 #!/bin/bash
 
-export CFLAGS="-O2 "
-export CXXFLAGS="-O2 "
+export CFLAGS=-"O2"
+export CXXFLAGS="-O2"
 
-PKG_VER=3.12.0
-URL=https://download.gnome.org/sources/gnome-icon-theme/$PKG_VER/gnome-icon-theme-$PKG_VER.tar.xz
+
+PKG_VER=2.25
+URL=https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+PACKAGE=perl-xml-simple
 
 # Get Package
 
@@ -18,10 +19,10 @@ cd $DIR
 
 # Build
 
-./configure --prefix=/usr
 
+perl Makefile.PL
 
-make -j22
+make -j20
 
 
 # Install
@@ -31,7 +32,7 @@ cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "perl-xml-parser" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE

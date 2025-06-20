@@ -43,7 +43,7 @@ cd /pkgs
 
 
 sudo echo "lib32-libxcb xorgproto libX11" > /pkgs/$PACKAGE/depends
-sudo echo "xorg-util-macros xtrans" > /pkgs/$PACKAGE/make-depends
+sudo echo "util-macros xtrans" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

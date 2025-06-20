@@ -48,7 +48,7 @@ done
 ln -sfv kmod /pkgs/kmod/usr/bin/lsmod
 
 sudo echo "glibc xz zlib" > /pkgs/$PACKAGE/depends
-sudo echo "bash binutils bison coreutils flex gcc gettext glibc gzip make openssl pkg-config sed xz zlib" > /pkgs/$PACKAGE/make-depends
+sudo echo "bash binutils bison coreutils flex gcc gettext glibc gzip make openssl pkgconf sed xz zlib" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

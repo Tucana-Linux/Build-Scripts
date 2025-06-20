@@ -2,7 +2,7 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=3.13.3
+PKG_VER=3.13.5
 URL=https://www.python.org/ftp/python/$PKG_VER/Python-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -46,7 +46,7 @@ python3 get-pip.py --ignore-installed --root=/pkgs/$PACKAGE
 rm get-pip.py
 
 # Add python symlink
-ln -sfv /usr/bin/python /pkgs/$PACKAGE/usr/bin/python3
+ln -sfv /usr/bin/python3 /pkgs/$PACKAGE/usr/bin/python
 
 sudo cp -rpv /pkgs/$PACKAGE/* /
 

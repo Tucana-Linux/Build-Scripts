@@ -32,7 +32,6 @@ ninja
 
 # Install
 ninja install
-DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 

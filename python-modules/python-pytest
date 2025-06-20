@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=8.4.0
+PKG_VER=8.4.1
 URL=https://files.pythonhosted.org/packages/source/p/pytest/pytest-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -29,7 +29,7 @@ cd /pkgs
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "python-packaging python-pluggy" > /pkgs/$PACKAGE/depends
-sudo echo "setuptools python-packaging python-pluggy python-wheel setuptools-scm python-build python-installer" > /pkgs/$PACKAGE/make-depends
+sudo echo "setuptools python-packaging python-pluggy wheel setuptools-scm python-build python-installer" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

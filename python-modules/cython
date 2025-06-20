@@ -29,7 +29,7 @@ cd /pkgs
 sudo cp -rpv /pkgs/$PACKAGE/* /
 
 sudo echo "python" > /pkgs/$PACKAGE/depends
-sudo echo "python-build python-installer python-setuptools wheel" > /pkgs/$PACKAGE/make-depends
+sudo echo "python-build python-installer setuptools wheel" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

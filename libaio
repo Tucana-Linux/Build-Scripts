@@ -4,7 +4,7 @@ export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 #ARCH_PKG=libaio
 #ARCH_VAR=pkgver
-PKG_VER=0.3.112
+PKG_VER=0.3.113
 URL=https://pagure.io/libaio/archive/libaio-$PKG_VER/libaio-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -34,7 +34,8 @@ cd /pkgs
 
 sudo echo "" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
-sudo tar -cvzpf $PACKAGE.tar.xz $PACKAGE
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo cp $PACKAGE.tar.xz /finished
 
 
