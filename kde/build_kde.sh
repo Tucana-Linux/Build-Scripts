@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # Building Depends
-sudo neptune install URI lmdb
+sudo neptune install --y URI lmdb
 bash -e ecm
 bash -e libdbusmenu-qt
 bash -e polkit-qt

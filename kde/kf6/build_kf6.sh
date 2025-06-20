@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo neptune install bison gperf pkgconf cmake make
+sudo neptune install --y bison gperf pkgconf cmake make
 bash -e kirigami
 bash -e ktexttemplate
 bash -e kuserfeedback
