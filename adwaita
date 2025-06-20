@@ -31,11 +31,12 @@ ninja
 
 
 # Install
-ninja install
+DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
 sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "meson ninja glib" > /pkgs/$PACKAGE/make-depends
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas && gtk-update-icon-cache --force /usr/share/icons/Adwaita" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
