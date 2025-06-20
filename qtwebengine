@@ -1,94 +1,51 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
 
-PKG_VER=5.15.17
-URL=https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-$PKG_VER.tar.xz
+PKG_VER=6.9.1
+MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
+URL=https://download.qt.io/official_releases/qt/$MAJOR/$PKG_VER/submodules/qtwebengine-everywhere-src-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=qtwebengine
-export QT5DIR=/usr
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
 # Get Package
-set -e
+
 cd /blfs/builds
-wget  https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-$PKG_VER-build_fixes-1.patch
-wget https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-$PKG_VER-ffmpeg5_fixes-1.patch
-wget https://raw.githubusercontent.com/xXTeraXx/Tucana/master/mercury/patches/qtwebengine-python3.patch
 wget $URL
-												
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
-patch -Np1 -i ../qtwebengine-$PKG_VER-build_fixes-1.patch
-patch -Np1 -i ../qtwebengine-$PKG_VER-ffmpeg5_fixes-1.patch
-patch -Np1 -i ../qtwebengine-python3.patch
-mkdir -pv .git src/3rdparty/chromium/.git
-
-# Fix internal FFMPEG 
-sed 's/(uint8_t)\(([^)]*)\|shift\)/\1 \& 0x1F/' \
-    -i src/3rdparty/chromium/third_party/ffmpeg/libavcodec/x86/mathops.h
-
-sed -e '/^MODULE_VERSION/s/5.*/5.15.11/' -i .qmake.conf
-
-find -type f -name "*.pr[io]" |
-  xargs sed -i -e 's|INCLUDEPATH += |&$$QTWEBENGINE_ROOT/include |'
-  
-
-sed -e '/link_pulseaudio/s/false/true/' \
-    -i src/3rdparty/chromium/media/media_options.gni
-# Python 3.11 Fix
-sed -e 's/\^(?i)/(?i)^/' \
-    -i src/3rdparty/chromium/tools/metrics/ukm/ukm_model.py &&
-sed -e "s/'rU'/'r'/" \
-    -i src/3rdparty/chromium/tools/grit/grit/util.py
-    
-# Python 3.12 fix
-sed -e "/import imp/d"                                                    \
-    -i src/3rdparty/chromium/mojo/public/tools/mojom/mojom/fileutil.py    \
-       src/3rdparty/chromium/mojo/public/tools/mojom/mojom/parse/lexer.py &&
-
-sed -e "s/import imp/import importlib.util/" \
-    -e 's@.*load_source.*@\
-    spec = importlib.util.spec_from_file_location(fullname, filepath)\
-    mod = importlib.util.module_from_spec(spec);\
-    spec.loader.exec_module(mod)\
-    return mod@'                             \
-    -i src/3rdparty/chromium/components/resources/protobufs/binary_proto_generator.py
-sed -i 's/NINJAJOBS/NINJA_JOBS/' src/core/gn_run.pro
-
-sed -e /six.move/d \
-    -i src/3rdparty/chromium/third_party/protobuf/python/google/protobuf/internal/python_message.py &&
-
-rm -r src/3rdparty/chromium/tools/grit/third_party/six
-
-# ICU 74 Fix
-sed -e 's/^#define BA_LB_COUNT.*$/#define BA_LB_COUNT 40/' \
-    -i src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator.cc
+mkdir build
+cd build
 
 
-mkdir build &&
-cd    build &&
-qmake .. -- -system-ffmpeg -proprietary-codecs -webengine-icu &&
-make -j20
 
+cmake -DCMAKE_MESSAGE_LOG_LEVEL=STATUS             \
+      -DQT_FEATURE_webengine_system_ffmpeg=ON      \
+      -DQT_FEATURE_webengine_system_icu=ON         \
+      -DQT_FEATURE_webengine_system_libevent=ON    \
+      -DQT_FEATURE_webengine_proprietary_codecs=ON \
+      -DQT_FEATURE_webengine_webrtc_pipewire=ON    \
+      -DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF           \
+      -DQT_GENERATE_SBOM=OFF                       \
+      -G Ninja ..     
 
+ninja
 
 
 # Install
-make install 
-make INSTALL_ROOT=/pkgs/$PACKAGE install
-find $QT5DIR/ -name \*.prl \
-   -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
-export QT5DIR=/pkgs/qtwebengine/usr
-find $QT5DIR/ -name \*.prl \
-   -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+sudo  DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 
-sudo echo "nodejs nss pciutils qt5 alsa-lib pulseaudio ffmpeg icu libxml2 libwebp libxslt opus libevent mitkrb" > /pkgs/$PACKAGE/depends
+
+sudo echo "cups qt6 nss libxml2 ffmpeg fontconfig harfbuzz pipewire pulseaudio icu libwebp opus libevent" > /pkgs/$PACKAGE/depends
+sudo echo "nodejs python-html5lib pciutils" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
@@ -96,5 +53,4 @@ sudo cp $PACKAGE.tar.xz /finished
 
 cd /blfs/builds
 sudo rm -r $DIR
-
 
