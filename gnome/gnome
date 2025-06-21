@@ -16,7 +16,7 @@ cd /blfs/builds
 
 
 
-mkdir -p /pkgs/$PACKAGE/var/cache/mercury/meta-pkgs
+mkdir -p /pkgs/$PACKAGE/var/cache/neptune/meta-pkgs
 # Install
 cd /pkgs
 
