@@ -35,6 +35,7 @@ cmake -G Ninja \
     	      -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
     	      -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
 	      -DFEATURE_journald=ON \
+              -DBUILD_qtwebengine=OFF \
 	      -DFEATURE_openssl_linked=ON \
 	      -DFEATURE_system_sqlite=ON \
 	      -DFEATURE_xcb_xinput=ON \
