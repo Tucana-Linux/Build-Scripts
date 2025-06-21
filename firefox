@@ -96,6 +96,9 @@ ac_add_options --with-system-zlib
 # and was reported to seriously slow the build. Disable it.
 ac_add_options --without-wasm-sandboxed-libraries
 
+# Add remoting name to fix icon class on wayland
+MOZ_APP_REMOTINGNAME=Firefox
+
 # The following option unsets Telemetry Reporting. With the Addons Fiasco,
 # Mozilla was found to be collecting user's data, including saved passwords and
 # web form data, without users consent. Mozilla was also found shipping updates
@@ -143,6 +146,7 @@ Type=Application
 Icon=firefox
 Categories=GNOME;GTK;Network;WebBrowser;
 MimeType=$MIMETYPE
+StartupWMClass=firefox
 StartupNotify=true
 EOF
 
