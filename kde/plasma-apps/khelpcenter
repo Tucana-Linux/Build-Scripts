@@ -44,7 +44,7 @@ cd /pkgs
 
 
 
-sudo echo "grantlee kf6 xapian" > /pkgs/$PACKAGE/depends
+sudo echo "qtwebengine grantlee kf6 xapian" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
