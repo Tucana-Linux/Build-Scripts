@@ -4,8 +4,7 @@ bash -e ark
 bash -e kio-extras
 bash -e dolphin
 bash -e kdenlive
-# needs qtwebengine
-#bash -e khelpcenter
+bash -e khelpcenter
 bash -e konsole
 bash -e libkexiv2
 bash -e okular
@@ -14,3 +13,4 @@ bash -e gwenview
 bash -e kate
 bash -e kpmcore
 bash -e partitionmanager
+bash -e falkon
