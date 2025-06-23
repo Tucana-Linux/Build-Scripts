@@ -22,7 +22,7 @@ cd $DIR
 sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in
 mkdir build &&
 cd    build &&
-meson --prefix=/usr --buildtype=release ..
+meson setup --prefix=/usr --buildtype=release ..
 
 
 ninja 
