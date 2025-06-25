@@ -7,7 +7,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=2.41
+PKG_VER=2.41.1
 # changed from the usual because they don't do .0 versions
 MAJOR=$(echo $PKG_VER | sed '/\..*\./ s/\.[^.]*$//')
 URL=https://www.kernel.org/pub/linux/utils/util-linux/v$MAJOR/util-linux-$PKG_VER.tar.xz
