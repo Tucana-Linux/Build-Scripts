@@ -30,7 +30,7 @@ cd /pkgs
 
 
 sudo echo "gsettings-desktop-schemas webkitgtk yelp-xsl desktop-file-utils libhandy" > /pkgs/$PACKAGE/depends
-sudo echo "gtk-doc" > /pkgs/$PACKAGE/depends
+sudo echo "libhandy gtk-doc" > /pkgs/$PACKAGE/make-depends
 sudo rm -rf /pkgs/$PACKAGE/blfs
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
