@@ -48,12 +48,11 @@ cmake -G Ninja \
 
 
 ninja
-cmake --build . --target docs
-
+ninja docs
 # Install
 
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-DESTDIR="/pkgs/$PACKAGE" cmake --build . --target install_docs
+DESTDIR="/pkgs/$PACKAGE" ninja install_docs
 mkdir -p /pkgs/$PACKAGE/usr/bin
 ln -sfv /usr/lib/qt6/bin/qmake6 /pkgs/$PACKAGE/usr/bin/
 find /pkgs/$PACKAGE/ -name \*.prl \
