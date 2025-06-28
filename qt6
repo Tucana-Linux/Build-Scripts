@@ -36,6 +36,7 @@ cmake -G Ninja \
               -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
               -DBUILD_qtwebengine=OFF \
               -DBUILD_qtdoc=ON \
+              -DBUILD_qttools=ON \
               -DFEATURE_journald=ON \
               -DFEATURE_libproxy=ON \
               -DFEATURE_openssl_linked=ON \
