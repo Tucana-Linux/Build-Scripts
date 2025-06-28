@@ -9,6 +9,7 @@ URL=https://download.qt.io/archive/qt/$MAJOR/$PKG_VER/single/qt-everywhere-src-$
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=qt6
+PACKAGE1=qt6
 
 # Get Package
 
@@ -53,7 +54,7 @@ ninja docs
 # Install
 
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-DESTDIR="/pkgs/$PACKAGE" ninja install_docs
+DESTDIR="/pkgs/$PACKAGE1" ninja install_docs
 mkdir -p /pkgs/$PACKAGE/usr/bin
 ln -sfv /usr/lib/qt6/bin/qmake6 /pkgs/$PACKAGE/usr/bin/
 find /pkgs/$PACKAGE/ -name \*.prl \
@@ -139,6 +140,11 @@ sudo echo "protobuf-c" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
+
+sudo echo "qt6" > /pkgs/$PACKAGE1/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE1/version
+sudo tar -cvapf $PACKAGE1.tar.xz $PACKAGE1
+sudo cp $PACKAGE1.tar.xz /finished
 
 
 cd /blfs/builds
