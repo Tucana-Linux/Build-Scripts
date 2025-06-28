@@ -9,7 +9,7 @@ URL=https://download.qt.io/archive/qt/$MAJOR/$PKG_VER/single/qt-everywhere-src-$
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=qt6
-PACKAGE1=qt6
+PACKAGE1=qt6-doc
 
 # Get Package
 
