@@ -44,6 +44,7 @@ cd /pkgs
 
 
 sudo echo "qt6 pulseaudio" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
