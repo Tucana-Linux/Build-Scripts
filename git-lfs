@@ -1,0 +1,56 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=3.7.0
+URL=https://github.com/git-lfs/git-lfs/releases/download/v$PKG_VER/git-lfs-v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=git-lfs-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+
+go mod vendor
+go generate ./commands
+go build .
+
+
+# Install
+
+install -Dm755 $PACKAGE /pkgs/$PACKAGE/usr/bin/$PACKAGE
+
+./$PACKAGE completion bash | install -Dm644 /dev/stdin \
+  /pkgs/$PAKCAGE/usr/share/bash-completion/completions/$PACKAGE
+./$PACKAGE completion fish | install -Dm644 /dev/stdin \
+  /pkgs/$PACKAGE/usr/share/fish/vendor_completions.d/$PACKAGE.fish
+./$PACKAGE completion zsh | install -Dm644 /dev/stdin \
+  /pkgs/$PACKAGE/usr/share/zsh/site-functions/_$PACKAGE
+
+
+
+
+cd /pkgs
+
+
+
+sudo echo "git" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
