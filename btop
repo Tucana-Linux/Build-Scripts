@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=1.4.3
+PKG_VER=1.4.4
 URL=https://github.com/aristocratos/btop/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=btop-$PKG_VER
