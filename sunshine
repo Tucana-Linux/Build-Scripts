@@ -77,7 +77,6 @@ ninja
 
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
-sudo setcap -r /pkgs/$PACKAGE/usr/bin/sunshine
 sudo setcap cap_sys_admin+p /pkgs/$PACKAGE/usr/bin/sunshine-*
 cd /pkgs
 
