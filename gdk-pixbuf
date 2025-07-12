@@ -23,7 +23,7 @@ cd $DIR
 mkdir build
 cd build
 
-meson setup --prefix=/usr -Ddocumentation=true --buildtype=release ..
+meson setup --prefix=/usr --buildtype=release ..
 
 ninja
 
