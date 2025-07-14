@@ -1,0 +1,58 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=2.15.0
+URL=https://github.com/intel/libvpl/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=libvpl-$PKG_VER
+PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+export CFLAGS+=' -DNDEBUG'
+export CXXFLAGS+='-DNDEBUG'
+
+mkdir build
+cd build
+cmake \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_EXAMPLES=OFF \
+  -DBUILD_TESTS=ON \
+  -DINSTALL_EXAMPLES="OFF" \
+  -DVPL_INSTALL_LICENSEDIR="share/licenses/$PACKAGE" \
+  ..
+
+
+
+make -j22
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo make install
+cd /pkgs
+
+
+
+sudo echo "glibc intel-media-sdk vpl-gpu-rt" > /pkgs/$PACKAGE/depends
+sudo echo "cmake" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

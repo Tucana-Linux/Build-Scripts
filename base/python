@@ -20,6 +20,7 @@ cd $DIR
             --enable-shared      \
             --with-system-expat  \
             --with-system-ffi    \
+            --with-tk \
             --enable-optimizations \
             --with-ensurepip=install \
 

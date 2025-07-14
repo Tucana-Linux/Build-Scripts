@@ -1,0 +1,71 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+# No longer getting updates
+
+#HOLD_TUCANA
+PKG_VER=22.5.4
+URL=https://github.com/Intel-Media-SDK/MediaSDK/archive/refs/tags/intel-mediasdk-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=MediaSDK-intel-mediasdk-$PKG_VER
+PACKAGE=intel-media-sdk
+
+# Heavily based on https://gitlab.archlinux.org/archlinux/packaging/packages/intel-media-sdk/-/blob/main/PKGBUILD?ref_type=heads
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+wget https://gitlab.archlinux.org/archlinux/packaging/packages/intel-media-sdk/-/raw/main/020-intel-media-sdk-libcttmetrics-static-only.patch
+wget https://gitlab.archlinux.org/archlinux/packaging/packages/intel-media-sdk/-/raw/main/030-intel-media-sdk-gcc13-fix.patch
+wget https://gitlab.archlinux.org/archlinux/packaging/packages/intel-media-sdk/-/raw/main/040-intel-media-sdk-gcc15-fix.patch
+tar -xvf $TAR
+cd $DIR
+
+# Build
+
+patch -Np1 < ../020-intel-media-sdk-libcttmetrics-static-only.patch
+patch -Np1 < ../030-intel-media-sdk-gcc13-fix.patch
+patch -Np1 < ../040-intel-media-sdk-gcc15-fix.patch
+
+mkdir -p build
+cd build
+
+cmake \
+    -DBUILD_ALL:BOOL='ON' \
+    -DBUILD_TOOLS:BOOL='ON' \
+    -DCMAKE_BUILD_TYPE:STRING='None' \
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
+    -DENABLE_ITT:BOOL='OFF' \
+    -DENABLE_OPENCL:BOOL='OFF' \
+    -DENABLE_WAYLAND:BOOL='ON' \
+    -DENABLE_X11_DRI3:BOOL='ON' \
+    -DMFX_APPS_DIR='/usr/lib/mfx' \
+    -Wno-dev \
+    ..
+
+
+make -j22
+
+
+# Install
+sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo make install
+cd /pkgs
+
+
+
+sudo echo "libgcc glibc intel-media-driver libdrm libva wayland" > /pkgs/$PACKAGE/depends
+sudo echo "cmake intel-media-driver libdrm libpciaccess libva libX11 libxcb python wayland" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+

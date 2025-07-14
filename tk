@@ -4,6 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 PKG_VER=8.6.14
+MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://cytranet.dl.sourceforge.net/project/tcl/Tcl/$PKG_VER/tk$PKG_VER-src.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=tk$PKG_VER
@@ -29,14 +30,16 @@ cd unix
 make -j22
 
 
+sed -e "s@^\(TK_SRC_DIR='\).*@\1/usr/include'@" \
+    -e "/TK_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
+    -i tkConfig.sh
 # Install
 sudo make INSTALL_ROOT=/pkgs/$PACKAGE install
-ln -sfv libtk${PKG_VER%.*}.so /pkgs/$PACKAGE/usr/lib
+sudo make INSTALL_ROOT=/pkgs/$PACKAGE install-private-headers
+chmod -v 755 /pkgs/$PACKAGE/usr/lib/libtk$MAJOR.so
+mkdir -p /pkgs/$PACKAGE/usr/bin/
+ln -v -sf wish$MAJOR /pkgs/$PACKAGE/usr/bin/wish
 cd /pkgs
-# Remove references to build directory (Credit Arch Linux & LFS)
-sed -e "s#/blfs/builds/$DIR/tk$PKG_VER/unix#/usr/lib#" \
-	-e "s#/blfs/builds/$DIR/tk$PKG_VER#/usr/include#" \
-	-i /pkgs/$PACKAGE/usr/lib/tkConfig.sh
 
 
 
