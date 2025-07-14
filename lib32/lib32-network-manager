@@ -6,7 +6,7 @@ export CXXFLAGS="-O2 "
 set -e
 PKG_VER=1.50.0
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
-URL=https://download.gnome.org/sources/NetworkManager/$MAJOR/NetworkManager-$PKG_VER.tar.xz
+URL=https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/$PKG_VER/downloads/NetworkManager-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=lib32-network-manager
@@ -28,7 +28,7 @@ export CFLAGS+="-m32"
 export CXXFLAGS+="-m32"
 export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-meson --prefix=/usr              \
+meson setup --prefix=/usr              \
     --libdir=/usr/lib32 \
     -Dcrypto=gnutls \
     -D dbus_conf_dir=/usr/share/dbus-1/system.d \
