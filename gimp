@@ -25,7 +25,8 @@ rm -rf /usr/{lib,share}/gimp/3.0 &&
 rm -f  /usr/share/gir-1.0/Gimp-3.0.gir &&
 rm -f  /usr/lib/girepository-1.0/Gimp-3.0.typelib &&
 rm -f  /usr/lib/libgimp*-3.0.so*
-
+# reregister incase of bad pixbuf upgrade
+dot -c 
 mkdir gbuild
 cd gbuild
 meson setup ..                   \
