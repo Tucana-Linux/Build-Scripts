@@ -1,0 +1,47 @@
+#!/bin/bash
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+
+PKG_VER=1.26.4
+URL=https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/gstreamer-$PKG_VER/gst-plugins-rs-gstreamer-$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=$(echo $TAR | sed 's|.tar.*||g')
+PACKAGE=gst-plugins-rs
+
+# Get Package
+
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+export SODIUM_USE_PKG_CONFIG=1
+cargo fetch --target="x86_64-unknown-linux-gnu" --locked
+mkdir build
+cd build
+
+meson setup --prefix=/usr --buildtype=release  ..
+
+ninja
+
+
+# Install
+sudo  DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
+cd /pkgs
+
+
+
+sudo echo "dav1d gst-plugins-base gst-plugins-bad gtk4 openssl" > /pkgs/$PACKAGE/depends
+sudo echo "rustc cargo-c dav1d gst-plugins-bad gst-plugins-base gtk4 meson nasm openssl libsodium" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+
+cd /blfs/builds
+sudo rm -r $DIR
+
+
