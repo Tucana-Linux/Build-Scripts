@@ -36,7 +36,7 @@ cd /pkgs
 
 
 sudo echo "gcc glib libsoup3" > /pkgs/$PACKAGE/depends
-sudo echo "gtk4 gi-docgen gobject-introspection vala pandoc-cli" > /pkgs/$PACKAGE/make-depends
+sudo echo "gtk4 gi-docgen gobject-introspection vala" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
