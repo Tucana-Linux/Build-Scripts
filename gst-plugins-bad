@@ -26,6 +26,7 @@ cd build
 meson  --prefix=/usr       \
        --buildtype=release \
        -Dpackage-origin=https://github.com/xXTeraXx/Tucana \
+       -Dgst-plugins-bad:webrtc=enabled \
        -Dpackage-name="GStreamer $PKG_VER for Tucana"    \
        --wrap-mode=nodownload
 
@@ -39,7 +40,7 @@ cd /pkgs
 
 
 
-sudo echo "gst-plugins-base libdvdread libdvdnav soundtouch" > /pkgs/$PACKAGE/depends
+sudo echo "libnice gst-plugins-base libdvdread libdvdnav soundtouch" > /pkgs/$PACKAGE/depends
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE

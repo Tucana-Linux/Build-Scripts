@@ -24,7 +24,7 @@ cd    build &&
 
 meson  setup --prefix=/usr       \
        --buildtype=release \
-       -Dgst_debug=false   \
+       -Dgst_debug=true \
        -Dpackage-name="GStreamer $PKG_VER For Tucana" &&
 
 
