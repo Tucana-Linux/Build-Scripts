@@ -36,6 +36,7 @@ cd /pkgs
 
 
 sudo echo "rtkit wireplumber bluez ffmpeg gstreamer gst-plugins-base libva pulseaudio sbc sdl2 v4l-utils" > /pkgs/$PACKAGE/depends
+sudo echo "rtkit wireplumber bluez ffmpeg gstreamer gst-plugins-base libva pulseaudio sbc sdl2 v4l-utils webrtc-audio-processing" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

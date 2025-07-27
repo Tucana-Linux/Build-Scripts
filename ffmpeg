@@ -33,6 +33,7 @@ patch -Np1 -i ../ffmpeg-$PKG_VER-chromium_method-1.patch
             --enable-libdav1d \
             --enable-libaom      \
             --enable-libfreetype \
+            --enable-libpulse \
             --enable-libvpl
             --enable-libmp3lame  \
             --enable-libdrm \
@@ -61,8 +62,8 @@ cd /pkgs
 
 sudo cp -rpv $PACKAGE/* /
 
-sudo echo "libvpl vpl-gpu-rt intel-media-sdk dav1d libdrm libplacebo libass fdk-aac freetype2 lame libtheora libvorbis libvpx opus x264 x265 nasm yasm alsa-lib libva libvdpau sdl2 fontconfig fribidi libaom" > /pkgs/$PACKAGE/depends
-sudo echo "libvpl vpl-gpu-rt intel-media-sdk dav1d libdrm libplacebo libass fdk-aac freetype2 lame libtheora libvorbis libvpx opus x264 x265 nasm yasm alsa-lib libva libvdpau sdl2 fontconfig fribidi libaom" > /pkgs/$PACKAGE/make-depends
+sudo echo "pulseaudio libvpl vpl-gpu-rt intel-media-sdk dav1d libdrm libplacebo libass fdk-aac freetype2 lame libtheora libvorbis libvpx opus x264 x265 nasm yasm alsa-lib libva libvdpau sdl2 fontconfig fribidi libaom" > /pkgs/$PACKAGE/depends
+sudo echo "pulseaudio libvpl vpl-gpu-rt intel-media-sdk dav1d libdrm libplacebo libass fdk-aac freetype2 lame libtheora libvorbis libvpx opus x264 x265 nasm yasm alsa-lib libva libvdpau sdl2 fontconfig fribidi libaom" > /pkgs/$PACKAGE/make-depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE

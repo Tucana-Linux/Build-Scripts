@@ -40,7 +40,7 @@ cd /pkgs
 
 
 
-sudo echo "libnice gst-plugins-base libdvdread libdvdnav soundtouch" > /pkgs/$PACKAGE/depends
+sudo echo "libsrtp libnice gst-plugins-base libdvdread libdvdnav soundtouch" > /pkgs/$PACKAGE/depends
 
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
