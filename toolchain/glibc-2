@@ -34,7 +34,7 @@ echo "rootsbindir=/usr/sbin" > configparms
       --prefix=/usr                      \
       --build=$(../scripts/config.guess) \
       --disable-werror \
-      --enable-stack-protector=strong 
+      --enable-stack-protector=strong  \
       --enable-kernel=5.4                \
       --enable-multi-arch                \
       --disable-nscd \
