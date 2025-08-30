@@ -14,14 +14,14 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-$PKG_VER-chromium_method-1.patch
+wget https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/ffmpeg/lfs-chromium-method.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
 
 
-patch -Np1 -i ../ffmpeg-$PKG_VER-chromium_method-1.patch
+patch -Np1 -i ../lfs-chromium-method.patch
 
 ./configure --prefix=/usr        \
             --enable-gpl         \
