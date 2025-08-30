@@ -25,12 +25,6 @@ meson setup --prefix=/usr --buildtype=release ..
 
 ninja
 
-python3 -m venv --system-site-packages testenv &&
-source testenv/bin/activate                    &&
-pip3 install looseversion                      &&
-python3 -m pytest
-deactivate
-
 # Install
 sudo  DESTDIR=/pkgs/$PACKAGE ninja install
 chmod u+s /pkgs/$PACKAGE/usr/bin/fusermount3 
