@@ -32,7 +32,7 @@ cd       build
              --enable-shared     \
              --disable-werror    \
              --enable-64-bit-bfd \
-             --with-system-zlib
+             --with-system-zlib \
              --enable-multilib \
              --with-bugurl=https://github.com/xXTeraXx/Tucana/ \ 
 
