@@ -33,7 +33,9 @@ echo "rootsbindir=/usr/sbin" > configparms
 ../configure                             \
       --prefix=/usr                      \
       --build=$(../scripts/config.guess) \
-      --enable-kernel=4.14                \
+      --disable-werror \
+      --enable-stack-protector=strong 
+      --enable-kernel=5.4                \
       --enable-multi-arch                \
       --disable-nscd \
       --with-headers=/usr/include  libc_cv_slibdir=/usr/lib
