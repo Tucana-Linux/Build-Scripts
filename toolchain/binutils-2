@@ -26,7 +26,6 @@ cd       build
 
 ../configure --prefix=/usr       \
              --sysconfdir=/etc   \
-             --enable-gold       \
              --enable-ld=default \
              --enable-plugins    \
              --enable-shared     \
@@ -34,7 +33,7 @@ cd       build
              --enable-64-bit-bfd \
              --with-system-zlib \
              --enable-multilib \
-             --with-bugurl=https://github.com/xXTeraXx/Tucana/ \ 
+             --with-bugurl=https://tucanalinux.org
 
 
 make tooldir=/usr -j16
