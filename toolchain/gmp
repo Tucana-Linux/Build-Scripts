@@ -16,6 +16,8 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+# gcc 15 fix
+sed -i '/long long t1;/,+1s/()/(...)/' configure
 cp -v configfsf.guess config.guess
 cp -v configfsf.sub   config.sub
 
