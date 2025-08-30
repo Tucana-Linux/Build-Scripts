@@ -11,9 +11,13 @@
 set -e
 # Stage 1, preliminary builds, mostly for updating glibc
 bash linux-api-headers
+# Copy Out
 bash glibc-2
+# Copy out
 bash lib32-glibc-2
+# Copy Out
 bash binutils-2
+# Copy Out
 bash gcc-3
 
 # Exit chroot and copy
