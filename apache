@@ -14,13 +14,10 @@ BLFS_SYSTEMD_VER=20241211
 
 cd /blfs/builds
 wget $URL
-wget  https://www.linuxfromscratch.org/patches/blfs/svn/httpd-$PKG_VER-blfs_layout-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
-patch -Np1 -i ../httpd-$PKG_VER-blfs_layout-1.patch             &&
 
 sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in              &&
 
