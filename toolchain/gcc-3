@@ -44,6 +44,7 @@ CFLAGS="-O2" ../configure --prefix=/usr            \
 	     --disable-fixincludes \
              --enable-default-ssp  \
              --enable-threads=posix \
+             --disable-fixincludes \
              --with-system-zlib \
 
 make BOOT_CFLAGS='-O2' STAGE1_CFLAGS='-O2' bootstrap -j20
