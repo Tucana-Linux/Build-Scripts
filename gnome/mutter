@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=48.4
+PKG_VER=48.3
 MAJOR=$(echo $PKG_VER | cut -c-2)
 URL=https://download.gnome.org/sources/mutter/$MAJOR/mutter-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
@@ -14,10 +14,12 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/mutter/same-edid-dual-monitor.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
+patch -Np1 < ../same-edid-dual-monitor.patch
 mkdir build &&
 cd    build &&
 
