@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2.13.2
+PKG_VER=2.14.0
  
 URL=https://downloads.sourceforge.net/freetype/freetype-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
