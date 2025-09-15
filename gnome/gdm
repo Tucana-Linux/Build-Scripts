@@ -18,7 +18,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+sed -r 's/([(*])bool([) ])/\1boolval\2/' -i common/gdm-settings-utils.*
 mkdir build &&
 cd    build &&
 
