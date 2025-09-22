@@ -108,7 +108,7 @@ while read -r line; do
             -DCMAKE_PREFIX_PATH=/usr       \
             -DCMAKE_BUILD_TYPE=Release         \
             -Wno-dev ..
-      make -j20
+      make 
       make install
       
       # Package 

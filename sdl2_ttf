@@ -24,7 +24,7 @@ autoreconf -fiv
 
 ./configure --prefix=/usr --disable-static --disable-freetype-builtin --disable-harfbuzz-builtin
 
-make -j22
+make 
 
 
 # Install

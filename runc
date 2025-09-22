@@ -18,7 +18,7 @@ cd $DIR
 
 # Build
 
-make runc -j22
+make runc 
 
 
 # Install

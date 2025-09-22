@@ -32,7 +32,7 @@ makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi &&
 makeinfo --plaintext       -o doc/cpio.txt  doc/cpio.texi
 
 
-make -j16
+make 
 
 
 # Install

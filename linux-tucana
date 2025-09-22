@@ -19,13 +19,13 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
+patch -Np1 < ../zenbook.patch
 # Copy .config
 cp /boot/config-tucana .config
 # Add extraversions so that modules directory doesn't confllict with self-builds
 sed -i 's/EXTRAVERSION\ =/EXTRAVERSION\ =\ -tucana/' Makefile
 make olddefconfig
-make -j22
+make 
 
 # Install into the proper location
 

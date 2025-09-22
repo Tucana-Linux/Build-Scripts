@@ -25,7 +25,7 @@ cd    build &&
 meson setup --prefix=/usr --buildtype=release .. &&
 
 
-ninja -j16
+ninja 
 
 
 # Install

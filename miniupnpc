@@ -17,7 +17,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-make -j22
+make 
 python setup.py build
 
 # Install

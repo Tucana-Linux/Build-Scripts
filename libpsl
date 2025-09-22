@@ -22,7 +22,7 @@ sed -i 's/env python/&3/' src/psl-make-dafsa
 ./configure --prefix=/usr --disable-static PYTHON=python3 
 
 
-make -j16
+make 
 
 
 # Install

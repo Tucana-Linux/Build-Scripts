@@ -28,7 +28,7 @@ cmake -G "Unix Makefiles"         \
       -Wno-dev ..
 
 
-make -j22
+make 
 
 
 # Install

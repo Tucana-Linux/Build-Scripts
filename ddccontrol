@@ -20,7 +20,7 @@ cd $DIR
 ./configure --prefix=/usr --disable-gnome-applet
 
 
-make -j20
+make 
 
 
 # Install

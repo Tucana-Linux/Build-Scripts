@@ -22,7 +22,7 @@ cd $DIR
 autoreconf -fiv
 ./configure --prefix=/usr
 
-make -j16
+make 
 
 
 # Install

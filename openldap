@@ -32,7 +32,7 @@ patch -Np1 -i ../openldap-$PKG_VER-consolidated-1.patch &&
             --disable-slapd \
 
 
-make -j16
+make 
 
 
 # Install
@@ -53,7 +53,7 @@ cd /blfs/builds
 cd $DIR
 
 # Cleanup
-make distclean -j20
+make distclean 
 
 # Build the Server
 
@@ -79,8 +79,8 @@ autoconf &&
             --disable-wt          \
             --enable-overlays=mod
 
-make depend -j20
-make -j20
+make depend 
+make 
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE2 install

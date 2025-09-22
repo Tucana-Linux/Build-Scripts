@@ -22,7 +22,7 @@ export PATH=$PATH:/usr/sbin
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

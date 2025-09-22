@@ -19,7 +19,7 @@ tar -xvf ../$TAR
 
 # Build
 qmake6 PREFIX="/pkgs/$PACKAGE/usr" moonlight-qt.pro
-make release -j22
+make release 
 
 # Install
 sudo  make DESTDIR=/pkgs/$PACKAGE install

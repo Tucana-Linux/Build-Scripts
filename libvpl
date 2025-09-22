@@ -35,7 +35,7 @@ cmake \
 
 
 
-make -j22
+make 
 
 
 # Install

@@ -23,7 +23,7 @@ cd $DIR
 
 patch -Np1 -i ../unzip-6.0-consolidated_fixes-1.patch
 
-make -f unix/Makefile generic -j20
+make -f unix/Makefile generic 
 
 
 # Install

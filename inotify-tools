@@ -22,7 +22,7 @@ cd $DIR
 ./configure --prefix=/usr --enable-fanotify
 
 
-make -j22
+make 
 
 
 # Install

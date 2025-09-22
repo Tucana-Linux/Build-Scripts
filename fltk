@@ -23,7 +23,7 @@ sed -i -e '/cat./d' documentation/Makefile
 ./configure --prefix=/usr    \
             --enable-shared 
 
-make -j16
+make 
 
 
 # Install

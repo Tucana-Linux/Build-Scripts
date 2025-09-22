@@ -20,7 +20,7 @@ cd $DIR
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 
 
-make -j22
+make 
 
 
 # Install

@@ -19,7 +19,7 @@ cd $DIR
 
 ./configure --prefix=/usr --disable-static &&
 
-make -j22
+make 
 make -C doc html                                       &&
 makeinfo --html      -o doc/html       doc/parted.texi &&
 makeinfo --plaintext -o doc/parted.txt doc/parted.texi

@@ -46,7 +46,7 @@ LD=ld
              --enable-default-pie        \
              --enable-default-ssp        \
 
-make -j16
+make 
 
 
 # Install

@@ -42,7 +42,7 @@ CC="gcc -m32" CXX="g++ -m32" \
 
 
 
-make -j20 
+make  
 
 
 # Install

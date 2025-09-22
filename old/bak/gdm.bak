@@ -27,7 +27,7 @@ meson --prefix=/usr               \
       -Dinitial-vt=7 \
       -Ddefault-pam-config=lfs ..
 
-ninja -j16
+ninja 
 
 
 # Install

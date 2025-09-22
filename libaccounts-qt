@@ -24,7 +24,7 @@ qmake6 PREFIX=/usr LIBDIR=/usr/lib
 
 
 
-make -j22
+make 
 
 
 # Install

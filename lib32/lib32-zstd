@@ -24,7 +24,7 @@ cd $DIR
 
 #patch -Np1 -i ../zstd-1.5.2-upstream_fixes-1.patch
 
-CC="gcc -m32" make prefix=/usr -j16
+CC="gcc -m32" make prefix=/usr 
 
 
 # Install

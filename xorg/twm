@@ -23,7 +23,7 @@ cd $DIR
 sed -i -e '/^rcdir =/s,^\(rcdir = \).*,\1/etc/X11/app-defaults,' src/Makefile.in
 ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-static
 
-make -j20
+make 
 
 
 # Install

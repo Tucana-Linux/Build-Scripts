@@ -28,7 +28,7 @@ cd $DIR
             --enable-libdebuginfod=dummy
 
 
-make -j16
+make 
 
 
 # Install

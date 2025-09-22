@@ -30,7 +30,7 @@ autoreconf -fiv              &&
             --disable-static \
 
 
-make -j22
+make 
 
 
 # Install

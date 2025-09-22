@@ -27,9 +27,9 @@ sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 make -f Makefile-libbz2_so
 make clean
 
-make -j20
+make 
 
-make -j16
+make 
 
 
 

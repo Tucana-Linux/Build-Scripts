@@ -23,7 +23,7 @@ export NATIVE_COMPILER_TRIPLE=x86_64-pc-linux-gnu-gcc
 ./configure --prefix=/usr --sbindir=/usr/bin --mandir=/usr/share/man --sysconfdir=/etc --with-gtk --without-libiberty
 
 
-make WERROR_CFLAGS= INCLUDESERVER_PYTHON=/usr/bin/python -j20
+make WERROR_CFLAGS= INCLUDESERVER_PYTHON=/usr/bin/python 
 
 # Install
 sudo make INCLUDESERVER_PYTHON=/usr/bin/python DESTDIR=/pkgs/$PACKAGE install

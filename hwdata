@@ -20,7 +20,7 @@ cd $DIR
 ./configure --prefix=/usr --disable-blacklist
 
 
-make -j16
+make 
 
 
 # Install

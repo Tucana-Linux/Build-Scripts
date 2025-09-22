@@ -28,7 +28,7 @@ cd $DIR
             --runstatedir=/run           \
             --disable-privsep            \
 
-make -j22
+make 
 
 
 # Install

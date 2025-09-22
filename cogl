@@ -25,7 +25,7 @@ cd $DIR
             --enable-wayland-egl-server  
 
 
-make -j22
+make 
 
 
 # Install

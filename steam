@@ -23,7 +23,7 @@ cd $DIR
 # I'm not doing anything fancy... this has already wasted enough of my time
 
 
-make -j16
+make 
 
 
 # Install

@@ -20,7 +20,7 @@ cd $DIR
 
 # Build
 ./configure --prefix=/usr --disable-static
-make -j20
+make 
 
 
 tar -xf ../libcdio-paranoia-10.2+2.0.1.tar.bz2 &&
@@ -29,7 +29,7 @@ cd libcdio-paranoia-10.2+2.0.1 &&
 ./configure --prefix=/usr --disable-static 
 
 
-make -j16
+make 
 
 
 # Install

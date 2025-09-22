@@ -20,7 +20,7 @@ sh ../js/src/configure.in --prefix=/usr            \
                           --disable-jemalloc       \
                           --disable-debug-symbols  \
                           --enable-readline        &&
-make -j16
+make 
 
 #install
 sudo porg -lp js91 "make install &&

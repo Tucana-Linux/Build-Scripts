@@ -22,7 +22,7 @@ cd build
 
 ./configure --prefix=/usr --sysconfdir=/etc
 
-make -j22
+make 
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install

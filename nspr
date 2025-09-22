@@ -29,7 +29,7 @@ sed -i 's#$(LIBRARY) ##'   config/rules.mk         &&
             $([ $(uname -m) = x86_64 ] && echo --enable-64bit) &&
 
 
-make -j16
+make 
 
 
 # Install

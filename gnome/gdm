@@ -30,7 +30,7 @@ meson setup --prefix=/usr               \
       -D run-dir=/run/gdm \
       -Ddefault-pam-config=lfs ..
 
-ninja -j16
+ninja 
 
 
 # Install

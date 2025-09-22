@@ -36,7 +36,7 @@ cd $DIR
 
 
 
-make -j16
+make 
 
 
 # Install

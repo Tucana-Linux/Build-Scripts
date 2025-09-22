@@ -29,7 +29,7 @@ make \
  XZ_SUPPORT=1 \
  LZ4_SUPPORT=1 \
  XATTR_SUPPORT=1 \
- -j16
+ 
 
 
 # Install

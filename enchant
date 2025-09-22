@@ -22,7 +22,7 @@ cd $DIR
             --disable-static \
             --docdir /usr/share/doc/enchant-$PKG_VER
 
-make -j22
+make 
 
 
 # Install

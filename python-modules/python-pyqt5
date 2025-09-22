@@ -23,7 +23,7 @@ sip-build \
     --api-dir /usr/share/qt/qsci/api/python \
     --pep484-pyi
 cd build
-make -j22
+make 
 
 
 

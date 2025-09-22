@@ -19,7 +19,7 @@ cd $DIR
 # Build
 
 
-make  headers -j16
+make  headers 
 find usr/include -type f ! -name '*.h' -delete
 
 

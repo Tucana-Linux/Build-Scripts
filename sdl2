@@ -22,7 +22,7 @@ cd $DIR
 
 ./configure --prefix=/usr
 
-make -j20
+make 
 
 
 # Install

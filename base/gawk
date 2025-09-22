@@ -25,7 +25,7 @@ sed -i -i '241i UPREF(m);' interpret.h
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

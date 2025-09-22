@@ -21,7 +21,7 @@ cd $DIR
 
 qmake-qt5 PYTHON_VERSION=$(python3 -c 'import sys; print(".".join(sys.version.split(".")[:2]))')
 
-make -j22
+make 
 
 
 # Install

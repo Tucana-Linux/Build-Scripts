@@ -24,7 +24,7 @@ cd $DIR
             --docdir=/usr/share/doc/attr-$PKG_VER
 
 
-make -j16
+make 
 
 
 # Install

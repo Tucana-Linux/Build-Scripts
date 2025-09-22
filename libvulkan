@@ -20,7 +20,7 @@ cd $DIR
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DVULKAN_HEADERS_INSTALL_DIR=/usr ..
-make -j16
+make 
 
 
 # Install

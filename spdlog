@@ -23,7 +23,7 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_LIBDIR=/usr/lib -DBUILD_SHARED_LIBS=on ..
 
 
-make -j16
+make 
 
 
 # Install

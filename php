@@ -42,7 +42,7 @@ cd $DIR
             --with-readline    
 
 
-make -j16
+make 
 
 
 # Install

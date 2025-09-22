@@ -27,7 +27,7 @@ cd $DIR
             --with-gcc-arch=core2 \
 
 
-make -j16
+make 
 
 
 # Install

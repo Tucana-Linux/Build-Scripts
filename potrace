@@ -23,7 +23,7 @@ cd $DIR
 ./configure --prefix=/usr --mandir=/usr/share/man --with-libpotrace
 
 
-make -j22
+make 
 
 
 # Install

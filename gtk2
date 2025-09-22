@@ -26,7 +26,7 @@ autoreconf -fvi
 
 ./configure --prefix=/usr --sysconfdir=/etc --disable-gtk-doc --with-xinput=yes
 
-make -j16
+make 
 
 
 # Install

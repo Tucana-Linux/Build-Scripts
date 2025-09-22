@@ -22,7 +22,7 @@ cd $DIR
             --disable-static           \
             --enable-pkg-check-modules
 
-make -j16
+make 
 
 
 # Install

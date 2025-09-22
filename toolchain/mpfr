@@ -23,7 +23,7 @@ cd $DIR
             --disable-static     \
             --enable-thread-safe \
 
-make -j20
+make 
 
 
 # Install

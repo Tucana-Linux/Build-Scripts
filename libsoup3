@@ -31,7 +31,7 @@ meson --prefix=/usr       \
       ..                  &&
 
 
-ninja -j16
+ninja 
 
 
 # Install

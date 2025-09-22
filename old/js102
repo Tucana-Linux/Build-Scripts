@@ -48,7 +48,7 @@ sh ../js/src/configure.in --prefix=/usr            \
                           --disable-jemalloc       \
                           --disable-debug-symbols  \
                           --enable-readline    
-make -j20
+make 
 
 
 # Install

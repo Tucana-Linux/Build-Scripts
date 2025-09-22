@@ -27,7 +27,7 @@ patch -Np1 < ../brasero-3.12.3-upstream_fixes-1.patch
             --enable-cxx-warnings=no  
 
 
-make -j16
+make 
 
 
 # Install

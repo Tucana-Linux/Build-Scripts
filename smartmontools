@@ -23,7 +23,7 @@ cd $DIR
             --with-libsystemd=no    \
 
 
-make -j16
+make 
 
 
 # Install

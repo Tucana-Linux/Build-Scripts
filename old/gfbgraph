@@ -23,7 +23,7 @@ cd $DIR
 
 ./configure --prefix=/usr --disable-static --enable-gtk-doc
 
-make -j16
+make 
 
 
 # Install

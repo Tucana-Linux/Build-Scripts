@@ -22,7 +22,7 @@ export GOPATH=/blfs/builds/$DIR
 mkdir -p  $GOPATH/src/github.com/docker/
 ln -sf $GOPATH $GOPATH/src/github.com/docker/cli
 
-make -j22 VERSION=$PKG_VER dynbinary
+make  VERSION=$PKG_VER dynbinary
 make manpages
 
 

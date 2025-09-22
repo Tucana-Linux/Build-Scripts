@@ -28,7 +28,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr  \
       -G "Unix Makefiles" ..
 
 
-make -j22
+make 
 
 
 # Install

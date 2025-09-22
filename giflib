@@ -23,7 +23,7 @@ patch -Np1 -i ../giflib-5.2.2-upstream_fixes-1.patch
 cp pic/gifgrid.gif doc/giflib-logo.gif
 
 
-make -j22
+make 
 
 
 # Install

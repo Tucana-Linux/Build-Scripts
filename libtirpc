@@ -28,7 +28,7 @@ cd $DIR
             --disable-gssapi
 
 
-make -j16
+make 
 
 
 # Install

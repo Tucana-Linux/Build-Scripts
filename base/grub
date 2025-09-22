@@ -32,7 +32,7 @@ echo depends bli part_gpt > grub-core/extra_deps.lst
             --disable-werror 
 
 
-make -j16
+make 
 sudo make DESTDIR=/pkgs/$PACKAGE install
 
 # Remove EFI Files

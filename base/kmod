@@ -33,7 +33,7 @@ autoreconf -fi
 
 
 
-make -j16
+make 
 
 
 # Install m2

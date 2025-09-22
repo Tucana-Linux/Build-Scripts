@@ -30,7 +30,7 @@ cd unix
             --mandir=/usr/share/man
 
 
-make -j16
+make 
 
 sed -e "s|$SRCDIR/unix|/usr/lib|" \
     -e "s|$SRCDIR|/usr/include|"  \

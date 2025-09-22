@@ -35,7 +35,7 @@ USE_SYSTEM_CURL := yes
 USE_SYSTEM_GUMBO := no
 EOF
 export XCFLAGS=-fPIC                               &&
-make build=release shared=yes -j22                      &&
+make build=release shared=yes                       &&
 unset XCFLAGS
 
 

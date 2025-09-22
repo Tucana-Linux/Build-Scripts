@@ -27,7 +27,7 @@ cd $DIR
             --with-doc-dir=/usr/share/doc/libexif-$PKG_VER
 
 
-make -j22
+make 
 
 
 # Install

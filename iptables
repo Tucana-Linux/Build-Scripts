@@ -24,7 +24,7 @@ cd $DIR
             --enable-libipq 
 
 
-make -j22
+make 
 
 
 # Install

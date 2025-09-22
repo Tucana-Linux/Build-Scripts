@@ -27,7 +27,7 @@ cd $DIR
             --disable-static      \
             --docdir=/usr/share/doc/acl-$PKG_VER
 
-make -j16
+make 
 
 
 # Install

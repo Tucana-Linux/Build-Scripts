@@ -22,7 +22,7 @@ cd $DIR
 ./configure --prefix=/usr --with-gnutls --disable-python
 
 
-make -j22
+make 
 
 
 # Install

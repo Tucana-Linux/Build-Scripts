@@ -72,7 +72,7 @@ sed -e 's/^#define BA_LB_COUNT.*$/#define BA_LB_COUNT 40/' \
 mkdir build &&
 cd    build &&
 qmake .. -- -system-ffmpeg -proprietary-codecs -webengine-icu &&
-make -j20
+make 
 
 
 

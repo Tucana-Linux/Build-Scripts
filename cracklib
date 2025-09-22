@@ -25,7 +25,7 @@ CPPFLAGS+=' -I /usr/include/python3.13' \
             --disable-static            \
             --with-default-dict=/usr/lib/cracklib/pw_dict
 
-make -j22
+make 
 
 
 # Install

@@ -30,7 +30,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install
             --with-curses    \
             --docdir=/usr/share/doc/readline-8.1.2
 
-make SHLIB_LIBS="-lncursesw" -j16
+make SHLIB_LIBS="-lncursesw" 
 
 # Install
 sudo make SHLIB_LIBS="-lncursesw" DESTDIR=/pkgs/$PACKAGE install

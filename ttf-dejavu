@@ -20,7 +20,7 @@ cd $DIR
 
 
 
-make full-ttf -j22
+make full-ttf 
 
 
 # Install

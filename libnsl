@@ -21,7 +21,7 @@ cd $DIR
 
 ./configure --sysconfdir=/etc --disable-static
 
-make -j22
+make 
 
 
 # Install

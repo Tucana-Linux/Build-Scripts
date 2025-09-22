@@ -23,7 +23,7 @@ cd $DIR
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

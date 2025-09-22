@@ -27,7 +27,7 @@ cd $DIR
             --enable-libgdbm-compat
 
 
-make -j16
+make 
 
 
 # Install

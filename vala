@@ -24,7 +24,7 @@ cd $DIR
 ./configure --prefix=/usr
 
 
-make -j22
+make 
 
 
 # Install

@@ -24,7 +24,7 @@ cd $DIR
             --with-installbuilddir=/usr/share/apr-1/build
 
 
-make -j16
+make 
 
 
 # Install

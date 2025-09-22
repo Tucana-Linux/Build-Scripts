@@ -28,7 +28,7 @@ cd    build &&
              --with-python=/usr/bin/python3
 
 
-make -j16
+make 
 
 
 # Install

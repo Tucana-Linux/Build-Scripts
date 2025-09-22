@@ -22,7 +22,7 @@ cd $DIR
             --docdir=/usr/share/doc/xz-$PKG_VER
 
 
-make -j16
+make 
 
 
 # Install

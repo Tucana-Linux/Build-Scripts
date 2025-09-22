@@ -23,7 +23,7 @@ patch -Np1 -i ../sgml-common-$PKG_VER-manpage-1.patch
 autoreconf -i
 ./configure --prefix=/usr --sysconfdir=/etc
 
-make -j20
+make 
 
 
 # Install

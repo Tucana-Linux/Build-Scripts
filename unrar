@@ -23,7 +23,7 @@ cd $DIR
 
 
 
-make -f makefile -j20
+make -f makefile 
 
 
 # Install

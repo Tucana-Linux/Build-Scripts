@@ -24,11 +24,11 @@ rm -rf zlib &&
 ./configure --prefix=/usr           \
             --disable-compile-inits \
             --with-system-libtiff   &&
-make -j22
+make 
 
 
 
-make so -j22
+make so 
 
 
 # Install

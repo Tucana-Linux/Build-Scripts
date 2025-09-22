@@ -27,7 +27,7 @@ sed -e 's/acp-pdm-dmic/acp-dmic-codec/'                   \
             --with-curses=ncursesw
 
 
-make -j22
+make 
 
 
 # Install

@@ -24,7 +24,7 @@ cd $DIR
             --disable-static                \
             --docdir=/usr/share/doc/cups-browsed
 
-make -j22
+make 
 
 
 # Install

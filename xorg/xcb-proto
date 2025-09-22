@@ -22,7 +22,7 @@ export PYTHON=python3
 
 ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-static
 
-make -j20
+make 
 
 
 # Install

@@ -37,7 +37,7 @@ export CC="gcc -m32" CXX="g++ -m32"
 	    --with-pkg-config-libdir=/usr/lib32/pkgconfig \
 
 
-make -j20
+make 
 
 make DESTDIR=$PWD/dest install
 

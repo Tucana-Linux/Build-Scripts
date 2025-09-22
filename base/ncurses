@@ -35,7 +35,7 @@ cd $DIR
             --with-pkg-config-libdir=/usr/lib/pkgconfig
 
 
-make -j16
+make 
 
 make DESTDIR=$PWD/dest install
 

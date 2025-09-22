@@ -36,7 +36,7 @@ LDFLAGS="-ltirpc"                          \
     --enable-selftest
 
 
-make -j22
+make 
 
 sed '1s@^.*$@#!/usr/bin/python3@' \
     -i ./bin/default/source4/scripting/bin/*.inst

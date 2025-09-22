@@ -21,7 +21,7 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 
 
-make -j16
+make 
 
 
 # Install

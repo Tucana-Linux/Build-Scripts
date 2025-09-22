@@ -19,7 +19,7 @@ cd $DIR
 # Build
 
 
-make -C src -j22
+make -C src 
 
 
 # Install

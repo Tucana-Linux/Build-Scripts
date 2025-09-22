@@ -22,7 +22,7 @@ cd $DIR
 sed -i 's:\\\${:\\\$\\{:' intltool-update.in
 ./configure --prefix=/usr
 
-make -j16
+make 
 
 
 # Install

@@ -23,7 +23,7 @@ cd $DIR
             --docdir=/usr/share/doc/nghttp2-1.48.0
 
 
-make -j16
+make 
 
 
 # Install

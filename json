@@ -23,7 +23,7 @@ cd $DIR
 perl Makefile.PL
 
 
-make -j16
+make 
 
 
 # Install

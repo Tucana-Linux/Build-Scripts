@@ -22,7 +22,7 @@ sed -i 's:$(LIBDIR)/$(PKGCONFIG_DIR):/usr/lib/pkgconfig:' Makefile
 
 
 
-make -j16
+make 
 
 
 # Install

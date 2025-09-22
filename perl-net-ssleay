@@ -22,7 +22,7 @@ PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 
 
 
-make -j16
+make 
 
 
 # Install

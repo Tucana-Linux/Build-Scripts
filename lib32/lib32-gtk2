@@ -28,7 +28,7 @@ sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
 
 ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib32
 
-make -j20
+make 
 
 
 # Install

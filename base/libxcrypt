@@ -26,7 +26,7 @@ cd $DIR
             --disable-failure-tokens
 
 
-make -j22
+make 
 
 
 # Install

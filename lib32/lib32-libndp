@@ -29,7 +29,7 @@ autoreconf -fiv
 	    --libdir=/usr/lib32 \
 
 
-make -j16
+make 
 
 
 # Install

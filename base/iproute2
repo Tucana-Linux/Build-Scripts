@@ -22,7 +22,7 @@ cd $DIR
 
 
 
-make NETNS_RUN_DIR=/run/netns -j16
+make NETNS_RUN_DIR=/run/netns 
 
 
 # Install

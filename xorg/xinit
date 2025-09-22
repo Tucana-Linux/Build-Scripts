@@ -22,7 +22,7 @@ cd $DIR
 
 ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-static --with-xinitdir=/etc/X11/app-defaults 
 
-make -j20
+make 
 
 
 # Install

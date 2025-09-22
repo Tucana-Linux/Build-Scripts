@@ -31,7 +31,7 @@ export CC="gcc -m32"
 	    --host=i686-pc-linux-gnu
 
 
-make SHLIB_LIBS="-lncursesw" -j16
+make SHLIB_LIBS="-lncursesw" 
 
 # Install
 mkdir -p /pkgs/$PACKAGE/usr/lib32

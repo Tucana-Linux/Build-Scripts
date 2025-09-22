@@ -28,7 +28,7 @@ cmake -G "Unix Makefiles"         \
       -DCMAKE_BUILD_TYPE=Release  \
       -Wno-dev ..
 
-make -j16
+make 
 
 
 # Install

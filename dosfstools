@@ -23,7 +23,7 @@ cd $DIR
             --mandir=/usr/share/man  \
 
 
-make -j22
+make 
 
 
 # Install

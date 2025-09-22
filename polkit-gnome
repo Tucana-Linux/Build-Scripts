@@ -24,7 +24,7 @@ patch -Np1 -i ../polkit-gnome-$PKG_VER-consolidated_fixes-1.patch
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

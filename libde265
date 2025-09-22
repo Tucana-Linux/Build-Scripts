@@ -22,7 +22,7 @@ cd $DIR
 ./configure --prefix=/usr --enable-static=no
 
 
-make -j16
+make 
 
 
 # Install

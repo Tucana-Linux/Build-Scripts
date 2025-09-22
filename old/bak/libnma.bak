@@ -28,7 +28,7 @@ meson --prefix=/usr                             \
       -Dmobile_broadband_provider_info=false .. &&
 
 
-ninja -j16
+ninja 
 
 
 # Install

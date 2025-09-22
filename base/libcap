@@ -25,7 +25,7 @@ export GOPATH="$DIR"
 sed -i '/install -m.*STA/d' libcap/Makefile
 
 
-make  prefix=/usr lib=lib GOFLAGS="-buildmode=pie -mod=readonly -modcacherw" GO_BUILD_FLAGS="-ldflags '-compressdwarf=false -linkmode=external'" -j16
+make  prefix=/usr lib=lib GOFLAGS="-buildmode=pie -mod=readonly -modcacherw" GO_BUILD_FLAGS="-ldflags '-compressdwarf=false -linkmode=external'" 
 
 
 # Install

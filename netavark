@@ -19,7 +19,7 @@ cd $DIR
 
 # Build
 
-make PREFIX=/usr build -j22
+make PREFIX=/usr build 
 
 
 # Install

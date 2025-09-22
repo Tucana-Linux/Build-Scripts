@@ -19,7 +19,7 @@ cd $DIR
 
 make PREFIX=/usr        \
      BUILD_STATIC_LIB=0 \
-     MANDIR=/usr/share/man -j20
+     MANDIR=/usr/share/man 
 
 
 

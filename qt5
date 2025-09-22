@@ -51,7 +51,7 @@ sed -e "/c++1z/s;^CONFIG;#CONFIG;" \
             -docdir         /usr/share/doc/qt5          \
             -translationdir /usr/share/qt5/translations \
             -examplesdir    /usr/share/doc/qt5/examples
-make -j20
+make 
 
 
 

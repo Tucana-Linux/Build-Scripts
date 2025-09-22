@@ -23,7 +23,7 @@ autoreconf -fiv
 ./configure --prefix=/usr --sysconfdir=/etc --enable-gtk3
 
 
-make -j16
+make 
 
 
 # Install

@@ -38,7 +38,7 @@ cmake -DPORT=GTK \
     ..
 
 
-ninja -j14
+ninja 
 
 
 # Install

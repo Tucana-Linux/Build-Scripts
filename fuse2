@@ -22,7 +22,7 @@ patch -Np1 < ../fuse2.patch
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

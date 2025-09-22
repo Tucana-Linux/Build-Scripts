@@ -27,7 +27,7 @@ cp -v configfsf.sub   config.sub
 	    --host=i686-pc-linux-gnu \
 	    --includedir=/usr/include/m32/gmp
 sed -i 's/$(exec_prefix)\/include/$\(includedir\)/' Makefile
-make -j16
+make 
 
 
 # Install

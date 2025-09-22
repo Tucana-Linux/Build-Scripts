@@ -31,7 +31,7 @@ for i in $(readlink -f  /usr/src/linux-surface/patches/6\.0/*); do
 	patch -p1 < $i
 done
 
-make -j20
+make 
 
 mkdir -p ../$PACKAGE/boot
 mkdir -p ../$PACKAGE/usr

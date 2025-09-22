@@ -27,7 +27,7 @@ cd    build &&
              --sysconfdir=/etc       \
 
 
-make -j22
+make 
 
 
 # Install

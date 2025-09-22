@@ -36,7 +36,7 @@ cd       build
              --with-bugurl=https://tucanalinux.org
 
 
-make tooldir=/usr -j16
+make tooldir=/usr 
 
 
 # Install

@@ -17,7 +17,7 @@ cd $DIR
 
 # Builld
 
-make -j16
+make 
 
 
 # Install

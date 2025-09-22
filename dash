@@ -22,7 +22,7 @@ cd $DIR
 ./configure --bindir=/usr/bin --mandir=/usr/share/man
 
 
-make -j16
+make 
 
 
 # Install

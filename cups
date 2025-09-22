@@ -35,7 +35,7 @@ sed -i 's#@CUPS_HTMLVIEW@#firefox#' desktop/cups.desktop.in
 
 
 
-make -j16
+make 
 
 
 # Install

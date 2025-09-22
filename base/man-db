@@ -34,7 +34,7 @@ cd $DIR
             --with-systemdtmpfilesdir=            \
             --with-systemdsystemunitdir=
 
-make -j16
+make 
 
 
 # Install

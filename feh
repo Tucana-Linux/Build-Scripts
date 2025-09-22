@@ -21,7 +21,7 @@ cd $DIR
 
 
 
-make PREFIX=/usr -j16
+make PREFIX=/usr 
 
 
 # Install

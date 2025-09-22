@@ -27,7 +27,7 @@ sed -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \
             --with-python=python3.13
 
 
-make -j16
+make 
 
 
 # Install

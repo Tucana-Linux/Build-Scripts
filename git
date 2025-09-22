@@ -24,7 +24,7 @@ cd $DIR
             --with-python=python3
 
 
-make -j16
+make 
 
 
 # Install

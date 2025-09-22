@@ -30,7 +30,7 @@ export CXXFLAGS="-m32"
 	    --host=i686-pc-linux-gnu \
 
 
-make -j16
+make 
 
 
 # Install

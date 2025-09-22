@@ -39,7 +39,7 @@ cd $DIR
             --without-python
 
 
-make -j16
+make 
 
 
 # Install

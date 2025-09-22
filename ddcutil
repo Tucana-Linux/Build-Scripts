@@ -21,7 +21,7 @@ NOCONFIGURE=1 ./autogen.sh
 
 
 
-make -j22
+make 
 
 
 # Install

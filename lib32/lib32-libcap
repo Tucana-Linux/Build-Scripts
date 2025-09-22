@@ -21,7 +21,7 @@ cd $DIR
 
 sed -i '/install -m.*STA/d' libcap/Makefile
 
-make  GOLANG=no prefix=/usr   RAISE_SETFCAP=no  lib=lib32 CC="gcc -m32"  -j16
+make  GOLANG=no prefix=/usr   RAISE_SETFCAP=no  lib=lib32 CC="gcc -m32"  
 
 # Install
 make  GOLANG=no DESTDIR=$PWD/DESTDIR prefix=/usr lib=lib32 CC="gcc -m32"  RAISE_SETFCAP=no install

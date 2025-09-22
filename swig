@@ -24,7 +24,7 @@ cd $DIR
             --without-javascript               \
             --without-maximum-compile-warnings 
 
-make -j22
+make 
 
 
 # Install

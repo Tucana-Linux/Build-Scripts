@@ -25,7 +25,7 @@ autoreconf -fiv
 LINKS="/usr/bin/links" ./configure --prefix=/usr
 
 
-make -j22
+make 
 
 
 # Install

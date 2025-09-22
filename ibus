@@ -30,7 +30,7 @@ sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \
 
 rm -f tools/main.c 
 
-make -j20
+make 
 
 
 # Install

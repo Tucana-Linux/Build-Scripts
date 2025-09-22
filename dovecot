@@ -26,7 +26,7 @@ cd $DIR
 	    --with-lua=no \
 	    --disable-static
 
-make -j22
+make 
 
 
 # Install

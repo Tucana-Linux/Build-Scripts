@@ -25,7 +25,7 @@ cd $DIR
             --without-nvdimm   \
             --without-tools   
 
-make -j22
+make 
 
 
 # Install

@@ -47,8 +47,8 @@ CFLAGS="-O2" ../configure --prefix=/usr            \
              --disable-fixincludes \
              --with-system-zlib \
 
-make BOOT_CFLAGS='-O2' STAGE1_CFLAGS='-O2' bootstrap -j20
-#make check -j20
+make BOOT_CFLAGS='-O2' STAGE1_CFLAGS='-O2' bootstrap 
+#make check 
 
 
 

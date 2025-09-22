@@ -31,7 +31,7 @@ gzip -cd ../libpng-$PKG_VER-apng.patch.gz | patch -p1
 
 ./configure --prefix=/usr --disable-static
 
-make -j16
+make 
 
 
 # Install

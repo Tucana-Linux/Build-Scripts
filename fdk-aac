@@ -22,7 +22,7 @@ autoreconf -fiv
 ./configure --prefix=/usr --disable-static
 
 
-make -j16
+make 
 
 
 # Install

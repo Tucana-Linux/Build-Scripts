@@ -27,7 +27,7 @@ export CC="gcc -m32"
 	    --libdir=/usr/lib32 \
 
 
-make -j16
+make 
 
 
 # Install

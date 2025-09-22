@@ -25,7 +25,7 @@ cd $DIR
             --sysconfdir=/etc \
             --enable-utf8     \
 
-make -j22
+make 
 
 
 # Install

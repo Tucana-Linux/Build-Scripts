@@ -22,7 +22,7 @@ cd $DIR
             --without-included-zlib
 
 
-make -j22
+make 
 
 
 # Install

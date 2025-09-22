@@ -28,7 +28,7 @@ export CFLAGS="-m32 -march=i686 -Wall -O3" CXXFLAGS="$CFLAGS"
 	 enable-ktls \
 
 
-make -j16
+make 
 
 
 # Install

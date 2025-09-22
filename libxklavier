@@ -22,7 +22,7 @@ cd $DIR
 ./configure --prefix=/usr --disable-static
 
 
-make -j22
+make 
 
 
 # Install

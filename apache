@@ -40,7 +40,7 @@ sed -e '/HTTPD_ROOT/s:${ap_prefix}:/etc/httpd:'       \
             --with-suexec-uidmin=100                          \
             --with-suexec-userdir=public_html   
 
-make -j22
+make 
 
 
 # Install

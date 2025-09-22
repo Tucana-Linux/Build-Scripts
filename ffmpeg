@@ -49,7 +49,7 @@ patch -Np1 -i ../lfs-chromium-method.patch
             --docdir=/usr/share/doc/ffmpeg
 
 
-make -j16
+make 
 gcc tools/qt-faststart.c -o tools/qt-faststart
 
 

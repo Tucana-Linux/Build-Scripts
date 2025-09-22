@@ -23,7 +23,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev -DWITH_DSP_FFMPEG=ON -DWITH_FFMPEG=ON
 
 
 
-make -j16
+make 
 
 
 # Install

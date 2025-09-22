@@ -19,7 +19,7 @@ cd $DIR
 
 # Build
 
-make -f unix/Makefile generic_gcc -j20
+make -f unix/Makefile generic_gcc 
 
 
 # Install

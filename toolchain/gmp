@@ -25,7 +25,7 @@ cp -v configfsf.sub   config.sub
             --enable-cxx     \
             --disable-static \
 
-make -j16
+make 
 
 
 # Install

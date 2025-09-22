@@ -27,7 +27,7 @@ cd $DIR
             --enable-avx     \
             --enable-avx2  
 
-make -j22
+make 
 
 
 # Install

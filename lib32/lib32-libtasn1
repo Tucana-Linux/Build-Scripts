@@ -26,7 +26,7 @@ cd $DIR
 ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
 
 
-make -j16
+make 
 
 
 # Install

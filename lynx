@@ -28,7 +28,7 @@ cd $DIR
             --datadir=/usr/share/doc/lynx
 
 
-make -j22
+make 
 
 
 # Install

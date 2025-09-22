@@ -21,7 +21,7 @@ cd $DIR
 # Build
 
 
-make prefix=/usr -j16
+make prefix=/usr 
 
 
 # Install

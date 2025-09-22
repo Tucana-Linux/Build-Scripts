@@ -21,7 +21,7 @@ cd $DIR
 ./configure --prefix=/usr --sbindir=/usr/sbin
 
 
-make -j16
+make 
 
 
 # Install

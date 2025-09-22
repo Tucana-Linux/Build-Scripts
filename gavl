@@ -26,7 +26,7 @@ LIBS=-lm                         \
             --docdir=/usr/share/doc/gavl
 
 
-make -j22
+make 
 
 
 # Install

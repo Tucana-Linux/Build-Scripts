@@ -23,7 +23,7 @@ autoreconf -fiv
 ./configure --prefix=/usr --disable-mantainer-mode
 
 
-make -j16
+make 
 
 
 # Install

@@ -33,7 +33,7 @@ cd    obj &&
                     --enable-readline    
 
 
-make -j20
+make 
 
 
 # Install

@@ -21,12 +21,12 @@ cd $DIR
 # Build
 
 
-  make -j20
-  make -C lib -j20
-  make -C gnuefi -j20
-  make -C inc -j20
+  make 
+  make -C lib 
+  make -C gnuefi 
+  make -C inc 
 
-make -j16
+make 
 
 
 # Install

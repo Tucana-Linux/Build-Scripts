@@ -25,7 +25,7 @@ cd $DIR
 
 ./configure 
 
-make mandoc -j16
+make mandoc 
 
 
 # Install

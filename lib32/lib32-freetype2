@@ -29,7 +29,7 @@ sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
 ./configure --prefix=/usr --enable-freetype-config --disable-static --libdir=/usr/lib32
 
 
-make -j16
+make 
 
 
 # Install

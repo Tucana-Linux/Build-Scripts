@@ -23,7 +23,7 @@ sed -i 's/png_\(sizeof\)/\1/g' examples/png2theora.c
 
 ./configure --prefix=/usr --disable-static
 
-make -j16
+make 
 
 
 # Install

@@ -28,7 +28,7 @@ cd $DIR
 
 
 
-make -j20
+make 
 
 
 # Install

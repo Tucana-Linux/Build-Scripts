@@ -23,7 +23,7 @@ cd $DIR
 
 
 
-make -j22
+make 
 
 
 # Install

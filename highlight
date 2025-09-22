@@ -22,7 +22,7 @@ cd $DIR
 
 
 
-make -j16
+make 
 
 # Build GUI
 make doc_dir=/usr/share/doc/highlight-$PKG_VER/ gui

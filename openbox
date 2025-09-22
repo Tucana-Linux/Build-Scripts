@@ -28,7 +28,7 @@ sed 's/python/python3/' -i data/autostart/openbox-xdg-autostart
             --disable-static  \
 
 
-make -j16
+make 
 
 
 # Install

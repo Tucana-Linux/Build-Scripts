@@ -25,7 +25,7 @@ autoreconf -i
             --sysconfdir=/etc \
 
 
-make -j20
+make 
 
 
 # Install

@@ -21,7 +21,7 @@ cd $DIR
 
 sed -i "/INSTALL.*gz/s/.gz//" Makefile
 
-make -j22
+make 
 
 
 # Install

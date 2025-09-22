@@ -28,7 +28,7 @@ sh autogen.sh                                 &&
 sed -i -e "s%/usr/local/etc/screenrc%/etc/screenrc%" {etc,doc}/* 
 
 
-make -j22
+make 
 
 
 # Install

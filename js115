@@ -38,7 +38,7 @@ PYTHON=python3.11
                     --enable-readline    
 
 
-make -j20
+make 
 
 
 # Install

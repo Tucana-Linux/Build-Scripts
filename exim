@@ -28,7 +28,7 @@ echo "EXTRALIBS=-lpam" >> Local/Makefile
 printf "USE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile
 
 
-make -j22
+make 
 
 
 # Install

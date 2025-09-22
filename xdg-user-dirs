@@ -22,7 +22,7 @@ cd $DIR
 ./configure --prefix=/usr           \
             --sysconfdir=/etc
 
-make -j22
+make 
 
 
 # Install

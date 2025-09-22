@@ -30,7 +30,7 @@ case $(uname -m) in
 esac
 
 
-make -j16
+make 
 
 
 # Install

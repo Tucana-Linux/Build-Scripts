@@ -23,7 +23,7 @@ cd $DIR
 sed -i '/^LN_S/s/s/sfvn/' */Makefile
 
 
-make -j16
+make 
 
 
 # Install

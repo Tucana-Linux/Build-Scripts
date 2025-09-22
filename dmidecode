@@ -21,7 +21,7 @@ cd $DIR
 
 
 
-make prefix=/usr CFLAGS="${CFLAGS}"-j22
+make prefix=/usr CFLAGS="${CFLAGS}"
 
 
 # Install

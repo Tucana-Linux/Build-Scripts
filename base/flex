@@ -27,7 +27,7 @@ cd $DIR
             --disable-static
 
 
-make -j16
+make 
 
 
 # Install

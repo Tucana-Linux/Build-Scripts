@@ -20,7 +20,7 @@ cd $DIR
             --disable-static \
 
 
-make -j20
+make 
 
 
 # Install

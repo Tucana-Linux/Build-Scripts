@@ -57,7 +57,7 @@ CONFIG_CTRL_IFACE_DBUS_INTRO=y
 EOF
 
 cd wpa_supplicant &&
-make BINDIR=/usr/sbin LIBDIR=/usr/lib -j22
+make BINDIR=/usr/sbin LIBDIR=/usr/lib 
 
 
 

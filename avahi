@@ -43,7 +43,7 @@ return; \
     --enable-compat-libdns_sd \
     --with-dbus-system-address='unix:path=/run/dbus/systemd_bus_socket'
 
-make -j20
+make 
 
 # Install
 sudo make DESTDIR=/pkgs/$PACKAGE install

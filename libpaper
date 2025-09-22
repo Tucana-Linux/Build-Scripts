@@ -24,7 +24,7 @@ cd $DIR
             --docdir=/usr/share/doc/libpaper
 
 
-make -j22
+make 
 
 
 # Install

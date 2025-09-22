@@ -21,7 +21,7 @@ cd $DIR
 ./configure --prefix=/usr --sysconfdir=/etc --disable-static
 
 
-make -j16
+make 
 
 
 # Install

@@ -24,7 +24,7 @@ sed -i 's#) ytasm.*#)#' Makefile.in &&
 ./configure --prefix=/usr
 
 
-make -j16
+make 
 
 
 # Install

@@ -27,7 +27,7 @@ cd unix
 		--disable-rpath \
 		--enable-64bit
 
-make -j22
+make 
 
 
 sed -e "s@^\(TK_SRC_DIR='\).*@\1/usr/include'@" \

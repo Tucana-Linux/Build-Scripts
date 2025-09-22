@@ -38,7 +38,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev ..
 
 
-make -j22
+make 
 
 
 # Install

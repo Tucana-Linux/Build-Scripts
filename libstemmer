@@ -23,7 +23,7 @@ cd $DIR
 patch -Np1 < ../snowball-sharedlib.patch
 
 
-make -j16
+make 
 
 
 # Install

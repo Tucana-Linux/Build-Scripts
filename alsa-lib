@@ -20,7 +20,7 @@ cd $DIR
 
 ./configure
 
-make -j16
+make 
 
 
 # Install

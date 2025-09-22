@@ -25,7 +25,7 @@ patch -Np1 -i ../libssh2-$PKG_VER-upstream_fix-1.patch
 ./configure --prefix=/usr --disable-static
 
 
-make -j16
+make 
 
 
 # Install

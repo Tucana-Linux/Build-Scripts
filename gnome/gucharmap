@@ -36,7 +36,7 @@ meson setup --prefix=/usr       \
             -D ucd_path=./ucd   \
             -D docs=false       \
             .. 
-ninja -j16
+ninja 
 
 
 # Install

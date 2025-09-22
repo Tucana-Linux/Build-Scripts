@@ -18,7 +18,7 @@ cd $DIR
 
 # Build
 ./bootstrap.sh --prefix=/pkgs/$PACKAGE/usr --with-python=python3 &&
-./b2 stage -j16 threading=multi
+./b2 stage  threading=multi
 
 
 

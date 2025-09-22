@@ -35,7 +35,7 @@ export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 	    --host=i686-pc-linux-gnu \
 
 
-make -j16
+make 
 
 
 # Install

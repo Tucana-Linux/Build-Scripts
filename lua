@@ -41,7 +41,7 @@ Libs: -L${libdir} -llua -lm -ldl
 Cflags: -I${includedir}
 EOF
 patch -Np1 -i ../lua-$PKG_VER-shared_library-1.patch &&
-make linux -j20
+make linux 
 
 
 

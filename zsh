@@ -26,7 +26,7 @@ cd $DIR
             --enable-gdbm    
 
 
-make -j16
+make 
 
 
 # Install

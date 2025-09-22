@@ -32,7 +32,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr   \
       -DWITH_LIBDB=OFF              \
       -DWITH_GWEATHER4=ON           \
       .. &&
-make -j16
+make 
 
 
 # Install

@@ -30,7 +30,7 @@ export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
             --disable-failure-tokens
 
 
-make -j22
+make 
 
 
 # Install

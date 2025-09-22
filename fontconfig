@@ -25,7 +25,7 @@ cd $DIR
 	    -disable-docs       \
 
 
-make -j16
+make 
 
 
 # Install

@@ -27,7 +27,7 @@ sed '/pkgicu/s/icu-i18n/& icu-uc/' -i configure.py
 
 
 
-make -j20
+make 
 
 
 # Install

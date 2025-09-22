@@ -26,7 +26,7 @@ export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
 make PREFIX=/usr        \
      BUILD_STATIC_LIB=0 \
-     MANDIR=/usr/share/man LIBDIR=/usr/lib32 -j20
+     MANDIR=/usr/share/man LIBDIR=/usr/lib32 
 
 
 

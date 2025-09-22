@@ -24,7 +24,7 @@ sed '/sys\/mount\.h/d' -i src/util.h
 sed '/unistd\.h/a#include <sys/mount.h>' -i src/gpt.c src/linux.c
 
 
-make -j16
+make 
 
 
 # Install

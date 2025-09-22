@@ -22,7 +22,7 @@ patch -Np1 -i ../libcanberra-0.30-wayland-1.patch
 ./configure --prefix=/usr --disable-oss
 
 
-make -j22
+make 
 
 
 # Install

@@ -30,7 +30,7 @@ cd $DIR
             --with-passprompt="[sudo] password for %p: "
 
 
-make -j16
+make 
 
 
 # Install

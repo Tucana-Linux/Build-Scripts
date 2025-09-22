@@ -22,7 +22,7 @@ cd $DIR
             --disable-static \
 
 
-make -j22
+make 
 
 
 # Install

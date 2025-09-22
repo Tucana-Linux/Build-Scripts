@@ -38,7 +38,7 @@ sh Configure -des                                         \
              -Dusethreads
 
 
-make -j16
+make 
 
 
 # Install

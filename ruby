@@ -27,7 +27,7 @@ cd $DIR
             --docdir=/usr/share/doc/ruby
 
 
-make -j22
+make 
 
 
 # Install

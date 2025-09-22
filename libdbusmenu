@@ -27,7 +27,7 @@ autoreconf -fiv
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-tests --disable-static --disable-dumper --with-gtk=3 --disable-valgrind
 
 
-make -j16
+make 
 
 
 # Install

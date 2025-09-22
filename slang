@@ -22,7 +22,7 @@ cd $DIR
             --with-readline=gnu
 
 
-make -j16
+make 
 
 
 # Install

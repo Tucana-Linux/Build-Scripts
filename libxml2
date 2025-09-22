@@ -31,7 +31,7 @@ cd $DIR
             --docdir=/usr/share/doc/libxml2-$MAJOR.0 
 
 
-make -j16
+make 
 
 
 # Install
