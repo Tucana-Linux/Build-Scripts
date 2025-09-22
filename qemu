@@ -29,9 +29,10 @@ cd        build &&
              --audio-drv-list=pa       \
              --disable-vnc-sasl \
              --disable-vte \
+             --enable-slirp
 
 
-make -j20
+make 
 
 
 # Install
