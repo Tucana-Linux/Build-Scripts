@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=25.2.6
+PKG_VER=25.3.4
 URL=https://github.com/intel/vpl-gpu-rt/archive/refs/tags/intel-onevpl-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=vpl-gpu-rt-intel-onevpl-$PKG_VER
