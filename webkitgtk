@@ -37,7 +37,7 @@ cmake  \
     -DENABLE_MINIBROWSER=ON \
     -Wno-dev -G Ninja ..
 
-ninja 
+ninja -j6
 
 
 # Install
