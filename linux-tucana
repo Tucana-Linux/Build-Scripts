@@ -19,7 +19,6 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../zenbook.patch
 # Copy .config
 cp /boot/config-tucana .config
 # Add extraversions so that modules directory doesn't confllict with self-builds
