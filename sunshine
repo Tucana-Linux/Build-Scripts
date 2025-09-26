@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2025.923.33222
+PKG_VER=2025.924.154138
 URL=https://github.com/LizardByte/Sunshine.git
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=Sunshine
