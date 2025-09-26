@@ -14,12 +14,10 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/mutter/same-edid-dual-monitor.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../same-edid-dual-monitor.patch
 mkdir build &&
 cd    build &&
 
