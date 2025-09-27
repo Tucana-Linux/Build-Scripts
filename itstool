@@ -14,13 +14,12 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://www.linuxfromscratch.org/patches/blfs/svn/itstool-2.0.7-lxml-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
-sed -i 's/re.sub(/re.sub(r/'         itstool.in &&
-sed -i 's/re.compile(/re.compile(r/' itstool.in
+patch -Np1 < ../itstool-2.0.7-lxml-1.patch
 PYTHON=/usr/bin/python3 ./configure --prefix=/usr &&
 
 
@@ -35,7 +34,7 @@ cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "lxml docbook-xml" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
