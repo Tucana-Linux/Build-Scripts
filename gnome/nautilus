@@ -22,7 +22,7 @@ cd    build &&
 
 
 
-meson --prefix=/usr       \
+meson setup --prefix=/usr       \
       --buildtype=release \
       -Dselinux=false     \
       -Dpackagekit=false  \
