@@ -14,12 +14,10 @@ set -e
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/gjs-1.84.2-spidermonkey_140-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../gjs-1.84.2-spidermonkey_140-1.patch
 
 mkdir gjs-build &&
 cd    gjs-build &&
