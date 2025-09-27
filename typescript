@@ -27,7 +27,7 @@ mkdir -p /pkgs/$PACKAGE/usr/lib/node_modules/$PACKAGE
 mkdir -p /pkgs/$PACKAGE/usr/bin
 
 rsync -r --exclude=.gitattributes bin lib package.json /pkgs/$PACKAGE/usr/lib/node_modules/$PACKAGE
-ln -sfv /pkgs/$PACKAGE/usr/lib/node_modules/{tsc,tsserver} /pkgs/$PACKAGE/usr/bin
+ln -sfv /usr/lib/node_modules/TypeScript/{tsc,tsserver} /pkgs/$PACKAGE/usr/bin
 
 cd /pkgs
 
