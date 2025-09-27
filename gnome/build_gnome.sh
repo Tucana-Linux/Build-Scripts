@@ -58,6 +58,6 @@ build "eog"
 build "gucharmap"
 build "gnome-browser-connector"
 build "gnome-weather"
-build "gnome-console"
+build "showtime"
 build "gnome"
 
