@@ -3,10 +3,9 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=0.18.0
+PKG_VER=0.4.9
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
-
-URL=https://download.gnome.org/sources/blueprint-compiler/$MAJOR/blueprint-compiler-$PKG_VER.tar.xz
+URL=https://download.gnome.org/sources/libspelling/$MAJOR/libspelling-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -35,8 +34,8 @@ cd /pkgs
 
 
 
-sudo echo "gobject-introspection pygobject3" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "enchant glib gtk4 gtksourceview icu pango" > /pkgs/$PACKAGE/depends
+sudo echo "gi-docgen gobject-introspection vala" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
