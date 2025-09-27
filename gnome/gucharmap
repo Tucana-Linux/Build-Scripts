@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 PKG_VER=17.0.0
-MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
+MAJOR=$(echo $PKG_VER | cut -c2-)
 URL=https://gitlab.gnome.org/GNOME/gucharmap/-/archive/$PKG_VER/gucharmap-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -14,8 +14,8 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.unicode.org/Public/zipped/16.0.0/UCD.zip
-wget https://www.unicode.org/Public/zipped/16.0.0/Unihan.zip
+wget https://www.unicode.org/Public/$MAJOR.0.0/ucd/UCD.zip
+wget https://www.unicode.org/Public/$MAJOR.0.0/ucd/Unihan.zip
 tar -xvf $TAR
 cd $DIR
 
