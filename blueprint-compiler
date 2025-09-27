@@ -1,11 +1,10 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
 
-PKG_VER=49.0
-MAJOR=$(echo $PKG_VER | sed 's/\..*//g')
-URL=https://download.gnome.org/sources/yelp-xsl/$MAJOR/yelp-xsl-$PKG_VER.tar.xz
+PKG_VER=0.18.0
+URL=https://download.gnome.org/sources/blueprint-compiler/$PKG_VER/blueprint-compiler-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -21,19 +20,21 @@ cd $DIR
 
 mkdir build
 cd build
+
 meson setup --prefix=/usr --buildtype=release ..
 
 ninja
 
+
 # Install
-sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo  DESTDIR=/pkgs/$PACKAGE ninja install
 sudo ninja install
 cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
-sudo echo "itstool libxslt meson" > /pkgs/$PACKAGE/make-depends
+sudo echo "gobject-introspection pygobject3" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

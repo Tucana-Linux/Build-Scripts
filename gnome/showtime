@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 PKG_VER=49.0
 MAJOR=$(echo $PKG_VER | sed "s|.[^.]*$||g")
-URL=https://download.gnome.org/sources/baobab/$MAJOR/baobab-$PKG_VER.tar.xz
+URL=https://download.gnome.org/sources/showtime/$MAJOR/showtime-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -22,7 +22,7 @@ cd $DIR
 mkdir build &&
 cd    build &&
 
-meson setup --prefix=/usr --buildtype=release .. 
+meson setup --prefix=/usr --buildtype=release ..
 
 
 ninja 
@@ -34,10 +34,10 @@ DESTDIR=/pkgs/$PACKAGE ninja install
 cd /pkgs
 
 
-sudo echo "libadwaita adwaita gtk3 itstool vala" > /pkgs/$PACKAGE/depends
+sudo echo "graphene gst-plugins-rs gst-plugins-bad gtk4 libadwaita" > /pkgs/$PACKAGE/depends
+sudo echo "blueprint-compiler" > /pkgs/$PACKAGE/make-depends
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
