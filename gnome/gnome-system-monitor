@@ -18,8 +18,6 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-find . -name meson.build | xargs sed -i -e '/catch2/d' &&
-sed -i '152,162d' src/meson.build
 mkdir build
 cd build
 
@@ -35,6 +33,7 @@ cd /pkgs
 
 
 sudo echo "libadwaita gtkmm4 gtk4 libsigc++ itstool libgtop librsvg desktop-file-utils" > /pkgs/$PACKAGE/depends
+sudo echo "catch2" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished

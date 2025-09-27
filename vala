@@ -16,10 +16,13 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://gitlab.archlinux.org/archlinux/packaging/packages/vala/-/raw/main/0001-valadoc-Fix-gvRenderData-to-match-graphviz-13.0.0.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
+patch -Np1 < ../0001-valadoc-Fix-gvRenderData-to-match-graphviz-13.0.0.patch
+
 
 ./configure --prefix=/usr
 

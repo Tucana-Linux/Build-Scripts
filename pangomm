@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 # This is the newer (4) version of pangomm see note in gtkmm4
 
-PKG_VER=2.52.0
+PKG_VER=2.56.1
 MAJOR=$(echo $PKG_VER | sed 's|.[^.]*$||g')
 URL=https://download.gnome.org/sources/pangomm/$MAJOR/pangomm-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
