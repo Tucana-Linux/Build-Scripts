@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=2.0.7
-URL=https://files.itstool.org/itstool/itstool-$PKG_VER.tar.bz2
+URL=https://github.com/itstool/itstool/archive/$PKG_VER/itstool-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -20,7 +20,7 @@ cd $DIR
 
 # Build
 patch -Np1 < ../itstool-2.0.7-lxml-1.patch
-PYTHON=/usr/bin/python3 ./configure --prefix=/usr &&
+PYTHON=/usr/bin/python3 ./autogen.sh --prefix=/usr
 
 
 
@@ -34,7 +34,7 @@ cd /pkgs
 
 
 
-sudo echo "lxml docbook-xml" > /pkgs/$PACKAGE/depends
+sudo echo "python-lxml docbook-xml" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
