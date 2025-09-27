@@ -31,8 +31,8 @@ ninja
 ninja install && DESTDIR=/pkgs/$PACKAGE ninja install
 
 
-rm -v /pkgs/$PACKAGE/usr/share/xsessions/gnome.desktop
-rm -v /pkgs/$PACKAGE/usr/share/wayland-sessions/gnome.desktop
+#rm -v /pkgs/$PACKAGE/usr/share/xsessions/gnome.desktop
+#rm -v /pkgs/$PACKAGE/usr/share/wayland-sessions/gnome.desktop
 cd /pkgs
 
 
