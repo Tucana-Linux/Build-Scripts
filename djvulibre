@@ -32,7 +32,7 @@ cd /pkgs
 
 
 
-sudo echo "libjpeg-turbo libtiff hicolor-icon-theme libgcc" > /pkgs/$PACKAGE/depends
+sudo echo "libjpeg-turbo libtiff hicolor-icons libgcc" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
