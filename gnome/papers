@@ -35,6 +35,7 @@ cd /pkgs
 
 
 sudo echo "djvulibre cairo dconf exempi libgcc gdk-pixbuf libarchive nautilus libspelling gtksourceview libtiff pango poppler gtk4 libadwaita" > /pkgs/$PACKAGE/depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo echo "blueprint-compiler appstream" > /pkgs/$PACKAGE/make-depends
 sudo echo "glib-compile-schemas /usr/share/glib-2.0/schemas" > /pkgs/$PACKAGE/postinst
 sudo rm -rf /pkgs/$PACKAGE/blfs
