@@ -17,6 +17,9 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+sed -e '204a\    tree = ET.parse(xmlfile)'                 \
+    -e 's/VkXML(ET.parse(xmlfile))/VkXML(tree.getroot())/' \
+    -i src/vulkan/utils_gen.py
 mkdir build
 cd build
 meson setup            \
