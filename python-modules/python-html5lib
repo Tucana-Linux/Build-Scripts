@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=1.1
+PKG_VER=1.0
 URL=https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -17,6 +17,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
+patch -Np1 < ../https://patch-diff.githubusercontent.com/raw/html5lib/html5lib-python/pull/589.patch
 python3 -m build --wheel --skip-dependency-check
 
 
