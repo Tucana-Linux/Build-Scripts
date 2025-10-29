@@ -14,7 +14,7 @@ set -e
 
 # Always use /usr/src
 cd /usr/src
-wget $URL
+#wget $URL
 tar -xvf $TAR
 cd $DIR
 

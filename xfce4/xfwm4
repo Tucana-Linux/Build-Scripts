@@ -20,7 +20,8 @@ cd $DIR
 
 # Build
 
-./configure --prefix=/usr
+./configure --prefix=/usr LIBS="-lxfce4util"
+
 
 
 make 

@@ -19,16 +19,15 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-mkdir build
-cd build
-meson setup --prefix=/usr ..
+autoreconf -fiv
+./configure --prefix=/usr --enable-maintainer-mode --disable-debug --sysconfdir=/etc --localstatedir=/var
 
 
-ninja
-
+make
+make check
 # Install
-sudo DESTDIR=/pkgs/$PACKAGE ninja install
-sudo ninja install
+sudo DESTDIR=/pkgs/$PACKAGE make install
+sudo make install
 cd /pkgs
 
 
