@@ -33,7 +33,7 @@ sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
-cp -rpv /pkgs/meson/* /
+cp -rpv /pkgs/$PACKAGE/* /
 
 cd /blfs/builds
 sudo rm -r $DIR
