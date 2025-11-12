@@ -12,12 +12,10 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://raw.githubusercontent.com/Tucana-Linux/tucana-pkgs-extra/refs/heads/main/fontforge/fontforge-$PKG_VER-upstream-fixes.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../fontforge-$PKG_VER-upstream-fixes.patch
 mkdir build
 cd build
 
