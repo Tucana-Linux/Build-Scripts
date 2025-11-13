@@ -18,8 +18,7 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-
-
+sed -i '/func.s/s/s//' tests/Gtest-nomalloc.c
 
 ./configure --prefix=/usr --disable-static
 

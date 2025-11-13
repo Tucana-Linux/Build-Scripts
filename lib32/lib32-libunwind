@@ -22,7 +22,7 @@ cd $DIR
 export CFLAGS+="-m32" 
 export CXXFLAGS+="-m32"
 export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
-
+sed -i '/func.s/s/s//' tests/Gtest-nomalloc.c
 
 
 ./configure --prefix=/usr --disable-static  --libdir=/usr/lib32 --host=i686-pc-linux-gnu
