@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=20251029
+PKG_VER=20251110
 URL=https://github.com/LuaJIT/LuaJIT.git
 DIR=LuaJIT
 PACKAGE=luajit
