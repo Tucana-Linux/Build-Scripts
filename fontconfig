@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=2.16.0
-URL=https://www.freedesktop.org/software/fontconfig/release/fontconfig-$PKG_VER.tar.xz
+URL=https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/$PKG_VER/fontconfig-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
