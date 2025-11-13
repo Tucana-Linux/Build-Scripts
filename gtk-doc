@@ -20,8 +20,8 @@ cd $DIR
 
 # Build
 
-mkdir build
-cd build
+mkdir build2
+cd build2
 
 
 meson setup --prefix=/usr --buildtype=release ..
