@@ -33,8 +33,8 @@ cd /pkgs
 
 
 
-sudo echo "xmlb glib librsvg libyaml" > /pkgs/$PACKAGE/depends
-sudo echo "gperf libstemmer qt6"> /pkgs/$PACKAGE/make-depends
+sudo echo "libfyaml xmlb glib librsvg libyaml" > /pkgs/$PACKAGE/depends
+sudo echo "libfyaml gperf libstemmer qt6"> /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
