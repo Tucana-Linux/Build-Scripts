@@ -32,7 +32,6 @@ meson setup --prefix=/usr   \
     -Degl=enabled \
     -Dgallium-extra-hud=true  \
     -Dgallium-va=enabled \
-    -Dgallium-vdpau=enabled \
     -Dgbm=enabled \
     -Dgles1=disabled \
     -Dgles2=enabled \
@@ -58,8 +57,8 @@ cd /pkgs
 
 
 
-sudo echo "spirv-tools wayland-protocols libva libglvnd llvm libvdpau libdrm mako xorg-libs libvulkan lm-sensors" > /pkgs/$PACKAGE/depends
-sudo echo "pyyaml libunwind wayland-protocols libva llvm vulkan-headers libvulkan libvdpau libdrm mako xorg-libs glslang meson lm-sensors zstd libdrm cmake python-ply libclc rust-bindgen cbindgen" > /pkgs/$PACKAGE/make-depends
+sudo echo "spirv-tools wayland-protocols libva libglvnd llvm libdrm mako xorg-libs libvulkan lm-sensors" > /pkgs/$PACKAGE/depends
+sudo echo "pyyaml libunwind wayland-protocols libva llvm vulkan-headers libvulkan libdrm mako xorg-libs glslang meson lm-sensors zstd libdrm cmake python-ply libclc rust-bindgen cbindgen" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
