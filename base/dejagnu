@@ -8,7 +8,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=1.6.3
-URL=https://ftp.gnu.org/gnu/dejagnu/dejagnu-$PKG_VER.tar.gz
+URL=https://gnu.mirror.constant.com/dejagnu/dejagnu-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

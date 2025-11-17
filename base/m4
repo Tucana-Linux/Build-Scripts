@@ -12,7 +12,7 @@ PKG_VER=
 =======
 PKG_VER=1.4.19
 >>>>>>> parent of f5ad9778 (Update m4 to 1.4.20)
-URL=https://ftp.gnu.org/gnu/m4/m4-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/m4/m4-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

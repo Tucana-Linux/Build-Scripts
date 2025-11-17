@@ -9,7 +9,7 @@ export CXXFLAGS+="-m32"
 export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
 PKG_VER=4.20.0
-URL=https://ftp.gnu.org/gnu/libtasn1/libtasn1-$PKG_VER.tar.gz
+URL=https://gnu.mirror.constant.com/libtasn1/libtasn1-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=lib32-$(echo $DIR | sed 's|-[^-]*$||g')

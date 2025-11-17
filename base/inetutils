@@ -8,7 +8,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=2.6
-URL=https://ftp.gnu.org/gnu/inetutils/inetutils-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/inetutils/inetutils-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

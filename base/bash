@@ -12,7 +12,7 @@ PKG_VER=
 =======
 PKG_VER=5.2.37
 >>>>>>> parent of f233937b (Update bash to 5.3)
-URL=https://ftp.gnu.org/gnu/bash/bash-$PKG_VER.tar.gz
+URL=https://gnu.mirror.constant.com/bash/bash-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

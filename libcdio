@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 set -e
 
 PKG_VER=2.1.0
-URL=https://ftp.gnu.org/gnu/libcdio/libcdio-$PKG_VER.tar.bz2
+URL=https://gnu.mirror.constant.com/libcdio/libcdio-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -14,7 +14,7 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
+wget https://gnu.mirror.constant.com/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
 tar -xvf $TAR
 cd $DIR
 

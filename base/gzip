@@ -8,7 +8,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=1.14
-URL=https://ftp.gnu.org/gnu/gzip/gzip-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/gzip/gzip-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

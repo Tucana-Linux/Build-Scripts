@@ -6,7 +6,7 @@ export CXXFLAGS="-O2"
 
 set -e
 PKG_VER=2.42
-URL=https://ftp.gnu.org/gnu/glibc/glibc-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/glibc/glibc-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=lib32-glibc

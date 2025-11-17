@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=16.3
-URL=https://ftp.gnu.org/gnu/gdb/gdb-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/gdb/gdb-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

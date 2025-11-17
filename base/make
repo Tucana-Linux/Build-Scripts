@@ -8,7 +8,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=4.4.1
-URL=https://ftp.gnu.org/gnu/make/make-$PKG_VER.tar.gz
+URL=https://gnu.mirror.constant.com/make/make-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')

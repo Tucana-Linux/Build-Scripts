@@ -6,7 +6,7 @@ export CXXFLAGS="-O2 "
 
 PKG_VER=0.26
  
-URL=https://ftp.gnu.org/gnu/gettext/gettext-$PKG_VER.tar.xz
+URL=https://gnu.mirror.constant.com/gettext/gettext-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=lib32-$(echo $DIR | sed 's|-[^-]*$||g')

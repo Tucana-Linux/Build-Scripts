@@ -8,7 +8,7 @@ export CXXFLAGS="-O2"
 
 
 PKG_VER=2.15
-URL=https://ftp.gnu.org/gnu/cpio/cpio-$PKG_VER.tar.bz2
+URL=https://gnu.mirror.constant.com/cpio/cpio-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
