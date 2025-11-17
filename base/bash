@@ -8,9 +8,9 @@ export CXXFLAGS="-O2"
 
 set -e
 <<<<<<< HEAD
-PKG_VER=
+PKG_VER=5.3
 =======
-PKG_VER=5.2.37
+PKG_VER=5.3
 >>>>>>> parent of f233937b (Update bash to 5.3)
 URL=https://gnu.mirror.constant.com/bash/bash-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
