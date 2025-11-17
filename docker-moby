@@ -6,7 +6,7 @@ export CXXFLAGS="-O2 "
 PKG_VER=28.5.1
 URL=https://github.com/moby/moby/archive/refs/tags/docker-v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
-DIR=moby-$PKG_VER
+DIR=moby-docker-v$PKG_VER
 PACKAGE=docker-moby
 
 # Get package
