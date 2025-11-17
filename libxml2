@@ -15,12 +15,10 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/libxml2-2.15.0-upstream_fix-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../libxml2-2.15.0-upstream_fix-1.patch
 ./configure --prefix=/usr           \
             --sysconfdir=/etc       \
 	    --with-icu \
@@ -29,7 +27,7 @@ patch -Np1 < ../libxml2-2.15.0-upstream_fix-1.patch
 	    --with-legacy \
 	    --with-threads \
             PYTHON=/usr/bin/python3 \
-            --docdir=/usr/share/doc/libxml2-$MAJOR.0 
+            --docdir=/usr/share/doc/libxml2
 
 
 make 
