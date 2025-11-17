@@ -18,15 +18,14 @@ tar -xvf $TAR
 cd $DIR
 
 # Build
-autoreconf -fi
-./configure --prefix=/usr --datadir=/usr/share/hwdata
+mkdir build
+cd build
+meson setup --prefix=/usr --buildtype=release ..
 
-
-make 
-
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
 install -dm755 /pkgs/$PACKAGE/usr/share/hwdata/
 wget http://www.linux-usb.org/usb.ids -O /pkgs/$PACKAGE/usr/share/hwdata/usb.ids
 cd /pkgs
