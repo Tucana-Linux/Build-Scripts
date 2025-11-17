@@ -33,8 +33,8 @@ cd /pkgs
 
 
 
-sudo echo "xcb-util" > /pkgs/$PACKAGE/depends
-sudo echo "" > /pkgs/$PACKAGE/make-depends
+sudo echo "xcb-util-renderutil xcb-util" > /pkgs/$PACKAGE/depends
+sudo echo "xcb-util-renderutil" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
