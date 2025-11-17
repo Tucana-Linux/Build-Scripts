@@ -32,8 +32,8 @@ cd /pkgs
 
 
 
-sudo echo "gtksourceview4 libzip gtk3 poppler-glkib libxml2 portaudio libsndfile portaudio lua" > /pkgs/$PACKAGE/depends
-sudo echo "portaudio cmake doxygen graphviz" > /pkgs/$PACKAGE/make-depends
+sudo echo "gtksourceview4 libzip gtk3 poppler-glib libxml2 libsndfile portaudio lua" > /pkgs/$PACKAGE/depends
+sudo echo "libzip gtksourceview4 gtk3 poppler-glib libxml2 libsndfile portaudio cmake doxygen graphviz" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
