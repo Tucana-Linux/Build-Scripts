@@ -15,12 +15,10 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget https://www.linuxfromscratch.org/patches/blfs/svn/localsearch-3.9.0-libxml2_2_14-1.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-patch -Np1 < ../localsearch-3.9.0-libxml2_2_14-1.patch
 mkdir build &&
 cd    build &&
 
