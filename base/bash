@@ -3,15 +3,8 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-
 set -e
-<<<<<<< HEAD
-PKG_VER=
-=======
-PKG_VER=5.2.37
->>>>>>> parent of f233937b (Update bash to 5.3)
+PKG_VER=5.3
 URL=https://gnu.mirror.constant.com/bash/bash-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -28,7 +21,7 @@ cd $DIR
 
 
 ./configure --prefix=/usr                      \
-            --docdir=/usr/share/doc/bash-5.1.16 \
+            --docdir=/usr/share/doc/bash \
             --without-bash-malloc              \
             --with-installed-readline
 
