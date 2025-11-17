@@ -1,17 +1,10 @@
 #!/bin/bash
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-
-export CFLAGS=-"O2"
+export CFLAGS="-O2"
 export CXXFLAGS="-O2"
 
 
-<<<<<<< HEAD
-PKG_VER=
-=======
-PKG_VER=1.4.19
->>>>>>> parent of f5ad9778 (Update m4 to 1.4.20)
+PKG_VER=1.4.20
 URL=https://gnu.mirror.constant.com/m4/m4-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
@@ -39,7 +32,7 @@ cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
+sudo echo "bash" > /pkgs/$PACKAGE/depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
