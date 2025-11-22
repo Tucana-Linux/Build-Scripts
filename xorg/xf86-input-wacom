@@ -20,13 +20,12 @@ cd $DIR
 mkdir build
 cd build
 
-./configure --prefix=/usr --sysconfdir=/etc
+meson setup --prefix=/usr --buildtype=release ..
 
-make 
-
+ninja 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 
