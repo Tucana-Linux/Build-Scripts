@@ -38,7 +38,8 @@ cd /pkgs
 
 
 
-sudo echo "kf6" > /pkgs/$PACKAGE/depends
+sudo echo "kf6 kcolorpicker" > /pkgs/$PACKAGE/depends
+sudo echo "kf6 kcolorpicker" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
