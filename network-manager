@@ -53,7 +53,7 @@ cd /pkgs
 
 
 sudo echo "libpsl jansson libndp dhcpcd iptables newt nss pygobject3 systemd upower wpa_supplicant curl" > /pkgs/$PACKAGE/depends
-sudo echo "modem-manager" > /pkgs/$PACKAGE/make-depends
+sudo echo "libnvme modem-manager" > /pkgs/$PACKAGE/make-depends
 sudo echo "systemctl disable NetworkManager-wait-online" > /pkgs/$PACKAGE/postinst
 cat > /pkgs/$PACKAGE/etc/NetworkManager/NetworkManager.conf << "EOF"
 [main]
