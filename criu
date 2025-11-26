@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=4.1.1
+PKG_VER=4.2
 URL=http://github.com/checkpoint-restore/criu/archive/v$PKG_VER/criu-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=criu-$PKG_VER
