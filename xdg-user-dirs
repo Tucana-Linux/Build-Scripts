@@ -18,22 +18,19 @@ cd $DIR
 
 # Build
 
+meson setup --prefix=/usr --buildtype=release ..
 
-./configure --prefix=/usr           \
-            --sysconfdir=/etc
-
-make 
-
+ninja
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+sudo DESTDIR=/pkgs/$PACKAGE ninja install
+sudo ninja install
 cd /pkgs
 
 
 
-sudo echo "" > /pkgs/$PACKAGE/depends
-sudo echo "docbook-xsl libxslt" > /pkgs/$PACKAGE/make-depends
+sudo echo "bash" > /pkgs/$PACKAGE/depends
+sudo echo "meson docbook-xsl libxslt" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
