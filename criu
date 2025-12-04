@@ -45,7 +45,7 @@ cd /pkgs
 
 
 sudo echo "python-protobuf libbsd libgcc gnutls libbpf libdrm libnet libnl nftables protobuf-c python util-linux" > /pkgs/$PACKAGE/depends
-sudo echo "asciidoc git python-build python-installer setuptools wheel xmlto" > /pkgs/$PACKAGE/make-depends
+sudo echo "protobuf-c asciidoc git python-build python-installer setuptools wheel xmlto" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
