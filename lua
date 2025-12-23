@@ -12,7 +12,7 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget  https://www.linuxfromscratch.org/patches/blfs/svn/lua-$PKG_VER-shared_library-1.patch
+wget  https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/lua-5.4.8-shared_library-1.patch
 tar -xvf $TAR
 cd $DIR
 
@@ -40,7 +40,7 @@ Requires:
 Libs: -L${libdir} -llua -lm -ldl
 Cflags: -I${includedir}
 EOF
-patch -Np1 -i ../lua-$PKG_VER-shared_library-1.patch &&
+patch -Np1 -i ../lua-5.4.8-shared_library-1.patch &&
 make linux 
 
 
