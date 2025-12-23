@@ -26,12 +26,10 @@ mkdir build
 cd build
 
 
-meson --prefix=/usr              \
+meson setup --prefix=/usr              \
       --buildtype=release        \
       -Dlibaudit=no              \
       -Dnmtui=true               \
-      -Dnetconfig=no \
-      -Dconfig_dns_rc_manager_default=symlink \
       -Dovs=false                \
       -Dppp=false                \
       -Dselinux=false            \
