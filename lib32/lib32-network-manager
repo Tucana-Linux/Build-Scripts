@@ -60,7 +60,6 @@ meson setup --prefix=/usr              \
     -Dtests=no \
     -Dmore_asserts=no \
     -Dmore_logging=false \
-    -Dnbft=false \
     -Dqt=false \
       ..
 ninja
