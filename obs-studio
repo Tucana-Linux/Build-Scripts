@@ -49,7 +49,7 @@ cd /pkgs
 
 
 sudo echo "simde mbedtls uthash qt6 ffmpeg luajit llvm xorg" > /pkgs/$PACKAGE/depends
-sudo echo "ecm mbedtls nlohmann-json swig" > /pkgs/$PACKAGE/make-depends
+sudo echo "simde ecm mbedtls nlohmann-json swig" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
