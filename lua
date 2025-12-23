@@ -12,7 +12,7 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
-wget  https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/lua-5.4.8-shared_library-1.patch
+wget  https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/lua/lua-5.4.8-shared_library-1.patch
 tar -xvf $TAR
 cd $DIR
 
