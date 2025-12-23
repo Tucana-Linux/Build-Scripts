@@ -52,8 +52,8 @@ sudo ninja install
 cd /pkgs
 
 
-sudo echo "libpsl jansson libndp dhcpcd iptables newt nss pygobject3 systemd upower wpa_supplicant curl" > /pkgs/$PACKAGE/depends
-sudo echo "libnvme modem-manager" > /pkgs/$PACKAGE/make-depends
+sudo echo "libpsl nss jansson libndp dhcpcd iptables newt nss pygobject3 systemd upower wpa_supplicant curl" > /pkgs/$PACKAGE/depends
+sudo echo "libnvme nss modem-manager" > /pkgs/$PACKAGE/make-depends
 sudo echo "systemctl disable NetworkManager-wait-online" > /pkgs/$PACKAGE/postinst
 cat > /pkgs/$PACKAGE/etc/NetworkManager/NetworkManager.conf << "EOF"
 [main]
