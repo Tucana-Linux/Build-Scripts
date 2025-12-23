@@ -14,11 +14,12 @@ PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
 
 cd /blfs/builds
 wget $URL
+wget https://raw.githubusercontent.com/Tucana-Linux/pkgs-extra-files/refs/heads/main/mailutils/0001-mailutils-gcc-15-fix.patch
 tar -xvf $TAR
 cd $DIR
 
 # Build
-
+patch -Np1 < ../0001-mailutils-gcc-15-fix.patch
 ./configure --prefix=/usr --with-gnutls --disable-python
 
 
