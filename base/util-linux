@@ -3,9 +3,6 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-export CFLAGS=-"O2"
-export CXXFLAGS="-O2"
-
 
 PKG_VER=2.41.3
 # changed from the usual because they don't do .0 versions
@@ -33,7 +30,6 @@ cd $DIR
             --disable-nologin    \
             --disable-su         \
             --disable-setpriv    \
-            --disable-runuser    \
             --disable-pylibmount \
             --disable-static     \
             --without-python
@@ -46,6 +42,22 @@ make
 sudo make DESTDIR=/pkgs/$PACKAGE install
 sudo make install
 cd /pkgs
+# Runuser pam configs
+mkdir -p /pkgs/$PACKAGE/etc/pam.d
+cat > /pkgs/$PACKAGE/etc/pam.d/runuser << EOF
+#%PAM-1.0
+auth		sufficient	pam_rootok.so
+session		optional	pam_keyinit.so revoke
+session		required	pam_limits.so
+session		required	pam_unix.so
+EOF
+cat > /pkgs/$PACKAGE/etc/pam.d/runuser-l << EOF
+#%PAM-1.0
+auth		include		runuser
+session		optional	pam_keyinit.so force revoke
+session		optional	pam_systemd.so
+session		include		runuser
+EOF
 
 
 sudo echo "libxcrypt glibc libcap ncurses readline zlib" > /pkgs/$PACKAGE/depends
