@@ -2,7 +2,7 @@
 
 set -e
 
-PKG_VER=2.12
+PKG_VER=2.14
 URL=https://gnu.mirror.constant.com/grub/grub-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
