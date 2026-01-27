@@ -47,7 +47,7 @@ cd /pkgs
 
 
 
-sudo echo "lib32-coreutils p11-kit" > /pkgs/$PACKAGE/depends
+sudo echo "p11-kit" > /pkgs/$PACKAGE/depends
 sudo echo "coreutils systemd meson libffi libtasn1" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
