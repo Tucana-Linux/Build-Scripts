@@ -8,7 +8,7 @@ PKG_VER=0.26.1
 URL=https://github.com/p11-glue/p11-kit/releases/download/$PKG_VER/p11-kit-$PKG_VER.tar.xz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
-PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
+PACKAGE=lib32-$(echo $DIR | sed 's|-[^-]*$||g')
 
 # Get Package
 export CC="gcc -m32"
@@ -42,6 +42,12 @@ ninja
 
 
 # Install
+mkdir -p /pkgs/$PACKAGE/usr/lib32
+DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/lib32/* /pkgs/$PACKAGE/usr/lib32
+rm -rf DESTDIR
+cp -rpv /pkgs/$PACKAGE/* /
+
 
 cd /pkgs
 
