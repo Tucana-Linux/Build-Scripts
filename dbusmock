@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=0.37.2
+PKG_VER=0.38.1
 URL=https://github.com/martinpitt/python-dbusmock/releases/download/$PKG_VER/python_dbusmock-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=python_dbusmock-$PKG_VER
