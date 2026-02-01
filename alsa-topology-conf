@@ -2,8 +2,8 @@
 
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
-PKG_VER=1.2.14
-URL=https://www.alsa-project.org/files/pub/lib/alsa-lib-$PKG_VER.tar.bz2
+PKG_VER=1.2.4
+URL=https://www.alsa-project.org/files/pub/lib/alsa-topology-conf-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
 PACKAGE=$(echo $DIR | sed 's|-[^-]*$||g')
@@ -18,23 +18,23 @@ cd $DIR
 # Build
 
 
-./configure
-
-make 
-
 
 # Install
-sudo make DESTDIR=/pkgs/$PACKAGE install
-sudo make install
+# credit to arch linux build-scripts
+for dir in topology/*; do
+    install -vDm 644 "$dir"/*.conf -t "/pkgs/$PACKAGE/usr/share/alsa/topology/$(basename $dir)"
+done
+
 cd /pkgs
 
 
 
-sudo echo "alsa-ucm-conf alsa-topology-conf" > /pkgs/$PACKAGE/depends
+sudo echo "" > /pkgs/$PACKAGE/depends
 sudo echo "" > /pkgs/$PACKAGE/make-depends
 sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
+sudo cp -rpv /pkgs/$PACKAGE/* /
 
 
 cd /blfs/builds
