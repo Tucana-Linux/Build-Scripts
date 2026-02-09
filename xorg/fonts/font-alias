@@ -4,7 +4,7 @@ export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
 PACKAGE=font-alias
-PKG_VER=1.0.5
+PKG_VER=1.0.6
 URL=https://www.x.org/pub/individual/font/font-alias-$PKG_VER.tar.xz
 TAR=$PACKAGE-$PKG_VER.tar.xz
 DIR=$PACKAGE-$PKG_VER
