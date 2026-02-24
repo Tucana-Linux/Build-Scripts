@@ -23,7 +23,7 @@ sed -ri Makefile.in \
     -e '/pip install/s#(ZENMAP|NDIFF)DIR\)/#&dist/*.whl#'
 sed 's/, "setuptools-gettext"//' -i zenmap/pyproject.toml
 
-
+./configure --prefix=/usr
 
 make 
 
