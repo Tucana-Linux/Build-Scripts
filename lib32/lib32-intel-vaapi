@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2.4.1
+PKG_VER=20130205
  
 URL=https://github.com/intel/intel-vaapi-driver/releases/download/$PKG_VER/intel-vaapi-driver-$PKG_VER.tar.bz2
 TAR=$(echo $URL | sed -r 's|(.*)/||')
