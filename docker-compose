@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Credit to arch for build instructions for all docker related packages
+
+export CFLAGS="-O2 "
+export CXXFLAGS="-O2 "
+PKG_VER=5.0.0
+URL=https://github.com/docker/compose/archive/refs/tags/v$PKG_VER.tar.gz
+TAR=$(echo $URL | sed -r 's|(.*)/||')
+DIR=compose-$PKG_VER
+PACKAGE=docker-compose
+
+# Get package
+cd /blfs/builds
+wget $URL
+tar -xvf $TAR
+cd $DIR
+
+# Build
+export GOPATH=/blfs/builds/$DIR
+GO_LDFLAGS="-linkmode=external -compressdwarf=false -X=github.com/docker/compose/v5/internal.Version=$PKGVER"
+go build -ldflags "$GO_LDFLAGS" -trimpath -tags "e2e,kube" -o compose ./cmd
+
+
+# Install
+install -Dm755 compose /pkgs/$PACKAGE/usr/lib/docker/cli-plugins/docker-compose
+install -d /pkgs/$PACKAGE/usr/bin
+ln -sfv /usr/lib/docker/cli-plugins/docker-compose /pkgs/$PACKAGE/usr/bin/docker-compose
+cd /pkgs
+
+sudo echo "docker docker-buildx" > /pkgs/$PACKAGE/depends
+sudo echo "go" > /pkgs/$PACKAGE/make-depends
+sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
+sudo cp $PACKAGE.tar.xz /finished
+
+cd /blfs/builds
+sudo rm -r $DIR
+sudo rm $TAR
