@@ -3,7 +3,7 @@
 export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
-PKG_VER=1.95_03
+PKG_VER=1.94
 URL=https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
