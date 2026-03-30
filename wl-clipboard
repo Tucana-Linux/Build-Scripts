@@ -3,7 +3,7 @@
 export CFLAGS="-O2 "
 export CXXFLAGS="-O2 "
 
-PKG_VER=2.2.1
+PKG_VER=2.3.0
 URL=https://github.com/bugaevc/wl-clipboard/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=wl-clipboard-$PKG_VER
