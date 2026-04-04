@@ -5,7 +5,7 @@ export CXXFLAGS="-O2"
 #ARCH_PKG=perl-json
 #ARCH_VAR=pkgver
 
-PKG_VER=4.10
+PKG_VER=4.11
 URL=https://www.cpan.org/authors/id/I/IS/ISHIGAKI/JSON-$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=$(echo $TAR | sed 's|.tar.*||g')
