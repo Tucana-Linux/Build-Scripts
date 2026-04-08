@@ -4,7 +4,7 @@ export CFLAGS=-"O2"
 export CXXFLAGS="-O2"
 
 
-PKG_VER=1.17.0
+PKG_VER=1.17.1
 URL=https://github.com/containers/aardvark-dns/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=aardvark-dns-$PKG_VER
