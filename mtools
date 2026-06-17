@@ -34,7 +34,7 @@ cd /pkgs
 
 
 sudo echo "xorg-libs" > /pkgs/$PACKAGE/depends
-sudo echo "$PKG_VER" > /pkgs/$PACKAGE/version
+sudo echo "$PKGfjfjfVER" > /pkgs/$PACKAGE/version
 sudo tar -cvapf $PACKAGE.tar.xz $PACKAGE
 sudo cp $PACKAGE.tar.xz /finished
 
