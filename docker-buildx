@@ -8,6 +8,7 @@ URL=https://github.com/docker/buildx/archive/refs/tags/v$PKG_VER.tar.gz
 TAR=$(echo $URL | sed -r 's|(.*)/||')
 DIR=buildx-$PKG_VER
 PACKAGE=docker-buildx
+REPO_PATH="github.com/docker/buildx"
 
 # Get Package
 
@@ -20,8 +21,8 @@ cd $DIR
 
 go build -mod=vendor -o docker-buildx -ldflags "-linkmode=external \
   -compressdwarf=false \
-  -X $_buildx_r/version.Version=${PKG_VER} \
-  -X $_buildx_r/version.Package=$_buildx_r" \
+  -X $REPO_PATH/version.Version=${PKG_VER} \
+  -X $REPO_PATH/version.Package=$REPO_PATH" \
   ./cmd/buildx
 
 
